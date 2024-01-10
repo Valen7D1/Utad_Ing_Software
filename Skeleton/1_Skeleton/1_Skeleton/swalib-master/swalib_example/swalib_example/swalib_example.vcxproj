@@ -120,17 +120,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\common\global.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
+    <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
+    <ClCompile Include="..\..\common\render.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\common\global.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />
+    <ClInclude Include="..\..\common\gameLogic.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
+    <ClInclude Include="..\..\common\render.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
