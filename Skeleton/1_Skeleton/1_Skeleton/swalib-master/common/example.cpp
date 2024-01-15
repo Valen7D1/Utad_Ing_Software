@@ -13,11 +13,12 @@ int Main(void)
 	LogicInitialization();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
-		ProcessGameLogic();
+
+		timeControl();
+
 		Render();
 
 		SYS_Pump();	// Process Windows messages.
-		SYS_Sleep(17);	// To force 60 fps
 	}
 
 	Shutdown();

@@ -11,6 +11,15 @@
 extern GLuint texbkg;
 extern GLuint texsmallball;
 extern Ball balls[NUM_BALLS];
+extern double elapsed;
+extern double totalTime;
+extern double frameRate;
+
+const char* FloatToString(float value) {
+	static char buffer[32]; // Adjust the buffer size based on your needs
+	snprintf(buffer, sizeof(buffer), "%f", value);
+	return buffer;
+}
 
 void RenderInitialization()
 {
@@ -50,8 +59,19 @@ void Render()
 	}
 
 	// Text
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD!");
+	FONT_DrawString(vec2(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD");
 
-	// Exchanges the front and back buffers
+	// Time Passed
+	char currentTimeString[50] = { 0 };
+	snprintf(currentTimeString, 50, "TIME:%f", totalTime);
+	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 16), currentTimeString);
+
+	double fps = 1 / elapsed;
+	char fpsString[50] = { 0 };
+	snprintf(fpsString, 50, "FPS:%f", fps);
+	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+
+		// Exchanges the front and back buffers
 	SYS_Show();
+
 }

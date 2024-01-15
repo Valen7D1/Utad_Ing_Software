@@ -5,9 +5,35 @@
 #include "gameLogic.h"
 #include "font.h"
 
+int frames;
 Ball balls[NUM_BALLS];
 extern GLuint texbkg;
 extern GLuint texsmallball;
+
+
+LARGE_INTEGER frequency; // ticks per second
+LARGE_INTEGER previousTime, actualTime; // ticks
+double elapsed;
+double totalTime;
+double frameRate;
+double totalElapsed = 0;
+
+
+void timeControl(){
+	QueryPerformanceCounter(&actualTime);
+	elapsed = (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
+	previousTime = actualTime;
+	totalTime += elapsed;
+	totalElapsed += elapsed;
+
+	if (elapsed > 0)
+	{
+		while (totalElapsed >= frameRate) {
+			ProcessGameLogic();
+			totalElapsed -= frameRate;
+		}
+	}
+}
 
 //-----------------------------------------------------------------------------
 void Shutdown()
@@ -20,6 +46,10 @@ void Shutdown()
 
 void LogicInitialization()
 {
+	frameRate = 1.0 / 60.0;
+	QueryPerformanceCounter(&previousTime);
+	QueryPerformanceFrequency(&frequency);
+
 	// Init game state.
 	for (int i = 0; i < NUM_BALLS; i++) {
 		balls[i].pos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
