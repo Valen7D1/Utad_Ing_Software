@@ -14,7 +14,7 @@ extern GLuint texsmallball;
 LARGE_INTEGER frequency;
 LARGE_INTEGER actualTime, previousTime;
 double elapsedTime = 0;
-float frameTime = 1.0f / 144.0f; // Target time per frame for 60 fps
+float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
 double totalTime = 0;
 double totalElapsed = 0;
 double time_fps = 0;
@@ -24,22 +24,25 @@ double time_fps = 0;
 void timeControl()
 {
 	QueryPerformanceCounter(&actualTime);
-	elapsedTime = (float)(actualTime.QuadPart - previousTime.QuadPart) / frequency.QuadPart;
+	elapsedTime = (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
 	previousTime = actualTime;
 
 	totalTime += elapsedTime;
 	totalElapsed += elapsedTime;
 
 
-	if (elapsedTime > 0)
+	if (totalElapsed > 1.0 / 15.0)
 	{
-		while (totalElapsed >= frameTime)
-		{
-			ProcessGameLogic();
-			time_fps = totalElapsed;
-			totalElapsed -= frameTime;
-		}
+		totalElapsed = 1.0 / 15.0;
 	}
+	while (totalElapsed >= frameTime)
+	{
+		ProcessGameLogic();
+		time_fps = totalElapsed;
+		totalElapsed -= frameTime;
+		//SYS_Sleep(17);
+	}
+	
 
 }
 
