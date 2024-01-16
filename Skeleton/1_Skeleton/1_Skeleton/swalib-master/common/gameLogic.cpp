@@ -21,7 +21,7 @@ double time_fps = 0;
 double totalFrameTime = 0;
 
 
-
+//pgit 2
 void timeControl()
 {
 	QueryPerformanceCounter(&actualTime);
