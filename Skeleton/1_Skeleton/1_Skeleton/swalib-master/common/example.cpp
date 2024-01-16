@@ -13,7 +13,7 @@ int Main(void)
 	LogicInitialization();
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
-
+		// 2.1 va mucho mas rapido todo
 		timeControl();
 
 		Render();

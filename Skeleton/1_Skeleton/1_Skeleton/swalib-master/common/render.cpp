@@ -15,6 +15,7 @@ extern Ball balls[NUM_BALLS];
 extern double time_fps;
 extern double totalTime;
 extern double frameTime;
+extern double totalFrameTime;
 
 const char* FloatToString(float value) {
 	static char buffer[32]; // Adjust the buffer size based on your needs
@@ -70,6 +71,11 @@ void Render()
 	char fpsString[50] = { 0 };
 	snprintf(fpsString, 50, "FPS:%f", 1 / time_fps);
 	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+
+	char tickString[50] = { 0 };
+	snprintf(tickString, 50, "TICK:%f", totalFrameTime);
+	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
+
 
 		// Exchanges the front and back buffers
 	SYS_Show();

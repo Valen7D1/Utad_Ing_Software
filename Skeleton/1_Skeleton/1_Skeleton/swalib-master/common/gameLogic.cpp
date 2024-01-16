@@ -18,6 +18,7 @@ float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
 double totalTime = 0;
 double totalElapsed = 0;
 double time_fps = 0;
+double totalFrameTime = 0;
 
 
 
@@ -38,10 +39,11 @@ void timeControl()
 	while (totalElapsed >= frameTime)
 	{
 		ProcessGameLogic();
+		totalFrameTime += frameTime;
 		time_fps = totalElapsed;
 		totalElapsed -= frameTime;
-		//SYS_Sleep(17);
 	}
+	//SYS_Sleep(17);
 	
 
 }
