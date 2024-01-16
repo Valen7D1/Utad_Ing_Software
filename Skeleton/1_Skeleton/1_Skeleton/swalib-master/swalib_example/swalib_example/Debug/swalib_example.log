@@ -1,2 +1,5 @@
-﻿  gameLogic.cpp
+﻿  example.cpp
+  gameLogic.cpp
+  render.cpp
+  Generating Code...
   swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

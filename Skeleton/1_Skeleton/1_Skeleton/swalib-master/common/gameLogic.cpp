@@ -10,27 +10,37 @@ Ball balls[NUM_BALLS];
 extern GLuint texbkg;
 extern GLuint texsmallball;
 
+//Variables para el control del tiempo
+LARGE_INTEGER frequency;
+LARGE_INTEGER actualTime, previousTime;
+double elapsedTime = 0;
+float frameTime = 1.0f / 144.0f; // Target time per frame for 60 fps
+double totalTime = 0;
+double totalElapsed = 0;
+double time_fps = 0;
 
-LARGE_INTEGER frequency; // ticks per second
-LARGE_INTEGER previousTime, actualTime; // ticks
-double elapsed=0;
-double totalTime;
-double frameRate;
 
 
-void timeControl(){
+void timeControl()
+{
 	QueryPerformanceCounter(&actualTime);
-	elapsed += (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
+	elapsedTime = (float)(actualTime.QuadPart - previousTime.QuadPart) / frequency.QuadPart;
 	previousTime = actualTime;
-	totalTime += elapsed;
 
-	if (elapsed > 0)
+	totalTime += elapsedTime;
+	totalElapsed += elapsedTime;
+
+
+	if (elapsedTime > 0)
 	{
-		while (elapsed >= frameRate) {
+		while (totalElapsed >= frameTime)
+		{
 			ProcessGameLogic();
-			elapsed -= frameRate;
+			time_fps = totalElapsed;
+			totalElapsed -= frameTime;
 		}
 	}
+
 }
 
 //-----------------------------------------------------------------------------
@@ -44,14 +54,13 @@ void Shutdown()
 
 void LogicInitialization()
 {
-	frameRate = 1.0 / 60.0;
 	QueryPerformanceCounter(&previousTime);
 	QueryPerformanceFrequency(&frequency);
 
 	// Init game state.
 	for (int i = 0; i < NUM_BALLS; i++) {
 		balls[i].pos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
-		balls[i].vel = vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED), CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED));
+		balls[i].vel = vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime, CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime);
 		balls[i].radius = 16.f;
 		balls[i].gfx = texsmallball;
 	}
