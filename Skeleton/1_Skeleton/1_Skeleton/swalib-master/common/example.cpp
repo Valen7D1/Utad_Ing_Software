@@ -6,7 +6,7 @@
 #include "gameLogic.h"
 #include "render.h"
 
-
+//pgit 1
 int Main(void)
 {	
 	RenderInitialization();
