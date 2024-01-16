@@ -7,6 +7,7 @@
 #include "render.h"
 
 //va a ocurrir un error 2
+//otra vez jeje
 int Main(void)
 {	
 	RenderInitialization();
