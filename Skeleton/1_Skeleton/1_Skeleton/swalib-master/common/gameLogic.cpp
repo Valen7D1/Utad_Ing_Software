@@ -13,24 +13,22 @@ extern GLuint texsmallball;
 
 LARGE_INTEGER frequency; // ticks per second
 LARGE_INTEGER previousTime, actualTime; // ticks
-double elapsed;
+double elapsed=0;
 double totalTime;
 double frameRate;
-double totalElapsed = 0;
 
 
 void timeControl(){
 	QueryPerformanceCounter(&actualTime);
-	elapsed = (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
+	elapsed += (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
 	previousTime = actualTime;
 	totalTime += elapsed;
-	totalElapsed += elapsed;
 
 	if (elapsed > 0)
 	{
-		while (totalElapsed >= frameRate) {
+		while (elapsed >= frameRate) {
 			ProcessGameLogic();
-			totalElapsed -= frameRate;
+			elapsed -= frameRate;
 		}
 	}
 }
