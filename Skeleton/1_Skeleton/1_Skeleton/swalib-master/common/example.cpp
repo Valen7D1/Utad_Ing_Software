@@ -5,7 +5,7 @@
 #include "vector2d.h"
 #include "gameLogic.h"
 #include "render.h"
-
+//vamos a liarla 2
 //va a ocurrir un error 2
 //otra vez jeje
 int Main(void)
