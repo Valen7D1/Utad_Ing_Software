@@ -44,6 +44,7 @@ void RenderInitialization()
 }
 
 //pgit 3
+//pgit 3
 void Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.
