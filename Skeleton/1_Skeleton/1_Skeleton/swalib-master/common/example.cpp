@@ -6,8 +6,8 @@
 #include "gameLogic.h"
 #include "render.h"
 
-//va a ocurrir un error 1
-//otra vez jeje2
+//va a ocurrir un error 2
+//otra vez jeje
 int Main(void)
 {	
 	RenderInitialization();
