@@ -4,7 +4,6 @@
 #include "sys.h"
 #include "core.h"
 #include "font.h"
-#include "gameLogic.h"
 #include "vector2d.h"
 #include "global.h"
 
@@ -14,8 +13,9 @@ extern Ball balls[NUM_BALLS];
 
 extern double time_fps;
 extern double totalTime;
-extern double frameTime;
 extern double totalFrameTime;
+
+//SharedData sharedData;
 
 const char* FloatToString(float value) {
 	static char buffer[32]; // Adjust the buffer size based on your needs

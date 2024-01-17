@@ -12,13 +12,18 @@ extern GLuint texsmallball;
 
 //Variables para el control del tiempo
 LARGE_INTEGER frequency;
-LARGE_INTEGER actualTime, previousTime;
+LARGE_INTEGER actualTime;
+LARGE_INTEGER previousTime;
+
 double elapsedTime = 0;
-float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
 double totalTime = 0;
 double totalElapsed = 0;
 double time_fps = 0;
 double totalFrameTime = 0;
+
+float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
+
+//SharedData sharedData;
 
 void timeControl()
 {
@@ -28,7 +33,6 @@ void timeControl()
 
 	totalTime += elapsedTime;
 	totalElapsed += elapsedTime;
-
 
 	if (totalElapsed > 1.0 / 15.0)
 	{
@@ -41,10 +45,10 @@ void timeControl()
 		time_fps = totalElapsed;
 		totalElapsed -= frameTime;
 	}
-	SYS_Sleep(50);
+	//SYS_Sleep(50);
 }
 
-//-----------------------------------------------------------------------------
+
 void Shutdown()
 {
 	// Unload textures.
@@ -66,6 +70,8 @@ void LogicInitialization()
 		balls[i].gfx = texsmallball;
 	}
 }
+
+
 
 void ProcessGameLogic()
 {
