@@ -43,9 +43,6 @@ void RenderInitialization()
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
 }
 
-//pgit 3
-//pgit 3
-//cambios a una nueva rama
 void Render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.

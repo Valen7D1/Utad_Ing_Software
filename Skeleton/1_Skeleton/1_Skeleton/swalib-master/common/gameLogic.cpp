@@ -20,9 +20,6 @@ double totalElapsed = 0;
 double time_fps = 0;
 double totalFrameTime = 0;
 
-
-//pgit 2
-//pgit 2
 void timeControl()
 {
 	QueryPerformanceCounter(&actualTime);
@@ -44,9 +41,7 @@ void timeControl()
 		time_fps = totalElapsed;
 		totalElapsed -= frameTime;
 	}
-	//SYS_Sleep(17);
-	
-
+	SYS_Sleep(50);
 }
 
 //-----------------------------------------------------------------------------
