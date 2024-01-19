@@ -17,11 +17,6 @@ extern double totalFrameTime;
 
 //SharedData sharedData;
 
-const char* FloatToString(float value) {
-	static char buffer[32]; // Adjust the buffer size based on your needs
-	snprintf(buffer, sizeof(buffer), "%f", value);
-	return buffer;
-}
 
 void RenderInitialization()
 {
@@ -56,7 +51,7 @@ void Render()
 
 	// Render balls
 	for (int i = 0; i < NUM_BALLS; i++) {
-		CORE_RenderCenteredSprite(balls[i].pos, vec2(balls[i].radius * 2.f, balls[i].radius * 2.f), balls[i].gfx);
+		CORE_RenderCenteredSprite(balls[i].getPosition(), vec2(balls[i].getRadius() * 2.f, balls[i].getRadius() * 2.f), balls[i].gfx);
 	}
 
 	// Text

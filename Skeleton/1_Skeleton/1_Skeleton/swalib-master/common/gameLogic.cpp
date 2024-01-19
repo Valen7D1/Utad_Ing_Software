@@ -64,9 +64,9 @@ void LogicInitialization()
 
 	// Init game state.
 	for (int i = 0; i < NUM_BALLS; i++) {
-		balls[i].pos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
-		balls[i].vel = vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime, CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime);
-		balls[i].radius = 16.f;
+		balls[i].setPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));
+		balls[i].setVelocity(vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime, CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime));
+		balls[i].setRadius(16.f);
 		balls[i].gfx = texsmallball;
 	}
 }
@@ -78,15 +78,15 @@ void ProcessGameLogic()
 	// Run balls
 	for (int i = 0; i < NUM_BALLS; i++) {
 		// New Pos.
-		vec2 newpos = balls[i].pos + balls[i].vel;
+		vec2 newpos = balls[i].getPosition() + balls[i].getVelocity();
 
 		// Collision detection.
 		bool collision = false;
 		int colliding_ball = -1;
 		for (int j = 0; j < NUM_BALLS; j++) {
 			if (i != j) {
-				float limit2 = (balls[i].radius + balls[j].radius) * (balls[i].radius + balls[j].radius);
-				if (vlen2(newpos - balls[j].pos) <= limit2) {
+				float limit2 = (balls[i].getRadius() + balls[j].getRadius()) * (balls[i].getRadius() + balls[j].getRadius());
+				if (vlen2(newpos - balls[j].getPosition()) <= limit2) {
 					collision = true;
 					colliding_ball = j;
 					break;
@@ -95,20 +95,20 @@ void ProcessGameLogic()
 		}
 
 		if (!collision) {
-			balls[i].pos = newpos;
+			balls[i].setPosition(newpos);
 		}
 		else {
 			// Rebound!
-			balls[i].vel = balls[i].vel * -1.f;
-			balls[colliding_ball].vel = balls[colliding_ball].vel * -1.f;
+			balls[i].setVelocity(balls[i].getVelocity() * -1.f);
+			balls[colliding_ball].setVelocity(balls[colliding_ball].getVelocity() * -1.f);
 		}
 
 		// Rebound on margins.
-		if ((balls[i].pos.x > SCR_WIDTH) || (balls[i].pos.x < 0)) {
-			balls[i].vel.x *= -1.0;
+		if ((balls[i].getPosition().x > SCR_WIDTH) || (balls[i].getPosition().x < 0)) {
+			balls[i].setVelocity(vec2(balls[i].getVelocity().x * -1.0, balls[i].getVelocity().y));
 		}
-		if ((balls[i].pos.y > SCR_HEIGHT) || (balls[i].pos.y < 0)) {
-			balls[i].vel.y *= -1.0;
+		if ((balls[i].getPosition().y > SCR_HEIGHT) || (balls[i].getPosition().y < 0)) {
+			balls[i].setVelocity(vec2(balls[i].getVelocity().x, balls[i].getVelocity().y * -1.0));
 		}
 	}
 }
