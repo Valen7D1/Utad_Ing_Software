@@ -120,6 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\common\ball.cpp" />
     <ClCompile Include="..\..\common\global.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\common\ball.h" />
     <ClInclude Include="..\..\common\global.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "core.h"
 #include "sys.h"
-#include "global.h"
+#include "ball.h"
 #include "gameLogic.h"
 #include "font.h"
 

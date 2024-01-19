@@ -5,7 +5,7 @@
 #include "core.h"
 #include "font.h"
 #include "vector2d.h"
-#include "global.h"
+#include "ball.h"
 
 extern GLuint texbkg;
 extern GLuint texsmallball;
