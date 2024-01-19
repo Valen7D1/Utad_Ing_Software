@@ -28,6 +28,8 @@ public:
 	void setVelocity(vec2 velocity);
 	void setRadius(float radius);
 
+	void update();
+
 	GLuint gfx;
 	Ball();
 

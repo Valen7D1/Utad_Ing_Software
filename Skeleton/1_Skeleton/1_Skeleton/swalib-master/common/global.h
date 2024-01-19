@@ -1,19 +1,21 @@
 #pragma once
 #include "stdafx.h"
 #include "vector2d.h"
+#include <iostream>
+#include "ball.h"
+#include <vector>
 
-class SharedData {
-public:
-    void set_time_fps(double value);
-    void set_totalTime(double value);
-    void set_totalFrameTime(double value);
+const unsigned int NUM_BALLS = 10;  // Max. num balls.
+const float MAX_BALL_SPEED = 480.0f;   // Max vel. of ball (pixels/?).
 
-    double get_time_fps();
-    double get_totalTime();
-    double get_totalFrameTime();
 
+class Manager {
 private:
-    double time_fps = 0;
-    double totalTime = 0;
-    double totalFrameTime = 0;
+    static Manager* instance;
+
+public:
+    static Manager* getInstance();
+    std::vector<Ball> balls = std::vector<Ball>(NUM_BALLS);
+    void update() const;
+    std::vector<Ball> Manager::getBalls();
 };

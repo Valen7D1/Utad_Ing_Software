@@ -4,6 +4,7 @@
 #include "ball.h"
 #include "gameLogic.h"
 #include "font.h"
+#include "global.h"
 
 int frames;
 Ball balls[NUM_BALLS];
@@ -75,40 +76,5 @@ void LogicInitialization()
 
 void ProcessGameLogic()
 {
-	// Run balls
-	for (int i = 0; i < NUM_BALLS; i++) {
-		// New Pos.
-		vec2 newpos = balls[i].getPosition() + balls[i].getVelocity();
-
-		// Collision detection.
-		bool collision = false;
-		int colliding_ball = -1;
-		for (int j = 0; j < NUM_BALLS; j++) {
-			if (i != j) {
-				float limit2 = (balls[i].getRadius() + balls[j].getRadius()) * (balls[i].getRadius() + balls[j].getRadius());
-				if (vlen2(newpos - balls[j].getPosition()) <= limit2) {
-					collision = true;
-					colliding_ball = j;
-					break;
-				}
-			}
-		}
-
-		if (!collision) {
-			balls[i].setPosition(newpos);
-		}
-		else {
-			// Rebound!
-			balls[i].setVelocity(balls[i].getVelocity() * -1.f);
-			balls[colliding_ball].setVelocity(balls[colliding_ball].getVelocity() * -1.f);
-		}
-
-		// Rebound on margins.
-		if ((balls[i].getPosition().x > SCR_WIDTH) || (balls[i].getPosition().x < 0)) {
-			balls[i].setVelocity(vec2(balls[i].getVelocity().x * -1.0, balls[i].getVelocity().y));
-		}
-		if ((balls[i].getPosition().y > SCR_HEIGHT) || (balls[i].getPosition().y < 0)) {
-			balls[i].setVelocity(vec2(balls[i].getVelocity().x, balls[i].getVelocity().y * -1.0));
-		}
-	}
+	Manager::update();
 }
