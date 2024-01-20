@@ -10,6 +10,8 @@ void Shutdown();
 class Timer
 {
 public:
+    Timer();
+
     //setters
     void SetTimer();
 
@@ -28,14 +30,12 @@ private:
     LARGE_INTEGER actualTime;
     LARGE_INTEGER previousTime;
 
-    int frames;
-
     // time control/render values
-    double elapsedTime = 0;
-    double totalTime = 0;
-    double totalElapsed = 0;
-    double time_fps = 0;
-    double totalFrameTime = 0;
+    double elapsedTime;
+    double totalTime;
+    double totalElapsed;
+    double time_fps;
+    double totalFrameTime;
 
     float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
 };

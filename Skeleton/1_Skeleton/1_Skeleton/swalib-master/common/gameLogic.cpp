@@ -15,6 +15,7 @@ extern GLuint texsmallball;
 Manager* manager = Manager::getInstance();
 Timer* m_timer = manager->getTimer();
 
+
 void LogicSlot()
 {
 	// time control
@@ -50,6 +51,13 @@ void LogicInitialization()
 		ball.gfx = texsmallball;
 	}
 }
+
+
+// constructor
+Timer::Timer() : elapsedTime(0), totalTime(0), totalElapsed(0), time_fps(0), totalFrameTime(0),
+	frameTime(1.0f / 60.0f) // Target time per frame for 60 fps
+	{}
+
 
 // get all the variables needed for timer control
 void Timer::SetTimer() {
@@ -90,7 +98,7 @@ bool Timer::ProcessSlots()
 	return totalElapsed >= frameTime;
 }
 
-
+// TOCHECK (should be instead in constructor?)
 void Timer::InitTimer()
 {
 	QueryPerformanceCounter(&previousTime);
