@@ -1,2 +1,9 @@
-﻿  render.cpp
+﻿  ball.cpp
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\ball.cpp(53,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\ball.cpp(56,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  example.cpp
+  gameLogic.cpp
+  global.cpp
+  render.cpp
+  Generating Code...
   swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
