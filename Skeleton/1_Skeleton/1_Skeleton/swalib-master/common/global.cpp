@@ -27,3 +27,7 @@ void Manager::update() const
         ball.update();
     }
 }
+
+Timer* Manager::getTimer() {
+    return &timer;
+}

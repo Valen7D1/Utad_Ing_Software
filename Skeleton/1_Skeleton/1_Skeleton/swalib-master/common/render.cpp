@@ -10,7 +10,6 @@
 
 extern GLuint texbkg;
 extern GLuint texsmallball;
-extern Timer m_timer;
 
 
 void RenderInitialization()
@@ -44,8 +43,9 @@ void Render()
 		}
 	}
 
-	// Render balls
 	Manager* manager = Manager::getInstance();
+	Timer* m_timer = manager->getTimer();
+	// Render balls
 	std::vector<Ball>* balls = manager->getBalls();
 
 	for (Ball& ball : *balls) {
@@ -57,15 +57,15 @@ void Render()
 
 	// Time Passed
 	char currentTimeString[50] = { 0 };
-	snprintf(currentTimeString, 50, "TIME:%f", m_timer.GetTotalTime());
+	snprintf(currentTimeString, 50, "TIME:%f", m_timer->GetTotalTime());
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 16), currentTimeString);
 
 	char fpsString[50] = { 0 };
-	snprintf(fpsString, 50, "FPS:%f", 1 / m_timer.GetTime_fps());
+	snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
 	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
 
 	char tickString[50] = { 0 };
-	snprintf(tickString, 50, "TICK:%f", m_timer.GetTotalFrameTime());
+	snprintf(tickString, 50, "TICK:%f", m_timer->GetTotalFrameTime());
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
 
 
