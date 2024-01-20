@@ -13,11 +13,15 @@ private:
     Timer timer;
 
 public:
+    //singleton
     static Manager* getInstance();
 
+    // set balls
     std::vector<Ball> balls = std::vector<Ball>(NUM_BALLS);
-    void update() const;
-    std::vector<Ball>* Manager::getBalls();
 
+    //getters
+    std::vector<Ball>* Manager::getBalls();
     Timer* getTimer();
+
+    void update() const;
 };

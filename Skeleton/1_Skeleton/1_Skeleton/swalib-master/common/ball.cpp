@@ -2,7 +2,7 @@
 #include "global.h"
 #include "sys.h"
 
-
+// constructor
 Ball::Ball() : pos(0.0f), vel(0.0f), gfx(0), radius(0.0f)
 {}
 

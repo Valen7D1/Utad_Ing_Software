@@ -5,19 +5,23 @@
 
 class Ball
 {
-public:       
+public:
+	Ball(); //constructor
+
+	//getters
 	vec2 getPosition();
 	vec2 getVelocity();
 	float getRadius();
 
+	// setters
 	void setPosition(vec2 position);
 	void setVelocity(vec2 velocity);
 	void setRadius(float radius);
 
+	//update for ball collisions and location
 	void update();
 
 	GLuint gfx;
-	Ball();
 
 	// currently unused but might want it later
 	bool operator==(const Ball& other) const {
@@ -25,7 +29,8 @@ public:
 	}
 
 private:
-	vec2 pos;
-	vec2 vel;
+	//world values
+	vec2 pos; //position
+	vec2 vel; //velocity
 	float radius;
 };

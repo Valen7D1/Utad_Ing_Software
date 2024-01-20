@@ -3,21 +3,25 @@
 GLuint texbkg;
 GLuint texsmallball;
 
+// instantiate manager to nullptr
 Manager* Manager::instance = nullptr;
 
 Manager* Manager::getInstance() 
-{
-    if (instance == NULL) 
+{   
+    // if not created already then create it
+    if (instance == nullptr)
     {
         instance = new Manager();
     }
     return instance;
 }
 
+// getter for balls vector
 std::vector<Ball>* Manager::getBalls() {
     return &balls;
 }
 
+// update for all game objects
 void Manager::update() const
 {   
     Manager* manager = Manager::getInstance();
@@ -28,6 +32,7 @@ void Manager::update() const
     }
 }
 
+// getter for timer
 Timer* Manager::getTimer() {
     return &timer;
 }

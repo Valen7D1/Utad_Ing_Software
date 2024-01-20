@@ -10,16 +10,18 @@ void Shutdown();
 class Timer
 {
 public:
-
+    //setters
     void SetTimer();
-    void InitTimer();
-    bool ProcessSlots();
-    void InitSlotsToProcess();
 
+    //getters
     float GetFrameTime();
     double GetTotalTime();
     double GetTime_fps();
     double GetTotalFrameTime();
+
+    void InitTimer(); // get starting values for frequency and actual time
+    bool ProcessSlots(); // checker for logic loop
+    void InitSlotsToProcess(); // calc all the new values
 
 private:
     LARGE_INTEGER frequency;
@@ -28,6 +30,7 @@ private:
 
     int frames;
 
+    // time control/render values
     double elapsedTime = 0;
     double totalTime = 0;
     double totalElapsed = 0;
