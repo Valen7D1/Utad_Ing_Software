@@ -1,7 +1,4 @@
 #pragma once
-#include "stdafx.h"
-#include "vector2d.h"
-#include <iostream>
 #include "ball.h"
 #include <vector>
 
