@@ -1,51 +1,25 @@
+//inner includes
 #include "stdafx.h"
 #include "core.h"
 #include "sys.h"
+#include "font.h"
+//my includes
 #include "ball.h"
 #include "gameLogic.h"
-#include "font.h"
 #include "global.h"
 
-int frames;
 extern GLuint texbkg;
 extern GLuint texsmallball;
 
-//Variables para el control del tiempo
-LARGE_INTEGER frequency;
-LARGE_INTEGER actualTime;
-LARGE_INTEGER previousTime;
-
-double elapsedTime = 0;
-double totalTime = 0;
-double totalElapsed = 0;
-double time_fps = 0;
-double totalFrameTime = 0;
-
-float frameTime = 1.0f / 60.0f; // Target time per frame for 60 fps
-
-//SharedData sharedData;
 Manager* manager = Manager::getInstance();
+Timer m_timer;
 
-
-void timeControl()
+void LogicSlot()
 {
-	QueryPerformanceCounter(&actualTime);
-	elapsedTime = (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
-	previousTime = actualTime;
-
-	totalTime += elapsedTime;
-	totalElapsed += elapsedTime;
-
-	if (totalElapsed > 1.0 / 15.0)
+	m_timer.InitSlotsToProcess();
+	while (m_timer.ProcessSlots())
 	{
-		totalElapsed = 1.0 / 15.0;
-	}
-	while (totalElapsed >= frameTime)
-	{
-		ProcessGameLogic();
-		totalFrameTime += frameTime;
-		time_fps = totalElapsed;
-		totalElapsed -= frameTime;
+		LogicWorldSlot();
 	}
 	//SYS_Sleep(50);
 }
@@ -61,23 +35,66 @@ void Shutdown()
 
 void LogicInitialization()
 {
-	QueryPerformanceCounter(&previousTime);
-	QueryPerformanceFrequency(&frequency);
+	m_timer.InitTimer();
 
 	std::vector<Ball>* balls = manager->getBalls();
 
 	for (Ball& ball : *balls) {
 	// Init game state.
 		ball.setPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));
-		ball.setVelocity(vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime, CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * frameTime));
+		ball.setVelocity(vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer.GetFrameTime(), CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer.GetFrameTime()));
 		ball.setRadius(16.f);
 		ball.gfx = texsmallball;
 	}
 }
 
 
+void Timer::SetTimer() {
+	totalFrameTime += frameTime;
+	time_fps = totalElapsed;
+	totalElapsed -= frameTime;
+}
 
-void ProcessGameLogic()
+
+void LogicWorldSlot()
 {
+	m_timer.SetTimer();
 	manager->update();
 }
+
+
+void Timer::InitSlotsToProcess()
+{
+	QueryPerformanceCounter(&actualTime);
+	elapsedTime = (static_cast<double>(actualTime.QuadPart) - static_cast<double>(previousTime.QuadPart)) / static_cast<double>(frequency.QuadPart);
+	previousTime = actualTime;
+
+	totalTime += elapsedTime;
+	totalElapsed += elapsedTime;
+
+	if (totalElapsed > 1.0 / 15.0)
+	{
+		totalElapsed = 1.0 / 15.0;
+	}
+}
+
+
+bool Timer::ProcessSlots() 
+{
+	return totalElapsed >= frameTime;
+}
+
+
+void Timer::InitTimer()
+{
+	QueryPerformanceCounter(&previousTime);
+	QueryPerformanceFrequency(&frequency);
+}
+
+float Timer::GetFrameTime() { return frameTime; }
+
+double Timer::GetTotalTime() { return totalTime; }
+
+double Timer::GetTime_fps() { return time_fps; }
+
+double Timer::GetTotalFrameTime() { return totalFrameTime; }
