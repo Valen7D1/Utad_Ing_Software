@@ -6,16 +6,17 @@
 #include "font.h"
 #include "vector2d.h"
 #include "ball.h"
+#include "global.h"
 
 extern GLuint texbkg;
 extern GLuint texsmallball;
-extern Ball balls[NUM_BALLS];
 
 extern double time_fps;
 extern double totalTime;
 extern double totalFrameTime;
 
 //SharedData sharedData;
+
 
 
 void RenderInitialization()
@@ -50,8 +51,11 @@ void Render()
 	}
 
 	// Render balls
-	for (int i = 0; i < NUM_BALLS; i++) {
-		CORE_RenderCenteredSprite(balls[i].getPosition(), vec2(balls[i].getRadius() * 2.f, balls[i].getRadius() * 2.f), balls[i].gfx);
+	Manager* manager = Manager::getInstance();
+	std::vector<Ball>* balls = manager->getBalls();
+
+	for (Ball& ball : *balls) {
+		CORE_RenderCenteredSprite(ball.getPosition(), vec2(ball.getRadius() * 2.f, ball.getRadius() * 2.f), ball.gfx);
 	}
 
 	// Text
