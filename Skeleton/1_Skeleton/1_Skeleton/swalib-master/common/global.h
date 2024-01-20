@@ -17,5 +17,5 @@ public:
     static Manager* getInstance();
     std::vector<Ball> balls = std::vector<Ball>(NUM_BALLS);
     void update() const;
-    std::vector<Ball> Manager::getBalls();
+    std::vector<Ball>* Manager::getBalls();
 };

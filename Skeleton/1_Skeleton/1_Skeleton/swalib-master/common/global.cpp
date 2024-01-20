@@ -3,6 +3,8 @@
 GLuint texbkg;
 GLuint texsmallball;
 
+Manager* Manager::instance = nullptr;
+
 Manager* Manager::getInstance() 
 {
     if (instance == NULL) 
@@ -12,16 +14,16 @@ Manager* Manager::getInstance()
     return instance;
 }
 
-std::vector<Ball> Manager::getBalls() {
-    return balls;
+std::vector<Ball>* Manager::getBalls() {
+    return &balls;
 }
 
 void Manager::update() const
 {   
     Manager* manager = Manager::getInstance();
-    std::vector<Ball> balls = manager->getBalls();
+    std::vector<Ball>* balls = manager->getBalls();
 
-    for (Ball& ball : balls) {
+    for (Ball& ball : *balls) {
         ball.update();
     }
 }
