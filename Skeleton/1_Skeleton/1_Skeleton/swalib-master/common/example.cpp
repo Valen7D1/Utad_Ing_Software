@@ -9,7 +9,7 @@ int Main(void)
 
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
 		// 2.1 va mucho mas rapido todo
-		timeControl();
+		LogicSlot();
 
 		Render();
 
