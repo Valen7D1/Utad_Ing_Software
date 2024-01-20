@@ -1,22 +1,16 @@
-
+//inner includes
 #include "stdafx.h"
-#include "render.h"
 #include "sys.h"
 #include "core.h"
 #include "font.h"
-#include "vector2d.h"
-#include "ball.h"
+//my includes
+#include "render.h"
 #include "global.h"
+#include "gameLogic.h"
 
 extern GLuint texbkg;
 extern GLuint texsmallball;
-
-extern double time_fps;
-extern double totalTime;
-extern double totalFrameTime;
-
-//SharedData sharedData;
-
+extern Timer m_timer;
 
 
 void RenderInitialization()
@@ -63,15 +57,15 @@ void Render()
 
 	// Time Passed
 	char currentTimeString[50] = { 0 };
-	snprintf(currentTimeString, 50, "TIME:%f", totalTime);
+	snprintf(currentTimeString, 50, "TIME:%f", m_timer.GetTotalTime());
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 16), currentTimeString);
 
 	char fpsString[50] = { 0 };
-	snprintf(fpsString, 50, "FPS:%f", 1 / time_fps);
+	snprintf(fpsString, 50, "FPS:%f", 1 / m_timer.GetTime_fps());
 	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
 
 	char tickString[50] = { 0 };
-	snprintf(tickString, 50, "TICK:%f", totalFrameTime);
+	snprintf(tickString, 50, "TICK:%f", m_timer.GetTotalFrameTime());
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
 
 
