@@ -32,11 +32,8 @@ void LogicSlot()
 void Shutdown()
 {
 	// Unload textures.
-	//cositas
-	CORE_UnloadPNG(renderEngine->texbkg);
-	CORE_UnloadPNG(renderEngine->texsmallball);
-	//CORE_UnloadPNG(renderEngine->getSprite()->getTexbkg());
-	//CORE_UnloadPNG(renderEngine->getSprite()->getTexsmallball());
+	CORE_UnloadPNG(renderEngine->getSprite()->getTexbkg());
+	CORE_UnloadPNG(renderEngine->getSprite()->getTexsmallball());
 	FONT_End();
 }
 
@@ -53,9 +50,7 @@ void LogicInitialization()
 		ball.setPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));
 		ball.setVelocity(vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer->GetFrameTime(), CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer->GetFrameTime()));
 		ball.setRadius(16.f);
-		//cositas
-		ball.gfx = renderEngine->texsmallball;
-		//ball.gfx = renderEngine->getSprite()->getTexsmallball();
+		ball.gfx = renderEngine->getSprite()->getTexsmallball();
 	}
 }
 

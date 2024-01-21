@@ -28,12 +28,8 @@ void RenderEngine::RenderSetUp() {
 
 void RenderEngine::TexturesSetting() {
 	// Load textures
-	//getSprite()->setTexbkg(CORE_LoadPNG("data/circle-bkg-128.png", true));
-	//getSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
-
-	//cositas
-	texbkg = CORE_LoadPNG("data/circle-bkg-128.png", true);
-	texsmallball = CORE_LoadPNG("data/tyrian_ball.png", false);
+	getSprite()->setTexbkg(CORE_LoadPNG("data/circle-bkg-128.png", true));
+	getSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
 }
 
 void RenderEngine::RenderObjects(){
@@ -41,9 +37,7 @@ void RenderEngine::RenderObjects(){
 	// Render background
 	for (int i = 0; i <= SCR_WIDTH / 128; i++) {
 		for (int j = 0; j <= SCR_HEIGHT / 128; j++) {
-			//cositas
-			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), texbkg);
-			//CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), getSprite()->getTexbkg());
+			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), getSprite()->getTexbkg());
 		}
 	}
 
@@ -83,7 +77,7 @@ void RenderEngine::RenderText()
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
 }
 
-//Sprite* RenderEngine::getSprite() { return &sprite; }
+Sprite* RenderEngine::getSprite() { return &sprite; }
 
 
 
@@ -93,4 +87,4 @@ GLuint Sprite::getTexsmallball() { return texsmallball; }
 
 void Sprite::setTexbkg(GLuint Texbkg) { texbkg = Texbkg; }
 
-void Sprite::setTexsmallball(GLuint Texsmallball){}
+void Sprite::setTexsmallball(GLuint Texsmallball) { texsmallball = Texsmallball; }

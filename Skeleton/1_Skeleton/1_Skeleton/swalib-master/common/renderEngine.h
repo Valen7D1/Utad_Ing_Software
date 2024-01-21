@@ -22,7 +22,7 @@ public:
 class RenderEngine {
 private:
     static RenderEngine* instance;
-    //Sprite sprite;
+    Sprite sprite;
 
 public:
     static RenderEngine* getInstance();
@@ -32,8 +32,8 @@ public:
     void RenderObjects();
     void RenderText();
 
-    //Sprite* getSprite();
+    Sprite* getSprite();
 
-    GLuint texbkg;
-    GLuint texsmallball;
+    //GLuint texbkg;
+    //GLuint texsmallball;
 };
