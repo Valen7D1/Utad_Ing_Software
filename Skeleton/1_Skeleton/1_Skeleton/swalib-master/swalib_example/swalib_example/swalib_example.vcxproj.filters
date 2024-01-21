@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{a2c17dc0-9b9d-4366-bc79-7289709de9e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{c20cb221-c1ad-4f66-87aa-19bbbb207f7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -27,23 +33,29 @@
     <ClCompile Include="..\..\common\sys_win.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\example.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\global.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\common\ball.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\example.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\gameLogic.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\global.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\render.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\ball.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\common\renderEngine.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\logicSlot.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,17 +77,23 @@
     <ClInclude Include="..\..\common\vector2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\global.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\common\ball.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\gameLogic.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\global.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\render.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\ball.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\common\renderEngine.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\logicSlot.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
