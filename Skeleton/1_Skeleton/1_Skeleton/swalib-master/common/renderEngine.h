@@ -4,9 +4,25 @@
 #include "sys.h"
 #include "font.h"
 
+
+class Sprite {
+private:
+    GLuint texbkg;
+    GLuint texsmallball;
+public:
+
+    GLuint getTexbkg();
+    GLuint getTexsmallball();
+
+    void setTexbkg(GLuint Texbkg);
+    void setTexsmallball(GLuint texsmallball);
+};
+
+
 class RenderEngine {
 private:
     static RenderEngine* instance;
+    //Sprite sprite;
 
 public:
     static RenderEngine* getInstance();
@@ -16,20 +32,8 @@ public:
     void RenderObjects();
     void RenderText();
 
+    //Sprite* getSprite();
+
     GLuint texbkg;
     GLuint texsmallball;
 };
-
-
-//class Sprite {
-//private:
-//    GLuint texbkg;
-//    GLuint texsmallball;
-//public:
-//
-//    GLuint getTexbkg();
-//    GLuint getTexsmallball();
-//
-//    void setTexbkg(GLuint Texbkg);
-//    void setTexsmallball(GLuint texsmallball);
-//};
