@@ -1,7 +1,5 @@
 #include "global.h"
 
-GLuint texbkg;
-GLuint texsmallball;
 
 // instantiate manager to nullptr
 Manager* Manager::instance = nullptr;

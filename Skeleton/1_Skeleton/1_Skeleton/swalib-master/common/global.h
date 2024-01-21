@@ -1,6 +1,6 @@
 #pragma once
 #include "ball.h"
-#include "gameLogic.h"
+#include "logicSlot.h"
 #include <vector>
 
 const unsigned int NUM_BALLS = 10;  // Max. num balls.
