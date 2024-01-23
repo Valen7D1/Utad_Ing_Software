@@ -1,21 +1,21 @@
 #pragma once
 #include <iostream>
-#include <vector>
 #include "door.h"
 #include "wall.h"
 #include "room.h"
 
 
 class Maze {
-	std::vector<mapSite*> mazeMap;
-	void addRoom();
+public:
+	std::vector<Room*> mazeMap;
+	void addRoom(Room room);
 };
 
 
 
 class MazeGame {
 public:
-	MazeGame* myMaze;
+	Maze* myMaze;
 
 	void printMaze();
 	void generateMaze();

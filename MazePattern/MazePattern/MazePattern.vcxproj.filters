@@ -35,16 +35,7 @@
     <ClCompile Include="maze.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mapSite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="door.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="room.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="wall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

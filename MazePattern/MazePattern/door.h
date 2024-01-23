@@ -2,10 +2,14 @@
 #include "mapSite.h"
 
 class Door : public mapSite {
-public:
-    void enter() const override {
-        std::cout << "Opening Door" << std::endl;
-    }
 
-    void print() const { printf(" "); }
+public:
+
+    Door(Room* room) : OtherSide(room) {}
+
+    Room* OtherSide;
+
+    void enter() const override { printf("Opening Door\n"); }
+
+    void print() const { printf("Door\n"); }
 };

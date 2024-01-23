@@ -134,11 +134,8 @@
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="door.cpp" />
-    <ClCompile Include="mapSite.cpp" />
     <ClCompile Include="maze.cpp" />
     <ClCompile Include="room.cpp" />
-    <ClCompile Include="wall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
