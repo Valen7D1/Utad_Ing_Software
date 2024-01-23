@@ -8,9 +8,18 @@
 //}
 
 
-void Room::setRoom(Direction dir, mapSite* site) {
+void Room::printRoom() 
+{
+	for (int i = 0; i < 4; i++)
+	{
+		roomObjects[i]->print();
+	}
+}
 
-	room->at(static_cast<int>(dir)) = site;
+
+void Room::setRoom(Direction dir, mapSite* site) 
+{
+	roomObjects[static_cast<int>(dir)] = site;
 }
 
 
@@ -22,12 +31,12 @@ void Room::enter() const
 
 mapSite* Room::getRoom(Direction dir) 
 {
-	return room->at(static_cast<int>(dir));
+	return roomObjects[static_cast<int>(dir)];
 	//return room[dir];
 }
 
 
 void Room::print() const 
 {	
-	printf("Room %d:\n", roomId);
+	printf("   Room %d\n", roomId);
 }

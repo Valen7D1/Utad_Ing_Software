@@ -7,15 +7,16 @@
 
 class Maze {
 public:
+	//Room* mazeMap[2];
 	std::vector<Room*> mazeMap;
-	void addRoom(Room room);
+	void addRoom(Room* room);
 };
 
 
 
 class MazeGame {
 public:
-	Maze* myMaze;
+	Maze* myMaze = nullptr;
 
 	void printMaze();
 	void generateMaze();
