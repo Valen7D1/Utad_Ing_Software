@@ -25,7 +25,7 @@ void Room::setRoom(Direction dir, mapSite* site)
 
 void Room::enter() const
 { 
-	std::cout << "Opening Door" << std::endl; 
+	printf("Opening Door");
 }
 
 
@@ -39,4 +39,14 @@ mapSite* Room::getRoom(Direction dir)
 void Room::print() const 
 {	
 	printf("   Room %d\n", roomId);
+}
+
+void ExplosiveRoom::print() const 
+{
+	printf("   Explosive Room %d\n", roomId);
+}
+
+void ExplosiveRoom::enter() const
+{
+	printf("You Exploded");
 }

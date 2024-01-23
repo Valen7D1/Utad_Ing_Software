@@ -23,14 +23,16 @@ void MazeGame::generateMaze()
 	Room* room1 = new Room(1);
 	Room* room2 = new Room(2);
 	Room* room3 = new Room(3);
+	Room* room4 = new ExplosiveRoom(4);
 
 	myMaze->addRoom(room1);
 	myMaze->addRoom(room2);
 	myMaze->addRoom(room3);
+	myMaze->addRoom(room4);
 
 	room1->setRoom(Direction::NORTH, new Wall());
 	room1->setRoom(Direction::SOUTH, new Wall());
-	room1->setRoom(Direction::EAST, new Wall());
+	room1->setRoom(Direction::EAST, new DestructibleWall(room4));
 	room1->setRoom(Direction::WEST, room2);
 
 	room2->setRoom(Direction::NORTH, new Wall());
@@ -42,6 +44,11 @@ void MazeGame::generateMaze()
 	room3->setRoom(Direction::SOUTH, new Wall());
 	room3->setRoom(Direction::EAST, new Door(room2));
 	room3->setRoom(Direction::WEST, new Wall());
+
+	room4->setRoom(Direction::NORTH, new Wall());
+	room4->setRoom(Direction::SOUTH, new Wall());
+	room4->setRoom(Direction::EAST, new Wall());
+	room4->setRoom(Direction::WEST, new DestructibleWall(room1));
 
 }
 
