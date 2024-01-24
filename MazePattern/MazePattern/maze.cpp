@@ -72,7 +72,8 @@ void MazeGame::printMaze()
 
 int main() 
 {
-	MazeGame maze1;
-	maze1.generateMaze();
-	maze1.printMaze();
+	MazeGame* maze1 = new MazeGame();
+	maze1->generateMaze();
+	maze1->printMaze();
+	delete maze1;
 }

@@ -5,7 +5,7 @@
 
 class Room : public mapSite {
 public:
-    Room() {}
+    //Room() {}
     Room(unsigned int id) : roomId(id), roomObjects() {}
 
     unsigned int roomId;
@@ -16,6 +16,19 @@ public:
 
     virtual void print() const;
     void printRoom();
+
+    ~Room() {
+        for (int i = 0; i < 4; ++i) {
+            if (roomObjects[i]) {
+                if (roomObjects[i] != nullptr) {
+                    if (typeid(*roomObjects[i]) != typeid(Room)) {
+                        delete roomObjects[i];
+                        roomObjects[i] = nullptr;
+                    }
+                }
+            }
+        }
+    }
 
 private:
     mapSite* roomObjects[4];

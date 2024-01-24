@@ -41,6 +41,7 @@ void Room::print() const
 	printf("   Room %d\n", roomId);
 }
 
+
 void ExplosiveRoom::print() const 
 {
 	printf("   Explosive Room %d\n", roomId);
