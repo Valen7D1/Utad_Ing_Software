@@ -7,9 +7,9 @@
 // north es arriba
 // south es abajo
 
-//XXXXX
-//X | X
-//XXXXX
+//XXXXXXX
+//X  |  X
+//XXXXXXX
 void Maze::addRoom(Room* room) 
 {
 	mazeMap.push_back(room);
@@ -23,12 +23,14 @@ void MazeGame::generateMaze()
 	Room* room1 = new Room(1);
 	Room* room2 = new Room(2);
 	Room* room3 = new Room(3);
-	Room* room4 = new ExplosiveRoom(4);
+	Room* room4 = new Room(4);
+	Room* room5 = new ExplosiveRoom(5);
 
 	myMaze->addRoom(room1);
 	myMaze->addRoom(room2);
 	myMaze->addRoom(room3);
 	myMaze->addRoom(room4);
+	myMaze->addRoom(room5);
 
 	room1->setRoom(Direction::NORTH, new Wall());
 	room1->setRoom(Direction::SOUTH, new Wall());
@@ -47,8 +49,13 @@ void MazeGame::generateMaze()
 
 	room4->setRoom(Direction::NORTH, new Wall());
 	room4->setRoom(Direction::SOUTH, new Wall());
-	room4->setRoom(Direction::EAST, new Wall());
+	room4->setRoom(Direction::EAST, room5);
 	room4->setRoom(Direction::WEST, new DestructibleWall(room1));
+
+	room5->setRoom(Direction::NORTH, new Wall());
+	room5->setRoom(Direction::SOUTH, new Wall());
+	room5->setRoom(Direction::EAST, room4);
+	room5->setRoom(Direction::WEST, new Wall());
 
 }
 
@@ -65,9 +72,6 @@ void MazeGame::printMaze()
 
 int main() 
 {
-	/*std::vector<Room*> mazeMap;
-	Room* room1 = new Room(1);
-	mazeMap.push_back(room1);*/
 	MazeGame maze1;
 	maze1.generateMaze();
 	maze1.printMaze();
