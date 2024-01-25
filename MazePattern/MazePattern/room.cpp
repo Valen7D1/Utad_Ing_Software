@@ -1,18 +1,24 @@
 #include "room.h"
 
 
-//Room::Room(mapSite* rooms[4], unsigned int id) : roomId(id) {
-//	for (int i = 0; i < 4; ++i) {
-//		room[i] = rooms[i];
-//	}
-//}
-
-
-void Room::printRoom() 
+//room methods
+void Room::printRoom() const
 {
 	for (int i = 0; i < 4; i++)
 	{
 		roomObjects[i]->print();
+	}
+}
+
+
+void Room::cleanUp() {
+	for (int i = 0; i < 4; ++i) {
+		if (roomObjects[i]) {
+			if (roomObjects[i]->getTipo() != Type::Room) {
+				delete roomObjects[i];
+				roomObjects[i] = nullptr;
+			}
+		}
 	}
 }
 
@@ -29,12 +35,11 @@ void Room::enter() const
 }
 
 
-mapSite* Room::getRoom(Direction dir) 
+mapSite* Room::getRoomObject(Direction dir)
 {
 	return roomObjects[static_cast<int>(dir)];
 	//return room[dir];
 }
-
 
 void Room::print() const 
 {	
@@ -42,6 +47,8 @@ void Room::print() const
 }
 
 
+
+//explosive room methods
 void ExplosiveRoom::print() const 
 {
 	printf("   Explosive Room %d\n", roomId);

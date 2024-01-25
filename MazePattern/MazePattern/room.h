@@ -6,27 +6,23 @@
 class Room : public mapSite {
 public:
     //Room() {}
-    Room(unsigned int id) : mapSite(Type::Room), roomId(id), roomObjects() {}
+    Room(unsigned int id) : 
+        mapSite(Type::Room), roomId(id), roomObjects() {}
 
+    mapSite* getRoomObject(Direction dir);
     unsigned int roomId;
-    mapSite* getRoom(Direction dir);
 
     virtual void enter() const override;
+
     void setRoom(Direction dir, mapSite* site);
-
+    // prints room id
     virtual void print() const;
-    void printRoom();
+    // calls to print from all objects in roomObjects
+    void printRoom() const;
 
-    void cleanUp() {
-        for (int i = 0; i < 4; ++i) {
-            if (roomObjects[i]) {
-                if (roomObjects[i]->getTipo() != Type::Room) {
-                    delete roomObjects[i];
-                    roomObjects[i] = nullptr;
-                }
-            }
-        }
-    }
+    // iterates through the roomObjects and delete
+    // all except room type objects
+    void cleanUp();
 
     ~Room() {}
 

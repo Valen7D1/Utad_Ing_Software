@@ -4,7 +4,7 @@
 class Wall : public mapSite {
 public:
 
-    Wall() : mapSite(Type::Wall){}
+    Wall() : mapSite(Type::Wall){} // constructor
 
     virtual void enter() const override { printf("Hitting Wall\n"); }
 
@@ -14,8 +14,8 @@ public:
 
 class DestructibleWall : public Wall {
 public:
-
-    DestructibleWall(Room* room) : Wall(), OtherSide(room) {}
+    // constructor + father constructor for type
+    DestructibleWall() : Wall() {}
 
     Room* OtherSide = nullptr;
 
@@ -23,6 +23,6 @@ public:
 
     void print() const override 
     { 
-        printf("   Breakable Wall to Room %d\n", OtherSide->roomId); 
+        printf("   Breakable Wall"); 
     }
 };
