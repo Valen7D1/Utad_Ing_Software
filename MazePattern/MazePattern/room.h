@@ -6,7 +6,7 @@
 class Room : public mapSite {
 public:
     //Room() {}
-    Room(unsigned int id) : roomId(id), roomObjects() {}
+    Room(unsigned int id) : mapSite(Type::Room), roomId(id), roomObjects() {}
 
     unsigned int roomId;
     mapSite* getRoom(Direction dir);
@@ -17,20 +17,20 @@ public:
     virtual void print() const;
     void printRoom();
 
-    ~Room() {
+    void cleanUp() {
         for (int i = 0; i < 4; ++i) {
             if (roomObjects[i]) {
-                if (roomObjects[i] != nullptr) {
-                    if (typeid(*roomObjects[i]) != typeid(Room)) {
-                        delete roomObjects[i];
-                        roomObjects[i] = nullptr;
-                    }
+                if (roomObjects[i]->getTipo() != Type::Room) {
+                    delete roomObjects[i];
+                    roomObjects[i] = nullptr;
                 }
             }
         }
     }
 
-private:
+    ~Room() {}
+
+protected:
     mapSite* roomObjects[4];
 };
 

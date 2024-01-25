@@ -6,7 +6,7 @@ class Door : public mapSite {
 
 public:
 
-    Door(Room* room) : OtherSide(room) {}
+    Door(Room* room) : mapSite(Type::Door), OtherSide(room) {}
 
     Room* OtherSide = nullptr;
 

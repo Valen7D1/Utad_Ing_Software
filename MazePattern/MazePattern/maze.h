@@ -13,8 +13,11 @@ public:
 
 	~Maze() {
 		for (Room* room : mazeMap) {
+			room->cleanUp();
+			//room = nullptr;
+		}
+		for (Room* room : mazeMap) {
 			delete room;
-			room = nullptr;
 		}
 	}
 };

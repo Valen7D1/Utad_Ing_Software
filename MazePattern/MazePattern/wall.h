@@ -4,6 +4,8 @@
 class Wall : public mapSite {
 public:
 
+    Wall() : mapSite(Type::Wall){}
+
     virtual void enter() const override { printf("Hitting Wall\n"); }
 
     virtual void print() const override { printf("   Wall\n"); }
@@ -13,7 +15,7 @@ public:
 class DestructibleWall : public Wall {
 public:
 
-    DestructibleWall(Room* room) : OtherSide(room) {}
+    DestructibleWall(Room* room) : Wall(), OtherSide(room) {}
 
     Room* OtherSide = nullptr;
 
