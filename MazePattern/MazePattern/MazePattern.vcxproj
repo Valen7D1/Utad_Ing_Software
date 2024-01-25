@@ -127,13 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="builder.h" />
     <ClInclude Include="door.h" />
+    <ClInclude Include="factory.h" />
     <ClInclude Include="mapSite.h" />
     <ClInclude Include="maze.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="wall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="builder.cpp" />
+    <ClCompile Include="factory.cpp" />
     <ClCompile Include="maze.cpp" />
     <ClCompile Include="room.cpp" />
   </ItemGroup>
