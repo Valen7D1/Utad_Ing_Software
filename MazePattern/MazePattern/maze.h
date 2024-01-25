@@ -3,38 +3,39 @@
 #include "door.h"
 #include "wall.h"
 #include "room.h"
+#include "factory.h"
 
 
 class Maze {
 public:
-	//Room* mazeMap[2];
-	std::vector<Room*> mazeMap;
+	// vector of rooms in maze
+	std::vector<Room*> mazeMap; 
 	void addRoom(Room* room);
 
-	~Maze() {
-		for (Room* room : mazeMap) {
-			room->cleanUp();
-			//room = nullptr;
-		}
-		for (Room* room : mazeMap) {
-			delete room;
-		}
-	}
+	// iterate to delete all room values
+	// then deletes all rooms
+	void cleanUp();
+	
+	~Maze() { cleanUp(); } //destructor
 };
 
 
 
 class MazeGame {
 public:
-	MazeGame(){}
+	MazeGame(){} //constructor
 
 	Maze* myMaze = nullptr;
 
 	void printMaze();
-	void generateMaze();
+	//calls the iterator that creates the maze rooms
+	// and sets their inner parameters and refs
+	void generateMaze(factoryBase* factory);
+	void cleanUp() { delete myMaze; }
 
-    ~MazeGame() {
-		delete myMaze;
+    ~MazeGame() { //destructor
+		cleanUp();
+		myMaze = nullptr;
     }
 };
 
