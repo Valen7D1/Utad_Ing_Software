@@ -28,15 +28,24 @@ class BuilderBase {
 
 public:
 	BuilderBase(factoryBase* _factory): factory(_factory), myMaze(nullptr) {}
-	virtual void BuildMaze() = 0;
-	Maze* getMyMaze() { return myMaze; }
-	~BuilderBase() { cleanUp(); }
+	virtual void BuildMaze() = 0; // builder virtual method for children
+	Maze* getMyMaze() { return myMaze; } // * getter
+	// iterates thorugh the myMaze to delete all objs except rooms 
+	// and then does delete room for each
+	~BuilderBase() 
+	{ 
+		cleanUp();
+		myMaze = nullptr;
+	}
 
 protected:
+	// maze and factory for children builders
 	Maze* myMaze;
 	factoryBase* factory;
 
 private:
+	// calls to the myMaze destructor
+	//and sets myMaze to nullptr
 	void cleanUp();
 };
 
@@ -44,15 +53,17 @@ private:
 class BuilderEW : public BuilderBase
 {
 public:
+	//constructor calls father constructor
 	BuilderEW(factoryBase* factory): BuilderBase(factory){}
-
+	// creates all the maze parts with the factory 
 	void BuildMaze() override;
 };
 
 class BuildMazeNS : public BuilderBase
 {
 public:
+	//constructor calls father constructor
 	BuildMazeNS(factoryBase* factory) : BuilderBase(factory) {}
-
+	// creates all the maze parts with the factory 
 	void BuildMaze() override;
 };

@@ -10,18 +10,18 @@ public:
 		generateMaze(); //we generate the maze in construction
 	}
 
-	BuilderBase* _builder = nullptr;
-
 	void printMaze() const;
-	//calls the iterator that creates the maze rooms
-	// and sets their inner parameters and refs
 
     ~MazeGame() { //destructor
 		cleanUp();
 		_builder = nullptr;
     }
 private:
+	BuilderBase* _builder;
+
+	// calls to the builder buildMaze method
 	void generateMaze();
+	// calls to builder destructor
 	void cleanUp() { delete _builder; }
 };
 

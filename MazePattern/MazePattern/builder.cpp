@@ -4,6 +4,7 @@
 void BuilderBase::cleanUp()
 {
 	myMaze->cleanUp();
+	myMaze = nullptr;
 }
 
 

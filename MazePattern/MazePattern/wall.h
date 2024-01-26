@@ -17,12 +17,7 @@ public:
     // constructor + father constructor for type
     DestructibleWall() : Wall() {}
 
-    Room* OtherSide = nullptr;
-
     void enter() const override { printf("Breaking Wall\n"); }
 
-    void print() const override 
-    { 
-        printf("   Breakable Wall\n"); 
-    }
+    void print() const override { printf("   Breakable Wall\n"); }
 };

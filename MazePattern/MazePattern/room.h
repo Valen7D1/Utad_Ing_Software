@@ -33,6 +33,7 @@ protected:
 
 class ExplosiveRoom : public Room {
 public:
+    // calls to father constructor
     ExplosiveRoom(unsigned int id) : Room(id) {}
 
     void enter() const override;
