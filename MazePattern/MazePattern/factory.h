@@ -20,6 +20,7 @@ public:
 	Door* CreateDoor(Room* room) const override;
 };
 
+
 class factoryExplode : public factoryBase 
 {
 public:

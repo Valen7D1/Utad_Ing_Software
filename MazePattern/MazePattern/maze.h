@@ -1,41 +1,27 @@
 #pragma once
 #include <iostream>
-#include "door.h"
-#include "wall.h"
-#include "room.h"
 #include "factory.h"
-
-
-class Maze {
-public:
-	// vector of rooms in maze
-	std::vector<Room*> mazeMap; 
-	void addRoom(Room* room);
-
-	// iterate to delete all room values
-	// then deletes all rooms
-	void cleanUp();
-	
-	~Maze() { cleanUp(); } //destructor
-};
-
-
+#include "builder.h"
 
 class MazeGame {
 public:
-	MazeGame(){} //constructor
+	MazeGame(BuilderBase* builder) : _builder(builder) 
+	{ 
+		generateMaze(); //we generate the maze in construction
+	}
 
-	Maze* myMaze = nullptr;
+	BuilderBase* _builder = nullptr;
 
-	void printMaze();
+	void printMaze() const;
 	//calls the iterator that creates the maze rooms
 	// and sets their inner parameters and refs
-	void generateMaze(factoryBase* factory);
-	void cleanUp() { delete myMaze; }
 
     ~MazeGame() { //destructor
 		cleanUp();
-		myMaze = nullptr;
+		_builder = nullptr;
     }
+private:
+	void generateMaze();
+	void cleanUp() { delete _builder; }
 };
 

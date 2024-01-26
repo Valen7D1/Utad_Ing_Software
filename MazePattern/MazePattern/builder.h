@@ -1,25 +1,58 @@
 #pragma once
-#include "maze.h"
+#include "door.h"
+#include "wall.h"
+#include "room.h"
+#include "factory.h"
 
+// the difference between both maze builders
+// is that one expands east to west
+// and the other north to south
 
-class builderBase {
+class Maze {
 public:
+	// vector of rooms in maze
+	std::vector<Room*> mazeMap;
+	void addRoom(Room* room);
 
+	// iterate to delete all room values
+	// then deletes all rooms
+	void cleanUp();
+
+	~Maze() { cleanUp(); } //destructor
 };
 
 
-class builder1 : public builderBase
-{
+
+
+class BuilderBase {
+
 public:
-	Room* CreateRoom(unsigned int id) const override;
-	Wall* CreateWall() const override;
-	Door* CreateDoor(Room* room) const override;
+	BuilderBase(factoryBase* _factory): factory(_factory), myMaze(nullptr) {}
+	virtual void BuildMaze() = 0;
+	Maze* getMyMaze() { return myMaze; }
+	~BuilderBase() { cleanUp(); }
+
+protected:
+	Maze* myMaze;
+	factoryBase* factory;
+
+private:
+	void cleanUp();
 };
 
-class builder2 : public builderBase
+
+class BuilderEW : public BuilderBase
 {
 public:
-	Room* CreateRoom(unsigned int id) const override;
-	Wall* CreateWall() const override;
-	Door* CreateDoor(Room* room) const override;
+	BuilderEW(factoryBase* factory): BuilderBase(factory){}
+
+	void BuildMaze() override;
+};
+
+class BuildMazeNS : public BuilderBase
+{
+public:
+	BuildMazeNS(factoryBase* factory) : BuilderBase(factory) {}
+
+	void BuildMaze() override;
 };

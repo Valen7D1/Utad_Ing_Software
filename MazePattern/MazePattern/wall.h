@@ -23,6 +23,6 @@ public:
 
     void print() const override 
     { 
-        printf("   Breakable Wall"); 
+        printf("   Breakable Wall\n"); 
     }
 };
