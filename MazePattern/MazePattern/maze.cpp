@@ -22,6 +22,7 @@ void Maze::cleanUp()
 	}
 	for (Room* room : mazeMap) {
 		delete room;
+		room = nullptr;
 	}
 }
 
