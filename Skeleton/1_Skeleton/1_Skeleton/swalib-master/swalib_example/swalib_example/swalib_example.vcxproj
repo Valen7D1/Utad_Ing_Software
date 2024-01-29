@@ -121,6 +121,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\ball.cpp" />
+    <ClCompile Include="..\..\common\colisionComponent.cpp" />
+    <ClCompile Include="..\..\common\entity.cpp" />
     <ClCompile Include="..\..\common\global.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
@@ -128,20 +130,27 @@
     <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\logicSlot.cpp" />
+    <ClCompile Include="..\..\common\movementComponent.cpp" />
     <ClCompile Include="..\..\common\render.cpp" />
+    <ClCompile Include="..\..\common\renderComponent.cpp" />
     <ClCompile Include="..\..\common\renderEngine.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\ball.h" />
+    <ClInclude Include="..\..\common\colisionComponent.h" />
+    <ClInclude Include="..\..\common\component.h" />
+    <ClInclude Include="..\..\common\entity.h" />
     <ClInclude Include="..\..\common\global.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\gameLogic.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\logicSlot.h" />
+    <ClInclude Include="..\..\common\movementComponent.h" />
     <ClInclude Include="..\..\common\render.h" />
+    <ClInclude Include="..\..\common\renderComponent.h" />
     <ClInclude Include="..\..\common\renderEngine.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />

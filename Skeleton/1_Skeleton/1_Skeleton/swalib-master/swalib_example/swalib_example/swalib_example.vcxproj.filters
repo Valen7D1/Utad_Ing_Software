@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{c20cb221-c1ad-4f66-87aa-19bbbb207f7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Components">
+      <UniqueIdentifier>{180300e5-4bb4-4b1e-b9bc-9f7084dfc95e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Component">
+      <UniqueIdentifier>{2cef532a-5d1a-4e4b-95e1-fab0dae0e651}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -57,6 +63,18 @@
     <ClCompile Include="..\..\common\logicSlot.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\common\colisionComponent.cpp">
+      <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\entity.cpp">
+      <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\movementComponent.cpp">
+      <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\renderComponent.cpp">
+      <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -94,6 +112,21 @@
     </ClInclude>
     <ClInclude Include="..\..\common\logicSlot.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\colisionComponent.h">
+      <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\component.h">
+      <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\movementComponent.h">
+      <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\renderComponent.h">
+      <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\entity.h">
+      <Filter>Header Files\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,10 +17,10 @@ public:
     static Manager* getInstance();
 
     // set balls
-    std::vector<Ball> balls = std::vector<Ball>(NUM_BALLS);
+    std::vector<Entity*> balls = std::vector<Entity*>(NUM_BALLS);
 
     //getters
-    std::vector<Ball>* Manager::getBalls();
+    std::vector<Entity*> Manager::getBalls();
     Timer* getTimer();
 
     void update() const;
