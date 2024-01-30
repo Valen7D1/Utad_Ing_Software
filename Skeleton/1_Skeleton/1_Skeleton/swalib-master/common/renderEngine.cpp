@@ -1,5 +1,7 @@
 #include "renderEngine.h"
 #include "global.h"
+#include "entity.h"
+#include "renderComponent.h"
 
 
 RenderEngine* RenderEngine::instance = nullptr;
@@ -28,27 +30,32 @@ void RenderEngine::RenderSetUp() {
 
 void RenderEngine::TexturesSetting() {
 	// Load textures
-	getSprite()->setTexbkg(CORE_LoadPNG("data/circle-bkg-128.png", true));
-	getSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
+	GetSprite()->setTexbkg(CORE_LoadPNG("data/circle-bkg-128.png", true));
+	GetSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
 }
+
 
 void RenderEngine::RenderObjects(){
 
 	// Render background
-	for (int i = 0; i <= SCR_WIDTH / 128; i++) {
-		for (int j = 0; j <= SCR_HEIGHT / 128; j++) {
-			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), getSprite()->getTexbkg());
+	for (int i = 0; i <= SCR_WIDTH / 128; i++) 
+	{
+		for (int j = 0; j <= SCR_HEIGHT / 128; j++) 
+		{
+			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), GetSprite()->getTexbkg());
 		}
 	}
 
 	// get manager for balls render and timer data getters
 	Manager* manager = Manager::getInstance();
 
-	std::vector<Ball>* balls = manager->getBalls();
+	std::vector<Entity*> entities = manager->getEntities();
 
 	// for every ball render it using its location and radius values
-	for (Ball& ball : *balls) {
-		CORE_RenderCenteredSprite(ball.getPosition(), vec2(ball.getRadius() * 2.f, ball.getRadius() * 2.f), ball.gfx);
+	for (Entity* entity : entities) 
+	{
+		RenderComponent * renderComponent = entity->FindComponent<RenderComponent>();
+		renderComponent->Slot();
 	}
 }
 
@@ -77,7 +84,7 @@ void RenderEngine::RenderText()
 	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
 }
 
-Sprite* RenderEngine::getSprite() { return &sprite; }
+Sprite* RenderEngine::GetSprite() { return &sprite; }
 
 
 

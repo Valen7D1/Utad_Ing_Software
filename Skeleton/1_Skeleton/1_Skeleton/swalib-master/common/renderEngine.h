@@ -32,7 +32,7 @@ public:
     void RenderObjects();
     void RenderText();
 
-    Sprite* getSprite();
+    Sprite* GetSprite();
 
     //GLuint texbkg;
     //GLuint texsmallball;
