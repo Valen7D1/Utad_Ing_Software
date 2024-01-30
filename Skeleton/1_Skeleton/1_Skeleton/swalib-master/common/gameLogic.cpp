@@ -32,8 +32,8 @@ void LogicSlot()
 void Shutdown()
 {
 	// Unload textures.
-	CORE_UnloadPNG(renderEngine->getSprite()->getTexbkg());
-	CORE_UnloadPNG(renderEngine->getSprite()->getTexsmallball());
+	CORE_UnloadPNG(renderEngine->GetSprite()->getTexbkg());
+	CORE_UnloadPNG(renderEngine->GetSprite()->getTexsmallball());
 	FONT_End();
 }
 
@@ -42,16 +42,7 @@ void LogicInitialization()
 {
 	// initialize every ball in balls from manager
 	m_timer->InitTimer();
-
-	std::vector<Ball>* balls = manager->getBalls();
-
-	for (Ball& ball : *balls) {
-	// Init game state.
-		ball.setPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));
-		ball.setVelocity(vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer->GetFrameTime(), CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * m_timer->GetFrameTime()));
-		ball.setRadius(16.f);
-		ball.gfx = renderEngine->getSprite()->getTexsmallball();
-	}
+	manager->CreateEntities();
 }
 
 
