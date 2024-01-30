@@ -1,77 +1,8 @@
-﻿  ball.cpp
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\ball.cpp(53,48): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\ball.cpp(56,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  colisionComponent.cpp
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(25,25): error C2011: 'ColisionComponent': 'class' type redefinition
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.h(5,7): message : see declaration of 'ColisionComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(6,25): error C2027: use of undefined type 'ColisionComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.h(5,7): message : see declaration of 'ColisionComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(13,41): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(13,87): error C2059: syntax error: ')'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(15,23): error C2143: syntax error: missing ';' before ':'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(15,38): error C2143: syntax error: missing ';' before ')'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(19,7): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(19,22): error C2065: 'pBall': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(22,18): error C2065: 'pBall': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(22,58): error C2059: syntax error: ')'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(23,20): error C2065: 'radius': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(23,1): error C2027: use of undefined type 'ColisionComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.h(5,7): message : see declaration of 'ColisionComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(23,58): error C2065: 'radius': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(23,67): error C2065: 'otherBallCollision': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(25,14): error C2065: 'newPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(25,23): error C2065: 'otherBallCollision': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(27,14): error C2065: 'pBall': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(36,3): error C2065: 'm_currentPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(36,18): error C2065: 'm_newPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(46,3): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(46,35): error C2061: syntax error: identifier 'CEntCollisionMessage'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(49,3): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(49,11): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(65,7): error C2065: 'm_currentPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(65,24): error C2065: 'SCR_WIDTH': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(65,39): error C2065: 'm_currentPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(66,3): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(66,16): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(66,30): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(68,3): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(68,35): error C2061: syntax error: identifier 'CLimitWorldCollMessage'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(70,7): error C2065: 'm_currentPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(70,24): error C2065: 'SCR_HEIGHT': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(70,40): error C2065: 'm_currentPos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(71,3): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(71,16): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(71,25): error C2065: 'm_vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(73,3): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(73,35): error C2061: syntax error: identifier 'CLimitWorldCollMessage'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(6): fatal  error C1075: '{': no matching token found
+﻿  colisionComponent.cpp
   entity.cpp
   global.cpp
-  core.cpp
-  example.cpp
-  font.cpp
-  gameLogic.cpp
-  lodepng.cpp
-  logicSlot.cpp
   movementComponent.cpp
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(45,25): error C2011: 'MovementComponent': 'class' type redefinition
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.h(5,7): message : see declaration of 'MovementComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(5,25): error C2027: use of undefined type 'MovementComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.h(5,7): message : see declaration of 'MovementComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(6,2): error C2065: 'pos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(6,8): error C2065: 'pos': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(6,14): error C2065: 'vel': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(8,2): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(8,48): error C2059: syntax error: ')'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(9,2): error C2065: 'entityOwner': undeclared identifier
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(9,46): error C2059: syntax error: ')'
-  render.cpp
   renderComponent.cpp
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(60,23): error C2011: 'RenderComponent': 'class' type redefinition
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\renderComponent.h(4,7): message : see declaration of 'RenderComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\renderComponent.cpp(5,23): error C2027: use of undefined type 'RenderComponent'
-C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\renderComponent.h(4,7): message : see declaration of 'RenderComponent'
   renderEngine.cpp
-  stdafx.cpp
-  sys_win.cpp
   Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

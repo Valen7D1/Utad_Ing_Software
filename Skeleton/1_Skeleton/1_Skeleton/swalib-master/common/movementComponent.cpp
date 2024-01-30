@@ -1,4 +1,6 @@
 #include "movementComponent.h"
+#include "colisionComponent.h"
+#include "renderComponent.h"
 #include "entity.h"
 
 
