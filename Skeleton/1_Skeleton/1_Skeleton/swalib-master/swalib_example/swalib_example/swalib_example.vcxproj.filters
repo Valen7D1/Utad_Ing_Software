@@ -81,6 +81,9 @@
     <ClCompile Include="..\..\common\timer.cpp">
       <Filter>Source Files\Game\Controller</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\common\message.cpp">
+      <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -133,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="..\..\common\timer.h">
       <Filter>Header Files\Game\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\message.h">
+      <Filter>Header Files\Game\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
