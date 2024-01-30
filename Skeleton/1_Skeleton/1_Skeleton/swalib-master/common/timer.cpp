@@ -1,4 +1,4 @@
-#include "logicSlot.h"
+#include "timer.h"
 
 
 // constructor

@@ -1,5 +1,5 @@
 #include "ball.h"
-#include "global.h"
+#include "manager.h"
 #include "sys.h"
 
 //deprecated class, now we use entity and component

@@ -2,7 +2,7 @@
 #include "movementComponent.h"
 #include "renderComponent.h"
 #include "entity.h"
-#include "global.h"
+#include "manager.h"
 #include "sys.h"
 
 void ColisionComponent::Slot() 

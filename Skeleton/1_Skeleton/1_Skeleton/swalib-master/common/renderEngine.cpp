@@ -1,5 +1,5 @@
 #include "renderEngine.h"
-#include "global.h"
+#include "manager.h"
 #include "entity.h"
 #include "renderComponent.h"
 

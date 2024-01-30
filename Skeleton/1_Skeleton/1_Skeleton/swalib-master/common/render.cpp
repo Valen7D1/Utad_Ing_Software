@@ -5,7 +5,7 @@
 #include "font.h"
 //my includes
 #include "render.h"
-#include "global.h"
+#include "manager.h"
 #include "gameLogic.h"
 #include "renderEngine.h"
 

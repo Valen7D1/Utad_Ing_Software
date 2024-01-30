@@ -6,7 +6,7 @@
 //my includes
 #include "ball.h"
 #include "gameLogic.h"
-#include "global.h"
+#include "manager.h"
 #include "renderEngine.h"
 
 
