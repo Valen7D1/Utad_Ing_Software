@@ -1,4 +1,6 @@
 #include "colisionComponent.h"
+#include "movementComponent.h"
+#include "renderComponent.h"
 #include "entity.h"
 #include "global.h"
 #include "sys.h"
@@ -36,6 +38,8 @@ void ColisionComponent::Slot()
 	else {
 
 		entityOwner->FindComponent<RenderComponent>()->SetPosition(currentPos);
+		entityOwner->FindComponent<MovementComponent>()->SetPosition(currentPos);
+
 
 		vel = vel * -1.f;
 
