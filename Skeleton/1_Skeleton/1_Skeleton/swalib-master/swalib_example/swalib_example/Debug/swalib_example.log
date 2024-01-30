@@ -1,8 +1,66 @@
 ﻿  colisionComponent.cpp
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=MovementComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(19,87): message : see reference to function template instantiation 'T *Entity::FindComponent<MovementComponent>(void)' being compiled
+          with
+          [
+              T=MovementComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=ColisionComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(25,73): message : see reference to function template instantiation 'T *Entity::FindComponent<ColisionComponent>(void)' being compiled
+          with
+          [
+              T=ColisionComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=RenderComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\colisionComponent.cpp(43,47): message : see reference to function template instantiation 'T *Entity::FindComponent<RenderComponent>(void)' being compiled
+          with
+          [
+              T=RenderComponent
+          ]
   entity.cpp
   global.cpp
   movementComponent.cpp
-  renderComponent.cpp
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=ColisionComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(11,48): message : see reference to function template instantiation 'T *Entity::FindComponent<ColisionComponent>(void)' being compiled
+          with
+          [
+              T=ColisionComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=RenderComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\movementComponent.cpp(12,46): message : see reference to function template instantiation 'T *Entity::FindComponent<RenderComponent>(void)' being compiled
+          with
+          [
+              T=RenderComponent
+          ]
   renderEngine.cpp
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\entity.h(39,13): error C2682: cannot use 'dynamic_cast' to convert from 'Component' to 'T *'
+          with
+          [
+              T=RenderComponent
+          ]
+D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\common\renderEngine.cpp(57,78): message : see reference to function template instantiation 'T *Entity::FindComponent<RenderComponent>(void)' being compiled
+          with
+          [
+              T=RenderComponent
+          ]
   Generating Code...
-  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
