@@ -1,5 +1,5 @@
 #include "global.h"
-
+#include "Entity.h"
 
 // instantiate manager to nullptr
 Manager* Manager::instance = nullptr;
@@ -15,18 +15,18 @@ Manager* Manager::getInstance()
 }
 
 // getter for balls vector
-std::vector<Ball>* Manager::getBalls() {
-    return &balls;
+std::vector<Entity*> Manager::getEntities() {
+    return entities;
 }
 
 // update for all game objects
 void Manager::update() const
 {   
     Manager* manager = Manager::getInstance();
-    std::vector<Ball>* balls = manager->getBalls();
+    std::vector<Entity*> entities = manager->getEntities();
 
-    for (Ball& ball : *balls) {
-        ball.update();
+    for (Entity* entity : entities) {
+        entity->Slot();
     }
 }
 

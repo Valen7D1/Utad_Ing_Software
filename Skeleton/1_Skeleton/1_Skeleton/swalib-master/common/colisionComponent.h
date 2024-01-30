@@ -11,9 +11,9 @@ private:
 	float radius;
 public:
 	virtual void Slot() override;
-	void SetPosition(vec2 newPosition);
-	void SetVelocity(vec2 newVelocity);
-	void SetRadius(float newRadius);
+	void SetPosition(vec2 newPosition) { newPos = newPosition; }
+	void SetVelocity(vec2 newVelocity) { vel = newVelocity; }
+	void SetRadius(float newRadius) { radius = newRadius; }
 
 	vec2 GetPosition() { return currentPos; };
 	vec2 GetVelocity() { return vel; };

@@ -6,6 +6,7 @@
 const unsigned int NUM_BALLS = 10;  // Max. num balls.
 const float MAX_BALL_SPEED = 480.0f;   // Max vel. of ball (pixels/?).
 
+class Entity;
 
 class Manager {
 private:
@@ -17,10 +18,10 @@ public:
     static Manager* getInstance();
 
     // set balls
-    std::vector<Entity*> balls = std::vector<Entity*>(NUM_BALLS);
+    std::vector<Entity*> entities = std::vector<Entity*>(NUM_BALLS);
 
     //getters
-    std::vector<Entity*> Manager::getBalls();
+    std::vector<Entity*> Manager::getEntities();
     Timer* getTimer();
 
     void update() const;

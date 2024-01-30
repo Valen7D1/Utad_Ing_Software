@@ -3,75 +3,56 @@
 #include "global.h"
 #include "sys.h"
 
-void ColisionComponent::Slot() {
+void ColisionComponent::Slot() 
+{
 	//control vars for collision checking
-	bool collision = false;
-	Entity* entity = nullptr;
-	ColisionComponent* otherEntity = nullptr;
+	bool colliding = false;
+	Entity* entityColliding = nullptr;
+	ColisionComponent* otherEntityCollision = nullptr;
 
 	Manager* manager = manager->getInstance();
-	std::vector<Ball*> balls = manager->getBalls();
+	std::vector<Entity*> entities = manager->getEntities();
 
 	MovementComponent* movementComponent = entityOwner->FindComponent<MovementComponent>();
 
-	for (Ball* otherBall : balls) {}
-	for each (Entity * pBall in Manager::getInstance().GetEntityBallList())
+	for (Entity* otherEntity : entities)
 	{
-		//If not self
-		if (entityOwner != pBall)
+		if (entityOwner != otherEntity)
 		{
-			//Get values of other ball
-			otherEntity = pBall->FindComponent<ColisionComponent>();
-			float limit2 = (radius + otherEntity->GetRadius()) * (radius + otherEntity->GetRadius());
-			//If hit
-			if (vlen2(newPos - otherBallCollision->GetPosition()) <= limit2) {
-				collision = true;
-				entity = pBall;
+			otherEntityCollision = otherEntity->FindComponent<ColisionComponent>();
+			float limit2 = (radius + otherEntityCollision->GetRadius()) * (radius + otherEntityCollision->GetRadius());
+
+			if (vlen2(newPos - otherEntityCollision->GetPosition()) <= limit2) {
+				colliding = true;
+				entityColliding = otherEntity;
 				break;
 			}
 		}
 	}
 
-
-	//If not hit, you can move to the new position
-	if (!collision) {
-		m_currentPos = m_newPos;
+	if (!colliding) {
+		currentPos = newPos;
 	}
-	//If hit
 	else {
 
+		entityOwner->FindComponent<RenderComponent>()->SetPosition(currentPos);
 
-		//Restore previous movement
-		//movementComponent->ReceiveMessage(new CEntCollisionMessage(m_currentPos));
-		//entityOwner->FindComponent<CRenderComponent>()->SetPosition(m_currentPos);
+		vel = vel * -1.f;
 
-		entityOwner->ReceiveMessage(new CEntCollisionMessage(m_currentPos));
+		movementComponent->SetVelocity(movementComponent->GetVelocity() * -1.f);
 
-		// Rebound!
-		m_vel = m_vel * -1.f;
+		otherEntityCollision->SetVelocity(otherEntityCollision->GetVelocity()* - 1.f);
 
-		//Change own component velocity
-		//movementComponent->SetVelocity(movementComponent->GetVelocity() * -1.f);
-
-
-		////Change other ball component velocity
-		//otherBallCollision->SetVelocity(otherBallCollision->GetVelocity()* - 1.f);
-
-
-		////Change other ball component movement
-		//CMovementComponent* otherBallMovement = entityColliding->FindComponent<CMovementComponent>();
-		//otherBallMovement->SetVelocity(otherBallMovement->GetVelocity() * -1.f);
+		MovementComponent* otherEntityMovement = entityColliding->FindComponent<MovementComponent>();
+		otherEntityMovement->SetVelocity(otherEntityMovement->GetVelocity() * -1.f);
 	}
 
-	// Rebound on margins.
-	if ((m_currentPos.x > SCR_WIDTH) || (m_currentPos.x < 0)) {
-		m_vel = vec2(m_vel.x * -1, m_vel.y);
-		/*movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x * -1.f, movementComponent->GetVelocity().y));*/
-		entityOwner->ReceiveMessage(new CLimitWorldCollMessage(1, m_currentPos));
+	if ((currentPos.x > SCR_WIDTH) || (currentPos.x < 0)) {
+		vel = vec2(vel.x * -1, vel.y);
+		movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x * -1.f, movementComponent->GetVelocity().y));
 	}
-	if ((m_currentPos.y > SCR_HEIGHT) || (m_currentPos.y < 0)) {
-		m_vel = vec2(m_vel.x, m_vel.y * -1);
-		/*movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x, movementComponent->GetVelocity().y * -1.f));*/
-		entityOwner->ReceiveMessage(new CLimitWorldCollMessage(0, m_currentPos));
+	if ((currentPos.y > SCR_HEIGHT) || (currentPos.y < 0)) {
+		vel = vec2(vel.x, vel.y * -1);
+		movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x, movementComponent->GetVelocity().y * -1.f));
 	}
 }

@@ -2,7 +2,8 @@
 #include "entity.h"
 
 
-void MovementComponent::Slot() {
+void MovementComponent::Slot() 
+{
 	pos = pos + vel;
 	// check for collisions and then render
 	entityOwner->FindComponent<ColisionComponent>()->SetPosition(pos);
