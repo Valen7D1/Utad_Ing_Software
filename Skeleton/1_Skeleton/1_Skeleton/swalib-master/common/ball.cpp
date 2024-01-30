@@ -18,41 +18,41 @@ void Ball::setRadius(float rad) { radius = rad; }
 
 void Ball::update()
 {
-	Manager* manager = manager->getInstance();
-	std::vector<Ball>* balls = manager->getBalls();
-	// Run balls
+	//Manager* manager = manager->getInstance();
+	//std::vector<Ball>* balls = manager->getBalls();
+	//// Run balls
 
-	// New Pos.
-	vec2 newpos = this->getPosition() + this->getVelocity();
+	//// New Pos.
+	//vec2 newpos = this->getPosition() + this->getVelocity();
 
-	// Collision detection.
-	bool collision = false;
-	Ball* colliding_ball = nullptr;
-	for (Ball& otherBall : *balls) {
-		if (!(this == &otherBall)) {
-			float limit2 = (this->getRadius() + otherBall.getRadius()) * (this->getRadius() + otherBall.getRadius());
-			if (vlen2(newpos - otherBall.getPosition()) <= limit2) {
-				collision = true;
-				colliding_ball = &otherBall;
-				break;
-			}
-		}
-	}
+	//// Collision detection.
+	//bool collision = false;
+	//Ball* colliding_ball = nullptr;
+	//for (Ball& otherBall : *balls) {
+	//	if (!(this == &otherBall)) {
+	//		float limit2 = (this->getRadius() + otherBall.getRadius()) * (this->getRadius() + otherBall.getRadius());
+	//		if (vlen2(newpos - otherBall.getPosition()) <= limit2) {
+	//			collision = true;
+	//			colliding_ball = &otherBall;
+	//			break;
+	//		}
+	//	}
+	//}
 
-	if (!collision) {
-		this->setPosition(newpos);
-	}
-	else {
-		// Rebound!
-		this->setVelocity(this->getVelocity() * -1.f);
-		colliding_ball->setVelocity(colliding_ball->getVelocity() * -1.f);
-	}
+	//if (!collision) {
+	//	this->setPosition(newpos);
+	//}
+	//else {
+	//	// Rebound!
+	//	this->setVelocity(this->getVelocity() * -1.f);
+	//	colliding_ball->setVelocity(colliding_ball->getVelocity() * -1.f);
+	//}
 
-	// Rebound on margins.
-	if ((this->getPosition().x > SCR_WIDTH) || (this->getPosition().x < 0)) {
-		this->setVelocity(vec2(this->getVelocity().x * -1.0, this->getVelocity().y));
-	}
-	if ((this->getPosition().y > SCR_HEIGHT) || (this->getPosition().y < 0)) {
-		this->setVelocity(vec2(this->getVelocity().x, this->getVelocity().y * -1.0));
-	}
+	//// Rebound on margins.
+	//if ((this->getPosition().x > SCR_WIDTH) || (this->getPosition().x < 0)) {
+	//	this->setVelocity(vec2(this->getVelocity().x * -1.0, this->getVelocity().y));
+	//}
+	//if ((this->getPosition().y > SCR_HEIGHT) || (this->getPosition().y < 0)) {
+	//	this->setVelocity(vec2(this->getVelocity().x, this->getVelocity().y * -1.0));
+	//}
 }
