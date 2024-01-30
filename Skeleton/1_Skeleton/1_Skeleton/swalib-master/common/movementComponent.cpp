@@ -2,11 +2,13 @@
 #include "colisionComponent.h"
 #include "renderComponent.h"
 #include "entity.h"
+#include "manager.h"
 
 
 void MovementComponent::Slot() 
 {
-	pos = pos + vel;
+	Manager* manager = Manager::getInstance();
+	pos = pos + vel * manager->getTimer()->GetFrameTime();
 	// check for collisions and then render
 	entityOwner->FindComponent<ColisionComponent>()->SetPosition(pos);
 	entityOwner->FindComponent<RenderComponent>()->SetPosition(pos);

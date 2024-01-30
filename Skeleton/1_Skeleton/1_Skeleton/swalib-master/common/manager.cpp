@@ -50,9 +50,10 @@ void Manager::CreateEntities() {
 		Entity* ballEntity = new Entity();
 
 		vec2 Position = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
-		vec2 Velocity = vec2(CORE_FRand(-MAX_BALL_SPEED, 
-			+MAX_BALL_SPEED) * manager->getTimer()->GetFrameTime(),
-			CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * manager->getTimer()->GetFrameTime());
+		vec2 Velocity = vec2(CORE_FRand(
+			-MAX_BALL_SPEED, 
+			+MAX_BALL_SPEED),
+			CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED));
 
 		float radius = 16.f;
 
