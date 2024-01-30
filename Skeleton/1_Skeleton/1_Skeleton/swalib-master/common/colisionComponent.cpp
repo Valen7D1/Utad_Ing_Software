@@ -12,9 +12,10 @@ void ColisionComponent::Slot()
 	Entity* entityColliding = nullptr;
 	ColisionComponent* otherEntityCollision = nullptr;
 
+	// call to entity vector for collision checking
 	Manager* manager = manager->getInstance();
 	std::vector<Entity*> entities = manager->getEntities();
-
+	// get movement component from owner for movement if collided
 	MovementComponent* movementComponent = entityOwner->FindComponent<MovementComponent>();
 
 	for (Entity* otherEntity : entities)
@@ -35,22 +36,26 @@ void ColisionComponent::Slot()
 	if (!colliding) {
 		currentPos = newPos;
 	}
+	// if collision ocurred
 	else {
 
+		// call to render / movement to set the correct position (current instead of new)
 		entityOwner->FindComponent<RenderComponent>()->SetPosition(currentPos);
 		entityOwner->FindComponent<MovementComponent>()->SetPosition(currentPos);
 
-
+		// reverse velocity for rebound
 		vel = vel * -1.f;
 
 		movementComponent->SetVelocity(movementComponent->GetVelocity() * -1.f);
 
+		// same for collided entity in collision and movement
 		otherEntityCollision->SetVelocity(otherEntityCollision->GetVelocity()* - 1.f);
 
 		MovementComponent* otherEntityMovement = entityColliding->FindComponent<MovementComponent>();
 		otherEntityMovement->SetVelocity(otherEntityMovement->GetVelocity() * -1.f);
 	}
 
+	// if x2 collided with margins
 	if ((currentPos.x > SCR_WIDTH) || (currentPos.x < 0)) {
 		vel = vec2(vel.x * -1, vel.y);
 		movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x * -1.f, movementComponent->GetVelocity().y));

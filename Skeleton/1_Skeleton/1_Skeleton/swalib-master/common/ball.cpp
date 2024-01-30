@@ -2,6 +2,8 @@
 #include "global.h"
 #include "sys.h"
 
+//deprecated class, now we use entity and component
+
 // constructor
 Ball::Ball() : pos(0.0f), vel(0.0f), gfx(0), radius(0.0f)
 {}

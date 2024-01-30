@@ -9,6 +9,7 @@ private:
 	vec2 vel;
 
 public:
+	// update position based on velocity
 	virtual void Slot() override;
 
 	void SetPosition(vec2 newPos) { pos = newPos; }

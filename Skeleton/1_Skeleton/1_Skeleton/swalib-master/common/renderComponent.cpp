@@ -1,5 +1,4 @@
 #include "renderComponent.h"
-#include "entity.h"
 #include "core.h"
 
 

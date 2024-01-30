@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "vector2d.h"
 
-
+//deprecated class, now we use entity and component
 class Ball
 {
 public:

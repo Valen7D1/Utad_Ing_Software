@@ -15,12 +15,13 @@ public:
 	void AddComponent(T* newComponent);
 
 	template <class T>
-	T* FindComponent(); // finds comp in components
+	T* FindComponent(); // iterates through component vector
 
-	virtual ~Entity();
+	virtual ~Entity(); // for each component delete
 
-	void Slot(); // for each components call slot method
+	void Slot(); // for each component call slot method
 };
+
 
 template<class T>
 void Entity::AddComponent(T* newComponent)
@@ -31,11 +32,10 @@ void Entity::AddComponent(T* newComponent)
 
 template<class T>
 T* Entity::FindComponent()
-{
-	//for (Component* component : components) {
-	for (auto component = components.begin();
-		component != components.end();
-			++component){
+{	
+	//for (Component* component : components)
+	for (auto component = components.begin(); component != components.end(); ++component)
+	{
 		T* comp = dynamic_cast<T*>(*component);
 		if (comp) { return comp; }
 	}

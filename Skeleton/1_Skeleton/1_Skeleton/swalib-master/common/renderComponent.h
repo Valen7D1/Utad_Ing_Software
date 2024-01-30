@@ -9,7 +9,7 @@ private:
 	float radius;
 
 public:
-	virtual void Slot() override;
+	virtual void Slot() override; // call render sprite
 
 	void SetPosition(vec2 newPos) { pos = newPos; }
 	void SetGfx(GLuint newGfx) { gfx = newGfx; }
