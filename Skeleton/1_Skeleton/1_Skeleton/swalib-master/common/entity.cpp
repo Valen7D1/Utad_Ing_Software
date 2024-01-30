@@ -1,4 +1,5 @@
 #include "entity.h"
+#include "message.h"
 
 
 void Entity::Slot()
@@ -8,6 +9,15 @@ void Entity::Slot()
 		component->Slot();
 	}
 
+}
+
+//name sendMsg because internally SendMessage is already in use
+void Entity::SendMsg(Message* msg)
+{
+	for (Component* component : components) 
+	{
+		component->ReceiveMessage(msg);
+	}
 }
 
 

@@ -3,6 +3,7 @@
 #include "renderComponent.h"
 #include "entity.h"
 #include "manager.h"
+#include "message.h"
 
 
 void MovementComponent::Slot() 
@@ -12,4 +13,8 @@ void MovementComponent::Slot()
 	// check for collisions and then render
 	entityOwner->FindComponent<ColisionComponent>()->SetPosition(pos);
 	entityOwner->FindComponent<RenderComponent>()->SetPosition(pos);
+}
+
+void MovementComponent::ReceiveMessage(Message* msg) {
+
 }

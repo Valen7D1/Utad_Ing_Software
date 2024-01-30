@@ -5,6 +5,7 @@
 #include "vector2d.h"
 
 
+class Message;
 
 class Entity
 {
@@ -20,6 +21,8 @@ public:
 	virtual ~Entity(); // for each component delete
 
 	void Slot(); // for each component call slot method
+	void SendMsg(Message* msg); //for each component call to receive msg
+
 };
 
 

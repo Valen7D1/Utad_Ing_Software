@@ -11,6 +11,7 @@ private:
 	float radius;
 public:
 	virtual void Slot() override; // checks collisions and acts acordingly
+	virtual void  ReceiveMessage(Message* msg) override; //msg system for component comunication
 
 	// setters
 	void SetPosition(vec2 newPosition) { newPos = newPosition; }

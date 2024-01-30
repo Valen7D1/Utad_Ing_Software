@@ -3,6 +3,7 @@
 #include "renderComponent.h"
 #include "entity.h"
 #include "manager.h"
+#include "message.h"
 #include "sys.h"
 
 void ColisionComponent::Slot() 
@@ -38,7 +39,7 @@ void ColisionComponent::Slot()
 	}
 	// if collision ocurred
 	else {
-
+		// entityOwner->SendMsg(new newPositionMessage(currentPos));
 		// call to render / movement to set the correct position (current instead of new)
 		entityOwner->FindComponent<RenderComponent>()->SetPosition(currentPos);
 		entityOwner->FindComponent<MovementComponent>()->SetPosition(currentPos);
@@ -64,4 +65,10 @@ void ColisionComponent::Slot()
 		vel = vec2(vel.x, vel.y * -1);
 		movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x, movementComponent->GetVelocity().y * -1.f));
 	}
+}
+
+
+void ColisionComponent::ReceiveMessage(Message* msg) 
+{
+
 }
