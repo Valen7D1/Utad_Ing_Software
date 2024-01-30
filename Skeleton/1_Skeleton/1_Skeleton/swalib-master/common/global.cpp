@@ -1,5 +1,12 @@
 #include "global.h"
 #include "Entity.h"
+#include "core.h"
+#include "sys.h"
+#include "global.h"
+#include "renderEngine.h"
+#include "movementComponent.h"
+#include "colisionComponent.h"
+#include "renderComponent.h"
 
 // instantiate manager to nullptr
 Manager* Manager::instance = nullptr;
@@ -33,4 +40,43 @@ void Manager::update() const
 // getter for timer
 Timer* Manager::getTimer() {
     return &timer;
+}
+
+void Manager::CreateEntities() {
+	Manager* manager = Manager::getInstance();
+	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	for (int i = 0; i < NUM_BALLS; i++) {
+		Entity* ballEntity = new Entity();
+
+		vec2 Position = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
+		vec2 Velocity = vec2(CORE_FRand(-MAX_BALL_SPEED, 
+			+MAX_BALL_SPEED) * manager->getTimer()->GetFrameTime(),
+			CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED) * manager->getTimer()->GetFrameTime());
+
+		float radius = 16.f;
+
+		ColisionComponent* colisionComponent = new ColisionComponent();
+		colisionComponent->SetPosition(Position);
+		colisionComponent->SetVelocity(Velocity);
+		colisionComponent->SetRadius(radius);
+		colisionComponent->entityOwner = ballEntity;
+
+		MovementComponent* movementComponent = new MovementComponent();
+		movementComponent->SetPosition(Position);
+		movementComponent->SetVelocity(Velocity);
+		movementComponent->entityOwner = ballEntity;
+
+		RenderComponent* renderComponent = new RenderComponent();
+		renderComponent->SetGfx(renderEngine->GetSprite()->getTexsmallball());
+		renderComponent->SetPosition(Position);
+		renderComponent->SetRadius(radius);
+		renderComponent->entityOwner = ballEntity;
+
+		ballEntity->AddComponent<ColisionComponent>(colisionComponent);
+		ballEntity->AddComponent<MovementComponent>(movementComponent);
+		ballEntity->AddComponent<RenderComponent>(renderComponent);
+
+		entities.push_back(ballEntity);
+	}
 }

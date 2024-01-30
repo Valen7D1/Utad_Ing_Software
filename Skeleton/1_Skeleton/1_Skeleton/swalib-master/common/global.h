@@ -12,17 +12,16 @@ class Manager {
 private:
     static Manager* instance;
     Timer timer;
+    std::vector<Entity*> entities;
 
 public:
     //singleton
     static Manager* getInstance();
-
-    // set balls
-    std::vector<Entity*> entities = std::vector<Entity*>(NUM_BALLS);
-
     //getters
     std::vector<Entity*> Manager::getEntities();
     Timer* getTimer();
+
+    void CreateEntities();
 
     void update() const;
 };
