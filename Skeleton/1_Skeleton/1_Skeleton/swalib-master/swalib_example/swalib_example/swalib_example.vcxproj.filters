@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Game\Component">
       <UniqueIdentifier>{2cef532a-5d1a-4e4b-95e1-fab0dae0e651}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Controller">
+      <UniqueIdentifier>{e81976f5-2008-4d0a-bdda-85fbd19e99ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Controller">
+      <UniqueIdentifier>{4698f87e-a4b9-4373-bad7-ebdc313d4e22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -51,16 +57,10 @@
     <ClCompile Include="..\..\common\gameLogic.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\global.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\render.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\renderEngine.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\logicSlot.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\colisionComponent.cpp">
@@ -74,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="..\..\common\renderComponent.cpp">
       <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\manager.cpp">
+      <Filter>Source Files\Game\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\timer.cpp">
+      <Filter>Source Files\Game\Controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -101,16 +107,10 @@
     <ClInclude Include="..\..\common\gameLogic.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\global.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\render.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\renderEngine.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\logicSlot.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\colisionComponent.h">
@@ -127,6 +127,12 @@
     </ClInclude>
     <ClInclude Include="..\..\common\entity.h">
       <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\manager.h">
+      <Filter>Header Files\Game\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\timer.h">
+      <Filter>Header Files\Game\Controller</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
