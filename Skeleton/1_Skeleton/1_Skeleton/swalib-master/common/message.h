@@ -4,7 +4,8 @@
 
 class Message 
 { 
-    //maybe add destructor?
+public:
+    virtual ~Message(){}
 };
 
 
@@ -33,9 +34,9 @@ public:
 };
 
 
-class newPositionMessage : public Message
+class NewPositionMessage : public Message
 {
 public:
-    newPositionMessage(vec2 _newPos) : newPos(_newPos) {}
+    NewPositionMessage(vec2 _newPos) : newPos(_newPos) {}
     vec2 newPos;
 };
