@@ -1,13 +1,1 @@
-﻿  core.cpp
-  example.cpp
-  font.cpp
-  lodepng.cpp
-D:\U-Tad\Utad_Ing_Software\Flyweight_Terrain\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-D:\U-Tad\Utad_Ing_Software\Flyweight_Terrain\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-  stdafx.cpp
-  sys_win.cpp
-  global.cpp
-  logic.cpp
-  render.cpp
-  Generating Code...
-  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Flyweight_Terrain\swalib_example\x64\Debug\swalib_example.exe
+﻿  swalib_example.vcxproj -> C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Flyweight_Terrain\swalib_example\x64\Debug\swalib_example.exe

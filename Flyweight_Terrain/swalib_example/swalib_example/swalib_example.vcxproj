@@ -126,9 +126,11 @@
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
+    <ClCompile Include="..\Code\Game\factory.cpp" />
     <ClCompile Include="..\Code\Game\global.cpp" />
     <ClCompile Include="..\Code\Game\logic.cpp" />
     <ClCompile Include="..\Code\Game\render.cpp" />
+    <ClCompile Include="..\Code\Game\terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h" />
@@ -137,9 +139,11 @@
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
+    <ClInclude Include="..\Code\Game\factory.h" />
     <ClInclude Include="..\Code\Game\global.h" />
     <ClInclude Include="..\Code\Game\logic.h" />
     <ClInclude Include="..\Code\Game\render.h" />
+    <ClInclude Include="..\Code\Game\terrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
