@@ -5,6 +5,8 @@
 #include "../../../common/font.h"
 #include "../../../common/vector2d.h"
 #include "global.h"
+#include "terrain.h"
+#include "factory.h"
 
 void InitRender()
 {
@@ -26,11 +28,17 @@ void RenderSlot()
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.
 
 	// Render tiles
-	World* worldRef = World::Get();
+	NewWorld* worldRef = NewWorld::Get();
     for (int i = 0; i < WORLD_WIDTH; ++i)
     {
 		for (int j = 0; j < WORLD_HEIGHT; ++j)
-		{
+		{	
+			NewTerrain* currentTerrain = worldRef->map[i][j];
+			TerrainFactory* terrainFactory = currentTerrain->GetTerrrain();
+
+			CORE_RenderCenteredSprite(
+				currentTerrain->GetPosition(),
+				vec2(64.f, 48.f), terrainFactory->GetSprite());
 			// HERE RENDER EACH TILE
  		}
 	}
