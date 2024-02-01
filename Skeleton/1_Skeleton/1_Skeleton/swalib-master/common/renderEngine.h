@@ -4,7 +4,7 @@
 #include "sys.h"
 #include "font.h"
 
-
+// deprecated class
 class Sprite {
 private:
     GLuint texbkg;

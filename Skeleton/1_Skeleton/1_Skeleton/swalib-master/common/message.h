@@ -1,14 +1,14 @@
 #pragma once
 #include "vector2d.h"
 
-
+// base class for messages
 class Message 
 { 
 public:
     virtual ~Message(){}
 };
 
-
+// base class for collision messages
 class CollisionMessage : public Message
 {
 public:
@@ -16,14 +16,14 @@ public:
     vec2 newPos;
 };
 
-
+// collision with entity
 class EntCollisionMessage : public CollisionMessage
 {
 public:
     EntCollisionMessage(vec2 _newPos) : CollisionMessage(_newPos) {}
 };
 
-
+// collision with world limits
 class LimitWorldCollMessage : public CollisionMessage
 {
 public:
@@ -33,7 +33,7 @@ public:
     vec2 entityDirection; //{ Horizontal, Vertical }
 };
 
-
+// new position message
 class NewPositionMessage : public Message
 {
 public:
