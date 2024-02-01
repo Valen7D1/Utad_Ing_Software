@@ -74,8 +74,8 @@ void Manager::CreateEntities() {
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
 
-		ballEntity->AddComponent(colisionComponent);
 		ballEntity->AddComponent(movementComponent);
+		ballEntity->AddComponent(colisionComponent);
 		ballEntity->AddComponent(renderComponent);
 
 		entities.push_back(ballEntity);
