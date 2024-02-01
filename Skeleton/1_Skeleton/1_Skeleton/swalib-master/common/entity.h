@@ -13,10 +13,9 @@ public:
 	std::vector<Component*> components;
 
 	template <class T>
-	void AddComponent(T* newComponent);
-
-	template <class T>
 	T* FindComponent(); // iterates through component vector
+
+	void AddComponent(Component* newComponent){ components.push_back(newComponent); }
 
 	virtual ~Entity(); // for each component delete
 
@@ -24,13 +23,6 @@ public:
 	void SendMsg(Message* msg); //for each component call to receive msg
 
 };
-
-
-template<class T>
-void Entity::AddComponent(T* newComponent)
-{
-	components.push_back(newComponent);
-}
 
 
 template<class T>
