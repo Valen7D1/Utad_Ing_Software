@@ -1,0 +1,19 @@
+﻿  ball.cpp
+  colisionComponent.cpp
+  entity.cpp
+  manager.cpp
+  core.cpp
+  example.cpp
+  font.cpp
+  gameLogic.cpp
+  lodepng.cpp
+  message.cpp
+  timer.cpp
+  movementComponent.cpp
+  render.cpp
+  renderComponent.cpp
+  renderEngine.cpp
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Skeleton\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
