@@ -13,7 +13,6 @@ private:
     static Manager* instance;
     Timer timer;
     std::vector<Entity*> entities;
-
 public:
     //singleton
     static Manager* getInstance();
@@ -24,4 +23,7 @@ public:
     void CreateEntities();
 
     void update() const;
+
+public:
+    const char* entitiesFile = "data/Entities.json";
 };

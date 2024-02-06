@@ -7,6 +7,9 @@
 #include "movementComponent.h"
 #include "colisionComponent.h"
 #include "renderComponent.h"
+#include <iostream>
+#include "../swalib_example/rapidjson/document.h"
+#include "../swalib_example/rapidjson/filereadstream.h"
 
 // instantiate manager to nullptr
 Manager* Manager::instance = nullptr;
@@ -42,18 +45,31 @@ Timer* Manager::getTimer() {
     return &timer;
 }
 
+
 void Manager::CreateEntities() {
+
+
+	char readBuffer[1024];
+	FILE* fp;
+	fopen_s(&fp, entitiesFile, "rb");
+	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+	rapidjson::Document doc;
+	doc.ParseStream(is);
+	const rapidjson::Value& ballData = doc["BALL"];
+	fclose(fp);
+
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	float maxWidth = ballData["MAX_BALL_POSITION"].GetArray()[0].GetFloat();
+	float maxHeight = ballData["MAX_BALL_POSITION"].GetArray()[1].GetFloat();
+	float ballSpeed = ballData["MAX_BALL_SPEED"].GetFloat();
 
 	for (int i = 0; i < NUM_BALLS; i++) {
 		Entity* ballEntity = new Entity();
 
-		vec2 Position = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
-		vec2 Velocity = vec2(CORE_FRand(
-			-MAX_BALL_SPEED, 
-			+MAX_BALL_SPEED),
-			CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED));
+		vec2 Position = vec2(CORE_FRand(0.0, maxWidth), CORE_FRand(0.0, maxHeight));
+		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, +ballSpeed), CORE_FRand(-ballSpeed, +ballSpeed));
 
 		float radius = 16.f;
 
@@ -69,7 +85,7 @@ void Manager::CreateEntities() {
 		movementComponent->entityOwner = ballEntity;
 
 		RenderComponent* renderComponent = new RenderComponent();
-		renderComponent->SetGfx(renderEngine->GetSprite()->getTexsmallball());
+		renderComponent->SetGfx(CORE_LoadPNG(ballData["SPRITE"].GetString(), false));
 		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
