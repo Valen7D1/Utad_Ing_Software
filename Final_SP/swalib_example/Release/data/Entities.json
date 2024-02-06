@@ -1,0 +1,14 @@
+{
+  "BALL": 
+      {
+        "MAX_BALL_POSITION": [ 640.0, 480.0 ],
+    
+        "MAX_BALL_SPEED": 480.0,
+    
+        "RADIUS" : 16.0,
+    
+        "SPRITE" : "data/tyrian_ball.png"
+      }
+  
+    
+}
