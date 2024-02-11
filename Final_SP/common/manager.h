@@ -8,6 +8,8 @@ const float GRAVITY = -150.f;
 const float FLOOR = 100.f;
 
 class Entity;
+class vec2;
+//class GLuint;
 
 class Manager {
 private:
@@ -25,6 +27,8 @@ public:
     Timer* getTimer();
 
     void CreateEntities();
+    //void CreateBall(vec2 Velocity, vec2 Position, float radius, GLuint gfx);
+
     void CreatePlayers();
     void CreateGame();
 

@@ -40,19 +40,16 @@ std::vector<Entity*> Manager::getPlayers() {
 // update for all game objects
 void Manager::update()
 {   
-    /*for (Entity* entity : entities) {
-        entity->Slot();
-    }*/
-
+	std::vector<Entity*> tempEntities;
 
 	for (auto it = entities.begin(); it != entities.end(); )
 	{
 		Entity* entity = *it;
 
 		if (entity->toBeDeleted)
-		{
+		{	
 			it = entities.erase(it);
-			delete entity;
+			tempEntities.push_back(entity);
 		}
 		else
 		{
@@ -62,10 +59,60 @@ void Manager::update()
 	}
 
 
+	for (auto it = tempEntities.begin(); it != tempEntities.end(); )
+	{
+		Entity* entity = *it;
+		ColisionComponent* colisionComponent = entity->FindComponent<ColisionComponent>();
+
+			vec2 Velocity = vec2(
+				colisionComponent->GetVelocity().x,
+				-colisionComponent->GetVelocity().y);
+
+			vec2 Position = colisionComponent->GetPosition();
+
+			float radius = colisionComponent->GetRadius();
+
+			if (colisionComponent->GetRadius() > 8.f)
+			{
+
+				for (int i = 0; i < 2; i++) {
+					Entity* ballEntity = new Entity();
+					Velocity.x *= -1;
+					ColisionComponent* colisionComponent = new ColisionComponent();
+					colisionComponent->SetPosition(Position);
+					colisionComponent->SetVelocity(Velocity);
+					colisionComponent->SetRadius(radius / 2);
+					colisionComponent->entityOwner = ballEntity;
+
+					MovementComponent* movementComponent = new MovementComponent();
+					movementComponent->SetPosition(Position);
+					movementComponent->SetVelocity(Velocity);
+					movementComponent->entityOwner = ballEntity;
+
+					RenderComponent* renderComponent = new RenderComponent();
+					renderComponent->SetGfx(entity->FindComponent<RenderComponent>()->GetId());
+					renderComponent->SetPosition(Position);
+					renderComponent->SetRadius(radius/2);
+					renderComponent->entityOwner = ballEntity;
+
+					ballEntity->AddComponent(movementComponent);
+					ballEntity->AddComponent(colisionComponent);
+					ballEntity->AddComponent(renderComponent);
+
+					entities.push_back(ballEntity);
+				}
+
+			}
+			it = tempEntities.erase(it);
+			delete entity;
+
+	}
+
 	for (Entity* player : players) {
 		player->Slot();
 	}
 }
+
 
 // getter for timer
 Timer* Manager::getTimer() 
@@ -152,7 +199,7 @@ void Manager::CreateEntities()
 		vec2 Velocity = vec2(-100,0);
 		vec2 Position = vec2(250, 350);
 
-		float radius = 16.f;
+		float radius = 32.f;
 
 		ColisionComponent* colisionComponent = new ColisionComponent();
 		colisionComponent->SetPosition(Position);
