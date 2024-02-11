@@ -8,6 +8,7 @@
 #include "colisionComponent.h"
 #include "playerMovementComponent.h"
 #include "playerColisionComponent.h"
+#include "playerProjectileComponent.h"
 #include "renderComponent.h"
 #include <iostream>
 #include "../swalib_example/rapidjson/document.h"
@@ -89,9 +90,18 @@ void Manager::CreatePlayers()
 	renderComponent->SetRadius(playerRadius);
 	renderComponent->entityOwner = playerEntity;
 
+	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
+	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
+	playerProjectileComponent->SetVelocity(300);
+	playerProjectileComponent->SetRadius(playerRadius);
+	playerProjectileComponent->SetClipSize(6);
+	playerProjectileComponent->SetPlayerPosition(playerPosition);
+	playerProjectileComponent->entityOwner = playerEntity;
+
 	playerEntity->AddComponent(playerColision);
 	playerEntity->AddComponent(playerMovement);
 	playerEntity->AddComponent(renderComponent);
+	playerEntity->AddComponent(playerProjectileComponent);
 
 	players.push_back(playerEntity);
 
