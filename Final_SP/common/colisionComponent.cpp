@@ -16,23 +16,7 @@ void ColisionComponent::Slot()
 	// call to entity vector for collision checking
 	Manager* manager = manager->getInstance();
 	std::vector<Entity*> entities = manager->getEntities();
-	// get movement component from owner for movement if collided
-	MovementComponent* movementComponent = entityOwner->FindComponent<MovementComponent>();
 
-	/*for (Entity* otherEntity : entities)
-	{
-		if (entityOwner != otherEntity)
-		{
-			otherEntityCollision = otherEntity->FindComponent<ColisionComponent>();
-			float limit2 = (radius + otherEntityCollision->GetRadius()) * (radius + otherEntityCollision->GetRadius());
-
-			if (vlen2(newPos - otherEntityCollision->GetPosition()) <= limit2) {
-				colliding = true;
-				entityColliding = otherEntity;
-				break;
-			}
-		}
-	}*/
 
 	if (!colliding) {
 		currentPos = newPos;
