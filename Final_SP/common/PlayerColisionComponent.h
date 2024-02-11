@@ -14,12 +14,10 @@ public:
 
 	void SetPosition(vec2 newPosition) { m_position = newPosition; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
-	void SetHitPoints(float newHitPoints) { m_hitPoints = newHitPoints; }
+	void SetHitPoints(unsigned int newHitPoints) { m_hitPoints = newHitPoints; }
 
 	vec2 GetPosition() { return m_position; };
 	float GetRadius() { return m_radius; };
-	float GetHitPoints() { return m_hitPoints; };
-
-
+	unsigned int GetHitPoints() { return m_hitPoints; };
 
 };

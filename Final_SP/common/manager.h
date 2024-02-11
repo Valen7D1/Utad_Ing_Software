@@ -16,14 +16,15 @@ private:
     static Manager* instance;
     Timer timer;
     std::vector<Entity*> entities;    
-    std::vector<Entity*> players;
+    Entity* player; // in case you want coop
+
 
 public:
     //singleton
     static Manager* getInstance();
     //getters
-    std::vector<Entity*> Manager::getEntities();
-    std::vector<Entity*> Manager::getPlayers();
+    std::vector<Entity*> getEntities();
+    Entity* getPlayer();
     Timer* getTimer();
 
     void CreateEntities();

@@ -33,8 +33,8 @@ std::vector<Entity*> Manager::getEntities() {
     return entities;
 }
 
-std::vector<Entity*> Manager::getPlayers() {
-	return players;
+Entity* Manager::getPlayer() {
+	return player;
 }
 
 // update for all game objects
@@ -108,9 +108,7 @@ void Manager::update()
 
 	}
 
-	for (Entity* player : players) {
-		player->Slot();
-	}
+	player->Slot();
 }
 
 
@@ -130,8 +128,7 @@ void Manager::CreateGame()
 
 void Manager::CreatePlayers()
 {
-	Entity* playerEntity = new Entity();
-
+	player = new Entity();
 	vec2 playerPosition = vec2(320, 100);
 	float playerRadius = 16;
 	float playerVelocity = 200;
@@ -139,19 +136,19 @@ void Manager::CreatePlayers()
 	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
 	playerColision->SetPosition(playerPosition);
 	playerColision->SetRadius(playerRadius);
-	playerColision->entityOwner = playerEntity;
+	playerColision->entityOwner = player;
 
 	PlayerMovementComponent* playerMovement = new PlayerMovementComponent();
 	playerMovement->SetPosition(playerPosition);
 	playerMovement->SetVelocity(playerVelocity);
 	playerMovement->SetRadius(playerRadius);
-	playerMovement->entityOwner = playerEntity;
+	playerMovement->entityOwner = player;
 
 	RenderComponent* renderComponent = new RenderComponent();
 	renderComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
 	renderComponent->SetPosition(playerPosition);
 	renderComponent->SetRadius(playerRadius);
-	renderComponent->entityOwner = playerEntity;
+	renderComponent->entityOwner = player;
 
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
 	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
@@ -159,15 +156,12 @@ void Manager::CreatePlayers()
 	playerProjectileComponent->SetRadius(playerRadius);
 	playerProjectileComponent->SetClipSize(6);
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
-	playerProjectileComponent->entityOwner = playerEntity;
+	playerProjectileComponent->entityOwner = player;
 
-	playerEntity->AddComponent(playerColision);
-	playerEntity->AddComponent(playerMovement);
-	playerEntity->AddComponent(renderComponent);
-	playerEntity->AddComponent(playerProjectileComponent);
-
-	players.push_back(playerEntity);
-
+	player->AddComponent(playerColision);
+	player->AddComponent(playerMovement);
+	player->AddComponent(renderComponent);
+	player->AddComponent(playerProjectileComponent);
 }
 
 
