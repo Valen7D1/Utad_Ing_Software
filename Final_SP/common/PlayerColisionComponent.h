@@ -12,6 +12,8 @@ public:
 	virtual void Slot() override; 
 	virtual void  ReceiveMessage(Message* msg) override;
 
+	void HitControl();
+
 	void SetPosition(vec2 newPosition) { m_position = newPosition; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
 	void SetHitPoints(unsigned int newHitPoints) { m_hitPoints = newHitPoints; }
