@@ -2,6 +2,7 @@
 #include "manager.h"
 #include "entity.h"
 #include "renderComponent.h"
+#include "playerProjectileComponent.h"
 
 
 RenderEngine* RenderEngine::instance = nullptr;
@@ -64,7 +65,19 @@ void RenderEngine::RenderObjects(){
 	{
 		RenderComponent* renderComponent = player->FindComponent<RenderComponent>();
 		renderComponent->Slot();
+
+		PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
+		std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
+		for (Entity* projectile : projectiles)
+		{
+			RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
+			renderComponent->Slot();
+		}
 	}
+
+
+
+
 }
 
 
