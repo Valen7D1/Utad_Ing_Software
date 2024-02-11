@@ -56,3 +56,5 @@ double Timer::GetTotalTime() { return totalTime; }
 double Timer::GetTime_fps() { return time_fps; }
 
 double Timer::GetTotalFrameTime() { return totalFrameTime; }
+
+double Timer::GetElapsed() { return elapsedTime; }

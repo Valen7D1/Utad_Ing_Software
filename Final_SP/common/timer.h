@@ -15,6 +15,7 @@ public:
     double GetTotalTime();
     double GetTime_fps();
     double GetTotalFrameTime();
+    double GetElapsed();
 
     void InitTimer(); // get starting values for frequency and actual time
     bool ProcessSlots(); // checker for logic loop
