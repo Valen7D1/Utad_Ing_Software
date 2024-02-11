@@ -1,25 +1,2 @@
-﻿  colisionComponent.cpp
-  manager.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(17,56): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(21,32): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(28,53): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(39,31): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-  gameLogic.cpp
-  playerColisionComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(17,56): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(21,32): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-  playerMovementComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(17,56): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.h(21,32): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-  playerProjectileComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(28,53): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(39,31): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-  projectileColisionComponent.cpp
-  projectileMovementComponent.cpp
-  movementComponent.cpp
-  render.cpp
-  renderEngine.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(28,53): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(39,31): warning C4244: 'return': conversion from 'unsigned int' to 'float', possible loss of data
-  Generating Code...
+﻿  playerColisionComponent.cpp
   swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\Debug\swalib_example.exe
