@@ -33,5 +33,10 @@ void PlayerMovementComponent::Slot()
 
 void PlayerMovementComponent::ReceiveMessage(Message* msg) 
 { 
-
+	//if new position
+	NewPositionMessage* newPositionMessage = dynamic_cast<NewPositionMessage*>(msg);
+	if (newPositionMessage)
+	{
+		m_position = newPositionMessage->newPos;
+	}
 }

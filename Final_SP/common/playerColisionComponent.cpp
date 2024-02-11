@@ -8,4 +8,12 @@
 
 void PlayerColisionComponent::Slot() { }
 
-void PlayerColisionComponent::ReceiveMessage(Message* msg) { }
+void PlayerColisionComponent::ReceiveMessage(Message* msg) 
+{ 
+	//if new position
+	NewPositionMessage* newPositionMessage = dynamic_cast<NewPositionMessage*>(msg);
+	if (newPositionMessage)
+	{
+		m_position = newPositionMessage->newPos;
+	}
+}
