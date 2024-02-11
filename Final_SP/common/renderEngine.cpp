@@ -51,7 +51,7 @@ void RenderEngine::RenderObjects(){
 	Manager* manager = Manager::getInstance();
 
 	std::vector<Entity*> entities = manager->getEntities();
-	std::vector<Entity*> players = manager->getPlayers();
+	Entity* player = manager->getPlayer();
 
 	// for every object render it using its location and radius values
 	// maybe get a get all objects?
@@ -61,22 +61,16 @@ void RenderEngine::RenderObjects(){
 		renderComponent->Slot();
 	}
 
-	for (Entity* player : players)
+	RenderComponent* renderComponent = player->FindComponent<RenderComponent>();
+	renderComponent->Slot();
+
+	PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
+	std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
+	for (Entity* projectile : projectiles)
 	{
-		RenderComponent* renderComponent = player->FindComponent<RenderComponent>();
+		RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
 		renderComponent->Slot();
-
-		PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
-		std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
-		for (Entity* projectile : projectiles)
-		{
-			RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
-			renderComponent->Slot();
-		}
 	}
-
-
-
 
 }
 
