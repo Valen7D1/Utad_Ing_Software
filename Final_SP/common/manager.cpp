@@ -64,12 +64,9 @@ void Manager::update()
 		Entity* entity = *it;
 		ColisionComponent* colisionComponent = entity->FindComponent<ColisionComponent>();
 
-			vec2 Velocity = vec2(
-				colisionComponent->GetVelocity().x,
-				-colisionComponent->GetVelocity().y);
+			vec2 Velocity = vec2(colisionComponent->GetVelocity().x, 170);
 
 			vec2 Position = colisionComponent->GetPosition();
-
 			float radius = colisionComponent->GetRadius();
 
 			if (colisionComponent->GetRadius() > 8.f)
