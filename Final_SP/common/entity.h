@@ -22,6 +22,8 @@ public:
 	void Slot(); // for each component call slot method
 	void SendMsg(Message* msg); //for each component call to receive msg
 
+	bool toBeDeleted = false;
+
 };
 
 
