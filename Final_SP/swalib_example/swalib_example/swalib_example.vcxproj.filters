@@ -31,6 +31,24 @@
     <Filter Include="Header Files\Game\Controller">
       <UniqueIdentifier>{4698f87e-a4b9-4373-bad7-ebdc313d4e22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Components\Player">
+      <UniqueIdentifier>{8e1bd54b-ebf3-48fb-b888-905905dec892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Components\Ball">
+      <UniqueIdentifier>{b1fdff41-426a-4c3d-84a3-5175fb78b194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Component\Player">
+      <UniqueIdentifier>{3ab2fbca-1e7c-4176-9895-449559ccb061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Component\Ball">
+      <UniqueIdentifier>{6b6bd768-f703-4e1c-aa78-16291ff2d2c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Component\Projectile">
+      <UniqueIdentifier>{aca0c109-9500-430d-a4fe-fc2a55df875d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Components\Projectile">
+      <UniqueIdentifier>{d0033fe1-4b9f-4481-8844-9917ebb74c29}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -48,9 +66,6 @@
     <ClCompile Include="..\..\common\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\ball.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\example.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -63,13 +78,7 @@
     <ClCompile Include="..\..\common\renderEngine.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\colisionComponent.cpp">
-      <Filter>Source Files\Game\Component</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\entity.cpp">
-      <Filter>Source Files\Game\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\movementComponent.cpp">
       <Filter>Source Files\Game\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\renderComponent.cpp">
@@ -83,6 +92,27 @@
     </ClCompile>
     <ClCompile Include="..\..\common\message.cpp">
       <Filter>Source Files\Game\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\playerColisionComponent.cpp">
+      <Filter>Source Files\Game\Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\playerMovementComponent.cpp">
+      <Filter>Source Files\Game\Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\colisionComponent.cpp">
+      <Filter>Source Files\Game\Component\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\movementComponent.cpp">
+      <Filter>Source Files\Game\Component\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\projectileMovementComponent.cpp">
+      <Filter>Source Files\Game\Component\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\projectileColisionComponent.cpp">
+      <Filter>Source Files\Game\Component\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\playerProjectileComponent.cpp">
+      <Filter>Source Files\Game\Component\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,9 +134,6 @@
     <ClInclude Include="..\..\common\vector2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\ball.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\gameLogic.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -116,16 +143,7 @@
     <ClInclude Include="..\..\common\renderEngine.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\colisionComponent.h">
-      <Filter>Header Files\Game\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\component.h">
-      <Filter>Header Files\Game\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\movementComponent.h">
-      <Filter>Header Files\Game\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\renderComponent.h">
       <Filter>Header Files\Game\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\entity.h">
@@ -139,6 +157,30 @@
     </ClInclude>
     <ClInclude Include="..\..\common\message.h">
       <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\colisionComponent.h">
+      <Filter>Header Files\Game\Components\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\movementComponent.h">
+      <Filter>Header Files\Game\Components\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\PlayerColisionComponent.h">
+      <Filter>Header Files\Game\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\playerMovementComponent.h">
+      <Filter>Header Files\Game\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\renderComponent.h">
+      <Filter>Header Files\Game\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\projectileMovementComponent.h">
+      <Filter>Header Files\Game\Components\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\projectileColisionComponent.h">
+      <Filter>Header Files\Game\Components\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\playerProjectileComponent.h">
+      <Filter>Header Files\Game\Components\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

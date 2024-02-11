@@ -120,7 +120,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\common\ball.cpp" />
     <ClCompile Include="..\..\common\colisionComponent.cpp" />
     <ClCompile Include="..\..\common\entity.cpp" />
     <ClCompile Include="..\..\common\manager.cpp" />
@@ -130,6 +129,11 @@
     <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\message.cpp" />
+    <ClCompile Include="..\..\common\playerColisionComponent.cpp" />
+    <ClCompile Include="..\..\common\playerMovementComponent.cpp" />
+    <ClCompile Include="..\..\common\playerProjectileComponent.cpp" />
+    <ClCompile Include="..\..\common\projectileColisionComponent.cpp" />
+    <ClCompile Include="..\..\common\projectileMovementComponent.cpp" />
     <ClCompile Include="..\..\common\timer.cpp" />
     <ClCompile Include="..\..\common\movementComponent.cpp" />
     <ClCompile Include="..\..\common\render.cpp" />
@@ -139,7 +143,6 @@
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\common\ball.h" />
     <ClInclude Include="..\..\common\colisionComponent.h" />
     <ClInclude Include="..\..\common\component.h" />
     <ClInclude Include="..\..\common\entity.h" />
@@ -149,6 +152,11 @@
     <ClInclude Include="..\..\common\gameLogic.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\message.h" />
+    <ClInclude Include="..\..\common\PlayerColisionComponent.h" />
+    <ClInclude Include="..\..\common\playerMovementComponent.h" />
+    <ClInclude Include="..\..\common\playerProjectileComponent.h" />
+    <ClInclude Include="..\..\common\projectileColisionComponent.h" />
+    <ClInclude Include="..\..\common\projectileMovementComponent.h" />
     <ClInclude Include="..\..\common\timer.h" />
     <ClInclude Include="..\..\common\movementComponent.h" />
     <ClInclude Include="..\..\common\render.h" />
