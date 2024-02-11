@@ -5,6 +5,7 @@
 #include "manager.h"
 #include "message.h"
 
+// we need to apply mrua
 
 void MovementComponent::Slot() 
 {
@@ -13,8 +14,6 @@ void MovementComponent::Slot()
 	// its redundant because msg will call to movement position but doesnt matter
 	entityOwner->SendMsg(new NewPositionMessage(pos));
 
-	//entityOwner->FindComponent<ColisionComponent>()->SetPosition(pos);
-	//entityOwner->FindComponent<RenderComponent>()->SetPosition(pos);
 }
 
 void MovementComponent::ReceiveMessage(Message* msg) 
@@ -41,4 +40,12 @@ void MovementComponent::ReceiveMessage(Message* msg)
 	{
 		pos = newPositionMessage->newPos;
 	}
+
+	// new velocity
+	NewVelocityMessage* newVelocityMessage = dynamic_cast<NewVelocityMessage*>(msg);
+	if (newVelocityMessage)
+	{
+		vel = newVelocityMessage->newVel;
+	}
+
 }

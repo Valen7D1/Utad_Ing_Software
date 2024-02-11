@@ -6,6 +6,8 @@
 #include "renderEngine.h"
 #include "movementComponent.h"
 #include "colisionComponent.h"
+#include "playerMovementComponent.h"
+#include "playerColisionComponent.h"
 #include "renderComponent.h"
 #include <iostream>
 #include "../swalib_example/rapidjson/document.h"
@@ -29,6 +31,10 @@ std::vector<Entity*> Manager::getEntities() {
     return entities;
 }
 
+std::vector<Entity*> Manager::getPlayers() {
+	return players;
+}
+
 // update for all game objects
 void Manager::update() const
 {   
@@ -38,15 +44,62 @@ void Manager::update() const
     for (Entity* entity : entities) {
         entity->Slot();
     }
+
+	for (Entity* player : players) {
+		player->Slot();
+	}
 }
 
 // getter for timer
-Timer* Manager::getTimer() {
+Timer* Manager::getTimer() 
+{
     return &timer;
 }
 
 
-void Manager::CreateEntities() {
+void Manager::CreateGame() 
+{
+	CreatePlayers();
+	CreateEntities();
+}
+
+
+void Manager::CreatePlayers()
+{
+	Entity* playerEntity = new Entity();
+
+	vec2 playerPosition = vec2(320, 100);
+	float playerRadius = 16;
+	float playerVelocity = 200;
+
+	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
+	playerColision->SetPosition(playerPosition);
+	playerColision->SetRadius(playerRadius);
+	playerColision->entityOwner = playerEntity;
+
+	PlayerMovementComponent* playerMovement = new PlayerMovementComponent();
+	playerMovement->SetPosition(playerPosition);
+	playerMovement->SetVelocity(playerVelocity);
+	playerMovement->SetRadius(playerRadius);
+	playerMovement->entityOwner = playerEntity;
+
+	RenderComponent* renderComponent = new RenderComponent();
+	renderComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
+	renderComponent->SetPosition(playerPosition);
+	renderComponent->SetRadius(playerRadius);
+	renderComponent->entityOwner = playerEntity;
+
+	playerEntity->AddComponent(playerColision);
+	playerEntity->AddComponent(playerMovement);
+	playerEntity->AddComponent(renderComponent);
+
+	players.push_back(playerEntity);
+
+}
+
+
+void Manager::CreateEntities() 
+{
 
 
 	char readBuffer[1024];
@@ -56,7 +109,7 @@ void Manager::CreateEntities() {
 	rapidjson::Document doc;
 	doc.ParseStream(is);
 	const rapidjson::Value& ballData = doc["BALL"];
-	fclose(fp);
+
 
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
@@ -68,8 +121,10 @@ void Manager::CreateEntities() {
 	for (int i = 0; i < NUM_BALLS; i++) {
 		Entity* ballEntity = new Entity();
 
-		vec2 Position = vec2(CORE_FRand(0.0, maxWidth), CORE_FRand(0.0, maxHeight));
-		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, +ballSpeed), CORE_FRand(-ballSpeed, +ballSpeed));
+		//vec2 Position = vec2(CORE_FRand(0.0, maxWidth), CORE_FRand(0.0, maxHeight));
+		//vec2 Velocity = vec2(CORE_FRand(-ballSpeed, +ballSpeed), CORE_FRand(-ballSpeed, +ballSpeed));
+		vec2 Velocity = vec2(-100,0);
+		vec2 Position = vec2(250, 350);
 
 		float radius = 16.f;
 

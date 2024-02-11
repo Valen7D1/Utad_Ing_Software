@@ -50,11 +50,19 @@ void RenderEngine::RenderObjects(){
 	Manager* manager = Manager::getInstance();
 
 	std::vector<Entity*> entities = manager->getEntities();
+	std::vector<Entity*> players = manager->getPlayers();
 
-	// for every ball render it using its location and radius values
+	// for every object render it using its location and radius values
+	// maybe get a get all objects?
 	for (Entity* entity : entities) 
 	{
 		RenderComponent * renderComponent = entity->FindComponent<RenderComponent>();
+		renderComponent->Slot();
+	}
+
+	for (Entity* player : players)
+	{
+		RenderComponent* renderComponent = player->FindComponent<RenderComponent>();
 		renderComponent->Slot();
 	}
 }
@@ -65,23 +73,11 @@ void RenderEngine::RenderText()
 	Manager* manager = Manager::getInstance();
 	// get timer
 	Timer* m_timer = manager->getTimer();
-	// Text
-	FONT_DrawString(vec2(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD");
-
-	// Time Passed
-	char currentTimeString[50] = { 0 };
-	snprintf(currentTimeString, 50, "TIME:%f", m_timer->GetTotalTime());
-	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 16), currentTimeString);
 
 	// Frames per second
 	char fpsString[50] = { 0 };
 	snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
 	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
-
-	// Time Passed (game logic only)
-	char tickString[50] = { 0 };
-	snprintf(tickString, 50, "TICK:%f", m_timer->GetTotalFrameTime());
-	FONT_DrawString(vec2(SCR_WIDTH - 128, SCR_HEIGHT - 40), tickString);
 }
 
 Sprite* RenderEngine::GetSprite() { return &sprite; }

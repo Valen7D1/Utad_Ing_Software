@@ -40,3 +40,11 @@ public:
     NewPositionMessage(vec2 _newPos) : newPos(_newPos) {}
     vec2 newPos;
 };
+
+// new position message
+class NewVelocityMessage : public Message
+{
+public:
+    NewVelocityMessage(vec2 _newVel) : newVel(_newVel) {}
+    vec2 newVel;
+};

@@ -4,7 +4,6 @@
 #include "sys.h"
 #include "font.h"
 //my includes
-#include "ball.h"
 #include "gameLogic.h"
 #include "manager.h"
 #include "renderEngine.h"
@@ -42,7 +41,7 @@ void LogicInitialization()
 {
 	// initialize every ball in balls from manager
 	m_timer->InitTimer();
-	manager->CreateEntities();
+	manager->CreateGame();
 }
 
 

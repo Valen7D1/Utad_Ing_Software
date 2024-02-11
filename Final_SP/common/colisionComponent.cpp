@@ -19,7 +19,7 @@ void ColisionComponent::Slot()
 	// get movement component from owner for movement if collided
 	MovementComponent* movementComponent = entityOwner->FindComponent<MovementComponent>();
 
-	for (Entity* otherEntity : entities)
+	/*for (Entity* otherEntity : entities)
 	{
 		if (entityOwner != otherEntity)
 		{
@@ -32,7 +32,7 @@ void ColisionComponent::Slot()
 				break;
 			}
 		}
-	}
+	}*/
 
 	if (!colliding) {
 		currentPos = newPos;
@@ -43,33 +43,22 @@ void ColisionComponent::Slot()
 		entityOwner->SendMsg(new EntCollisionMessage(currentPos));
 		// same but only so that it changes direction
 		entityColliding->SendMsg(new EntCollisionMessage(otherEntityCollision->GetPosition()));
-
-		// call to render / movement to set the correct position (current instead of new)
-		//entityOwner->FindComponent<RenderComponent>()->SetPosition(currentPos);
-		//entityOwner->FindComponent<MovementComponent>()->SetPosition(currentPos);
-
-		// reverse velocity for rebound
-		//vel = vel * -1.f;
-
-		//movementComponent->SetVelocity(movementComponent->GetVelocity() * -1.f);
-
-		// same for collided entity in collision and movement
-		//otherEntityCollision->SetVelocity(otherEntityCollision->GetVelocity()* - 1.f);
-
-		//MovementComponent* otherEntityMovement = entityColliding->FindComponent<MovementComponent>();
-		//otherEntityMovement->SetVelocity(otherEntityMovement->GetVelocity() * -1.f);
 	}
 
+	bool marginCollided = false;
 	// if x2 collided with margins
-	if ((currentPos.x > SCR_WIDTH) || (currentPos.x < 0)) {
+	if ((currentPos.x > (SCR_WIDTH-radius/2)) || (currentPos.x < radius / 2)) {
 		entityOwner->SendMsg(new LimitWorldCollMessage(vec2( -1, 1), currentPos));
-		//vel = vec2(vel.x * -1, vel.y);
-		//movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x * -1.f, movementComponent->GetVelocity().y));
+		marginCollided = true;
 	}
-	if ((currentPos.y > SCR_HEIGHT) || (currentPos.y < 0)) {
+	if ((currentPos.y > SCR_HEIGHT) || (currentPos.y < FLOOR)) {
 		entityOwner->SendMsg(new LimitWorldCollMessage(vec2( 1, -1), currentPos));
-		//vel = vec2(vel.x, vel.y * -1);
-		//movementComponent->SetVelocity(vec2(movementComponent->GetVelocity().x, movementComponent->GetVelocity().y * -1.f));
+		marginCollided = true;
+	}
+	if (!marginCollided)
+	{
+		float addedVel = GRAVITY* manager->getTimer()->GetFrameTime();
+		entityOwner->SendMsg(new NewVelocityMessage(vec2(vel.x, vel.y+addedVel)));
 	}
 }
 
@@ -97,5 +86,12 @@ void ColisionComponent::ReceiveMessage(Message* msg)
 	if (newPositionMessage)
 	{
 		newPos = newPositionMessage->newPos;
+	}
+
+	// new velocity
+	NewVelocityMessage* newVelocityMessage = dynamic_cast<NewVelocityMessage*>(msg);
+	if (newVelocityMessage)
+	{
+		vel = newVelocityMessage->newVel;
 	}
 }
