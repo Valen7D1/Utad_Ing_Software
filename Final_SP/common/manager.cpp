@@ -11,6 +11,7 @@
 #include "playerProjectileComponent.h"
 #include "renderComponent.h"
 #include <iostream>
+#include <vector>
 #include "../swalib_example/rapidjson/document.h"
 #include "../swalib_example/rapidjson/filereadstream.h"
 
@@ -37,14 +38,29 @@ std::vector<Entity*> Manager::getPlayers() {
 }
 
 // update for all game objects
-void Manager::update() const
+void Manager::update()
 {   
-    Manager* manager = Manager::getInstance();
-    std::vector<Entity*> entities = manager->getEntities();
-
-    for (Entity* entity : entities) {
+    /*for (Entity* entity : entities) {
         entity->Slot();
-    }
+    }*/
+
+
+	for (auto it = entities.begin(); it != entities.end(); )
+	{
+		Entity* entity = *it;
+
+		if (entity->toBeDeleted)
+		{
+			it = entities.erase(it);
+			delete entity;
+		}
+		else
+		{
+			entity->Slot();
+			++it;
+		}
+	}
+
 
 	for (Entity* player : players) {
 		player->Slot();

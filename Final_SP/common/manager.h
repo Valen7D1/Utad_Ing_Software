@@ -13,7 +13,7 @@ class Manager {
 private:
     static Manager* instance;
     Timer timer;
-    std::vector<Entity*> entities;
+    std::vector<Entity*> entities;    
     std::vector<Entity*> players;
 
 public:
@@ -28,7 +28,7 @@ public:
     void CreatePlayers();
     void CreateGame();
 
-    void update() const;
+    void update();
 
 public:
     const char* entitiesFile = "data/Entities.json";

@@ -13,6 +13,7 @@ void PlayerProjectileComponent::Slot()
 	Manager* manager = Manager::getInstance();
 	double elapsed = manager->getTimer()->GetElapsed();
 
+
 	if (GetKeyState('X') & 0x8000)
 	{
 		if (m_clipSize > 0 && timeLimit <= 0)
