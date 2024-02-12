@@ -81,9 +81,6 @@
     <ClCompile Include="..\..\common\entity.cpp">
       <Filter>Source Files\Game\Component</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\renderComponent.cpp">
-      <Filter>Source Files\Game\Component</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\manager.cpp">
       <Filter>Source Files\Game\Controller</Filter>
     </ClCompile>
@@ -112,6 +109,12 @@
       <Filter>Source Files\Game\Component\Projectile</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\playerProjectileComponent.cpp">
+      <Filter>Source Files\Game\Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\renderComponent.cpp">
+      <Filter>Source Files\Game\Component\Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\playerRenderComponent.cpp">
       <Filter>Source Files\Game\Component\Player</Filter>
     </ClCompile>
   </ItemGroup>
@@ -170,9 +173,6 @@
     <ClInclude Include="..\..\common\playerMovementComponent.h">
       <Filter>Header Files\Game\Components\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\renderComponent.h">
-      <Filter>Header Files\Game\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\projectileMovementComponent.h">
       <Filter>Header Files\Game\Components\Projectile</Filter>
     </ClInclude>
@@ -180,6 +180,12 @@
       <Filter>Header Files\Game\Components\Projectile</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\playerProjectileComponent.h">
+      <Filter>Header Files\Game\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\renderComponent.h">
+      <Filter>Header Files\Game\Components\Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\playerRenderComponent.h">
       <Filter>Header Files\Game\Components\Player</Filter>
     </ClInclude>
   </ItemGroup>

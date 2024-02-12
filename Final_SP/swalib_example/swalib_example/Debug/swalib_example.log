@@ -1,2 +1,3 @@
-﻿  playerColisionComponent.cpp
+﻿  playerRenderComponent.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.cpp(13,19): warning C4018: '<': signed/unsigned mismatch
   swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\Debug\swalib_example.exe

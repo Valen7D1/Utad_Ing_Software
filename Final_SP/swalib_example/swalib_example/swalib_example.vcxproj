@@ -132,6 +132,7 @@
     <ClCompile Include="..\..\common\playerColisionComponent.cpp" />
     <ClCompile Include="..\..\common\playerMovementComponent.cpp" />
     <ClCompile Include="..\..\common\playerProjectileComponent.cpp" />
+    <ClCompile Include="..\..\common\playerRenderComponent.cpp" />
     <ClCompile Include="..\..\common\projectileColisionComponent.cpp" />
     <ClCompile Include="..\..\common\projectileMovementComponent.cpp" />
     <ClCompile Include="..\..\common\timer.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="..\..\common\PlayerColisionComponent.h" />
     <ClInclude Include="..\..\common\playerMovementComponent.h" />
     <ClInclude Include="..\..\common\playerProjectileComponent.h" />
+    <ClInclude Include="..\..\common\playerRenderComponent.h" />
     <ClInclude Include="..\..\common\projectileColisionComponent.h" />
     <ClInclude Include="..\..\common\projectileMovementComponent.h" />
     <ClInclude Include="..\..\common\timer.h" />
