@@ -22,10 +22,23 @@ void PlayerColisionComponent::Slot()
 
 		if (vlen2(m_position - otherEntityCollision->GetPosition()) <= limit2) {
 			otherEntityCollision->entityOwner->toBeDeleted = true;
+			HitControl();
 			break;
 		}
 	}
 }
+
+
+void PlayerColisionComponent::HitControl()
+{
+	--m_hitPoints;
+	if (m_hitPoints <= 0)
+	{
+		entityOwner->toBeDeleted = true;
+	}
+	entityOwner->SendMsg(new NewHitPointsMessage(m_hitPoints));
+}
+
 
 void PlayerColisionComponent::ReceiveMessage(Message* msg) 
 { 
@@ -34,5 +47,11 @@ void PlayerColisionComponent::ReceiveMessage(Message* msg)
 	if (newPositionMessage)
 	{
 		m_position = newPositionMessage->newPos;
+	}
+
+	NewHitPointsMessage* newHitPointsMessage = dynamic_cast<NewHitPointsMessage*>(msg);
+	if (newHitPointsMessage)
+	{
+		m_hitPoints = newHitPointsMessage->newHP;
 	}
 }

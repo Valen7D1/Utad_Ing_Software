@@ -9,6 +9,7 @@
 #include "playerMovementComponent.h"
 #include "playerColisionComponent.h"
 #include "playerProjectileComponent.h"
+#include "playerRenderComponent.h"
 #include "renderComponent.h"
 #include <iostream>
 #include <vector>
@@ -40,6 +41,15 @@ Entity* Manager::getPlayer() {
 // update for all game objects
 void Manager::update()
 {   
+	if (player->toBeDeleted)
+	{
+		//delete player;
+	}
+	else
+	{
+		player->Slot();
+	}
+
 	std::vector<Entity*> tempEntities;
 
 	for (auto it = entities.begin(); it != entities.end(); )
@@ -104,8 +114,6 @@ void Manager::update()
 			delete entity;
 
 	}
-
-	player->Slot();
 }
 
 
@@ -129,10 +137,12 @@ void Manager::CreatePlayers()
 	vec2 playerPosition = vec2(320, 100);
 	float playerRadius = 16;
 	float playerVelocity = 200;
+	unsigned int playerHP = 3;
 
 	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
 	playerColision->SetPosition(playerPosition);
 	playerColision->SetRadius(playerRadius);
+	playerColision->SetHitPoints(playerHP);
 	playerColision->entityOwner = player;
 
 	PlayerMovementComponent* playerMovement = new PlayerMovementComponent();
@@ -141,11 +151,13 @@ void Manager::CreatePlayers()
 	playerMovement->SetRadius(playerRadius);
 	playerMovement->entityOwner = player;
 
-	RenderComponent* renderComponent = new RenderComponent();
-	renderComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
-	renderComponent->SetPosition(playerPosition);
-	renderComponent->SetRadius(playerRadius);
-	renderComponent->entityOwner = player;
+	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
+	playerRender->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
+	playerRender->SetHpGfx(CORE_LoadPNG("data/heart.png", false));
+	playerRender->SetPosition(playerPosition);
+	playerRender->SetRadius(playerRadius);
+	playerRender->SetHitPoint(playerHP);
+	playerRender->entityOwner = player;
 
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
 	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
@@ -157,7 +169,7 @@ void Manager::CreatePlayers()
 
 	player->AddComponent(playerColision);
 	player->AddComponent(playerMovement);
-	player->AddComponent(renderComponent);
+	player->AddComponent(playerRender);
 	player->AddComponent(playerProjectileComponent);
 }
 

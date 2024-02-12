@@ -2,6 +2,8 @@
 #include "manager.h"
 #include "entity.h"
 #include "renderComponent.h"
+#include "playerRenderComponent.h"
+#include "PlayerColisionComponent.h"
 #include "playerProjectileComponent.h"
 
 
@@ -61,8 +63,8 @@ void RenderEngine::RenderObjects(){
 		renderComponent->Slot();
 	}
 
-	RenderComponent* renderComponent = player->FindComponent<RenderComponent>();
-	renderComponent->Slot();
+	PlayerRenderComponent* playerRenderComponent = player->FindComponent<PlayerRenderComponent>();
+	playerRenderComponent->Slot();
 
 	PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
 	std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
@@ -77,14 +79,14 @@ void RenderEngine::RenderObjects(){
 
 void RenderEngine::RenderText() 
 {
-	Manager* manager = Manager::getInstance();
-	// get timer
-	Timer* m_timer = manager->getTimer();
+	//Manager* manager = Manager::getInstance();
+	//// get timer
+	//Timer* m_timer = manager->getTimer();
 
-	// Frames per second
-	char fpsString[50] = { 0 };
-	snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
-	FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+	//// Frames per second
+	//char fpsString[50] = { 0 };
+	//snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
+	//FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
 }
 
 Sprite* RenderEngine::GetSprite() { return &sprite; }

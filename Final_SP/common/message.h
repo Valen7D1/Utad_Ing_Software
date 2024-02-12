@@ -48,3 +48,12 @@ public:
     NewVelocityMessage(vec2 _newVel) : newVel(_newVel) {}
     vec2 newVel;
 };
+
+// new position message
+class NewHitPointsMessage : public Message
+{
+public:
+    NewHitPointsMessage(unsigned int _newHP) : newHP(_newHP) {}
+    unsigned int newHP;
+};
+

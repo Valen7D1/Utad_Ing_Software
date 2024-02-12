@@ -28,3 +28,4 @@ Entity::~Entity()
 		delete component;
 	}
 }
+
