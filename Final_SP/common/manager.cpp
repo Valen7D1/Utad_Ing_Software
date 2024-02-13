@@ -152,7 +152,7 @@ void Manager::CreatePlayers()
 	playerMovement->entityOwner = player;
 
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
-	playerRender->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
+	playerRender->SetGfx(CORE_LoadPNG("data/playerB.png", false));
 	playerRender->SetHpGfx(CORE_LoadPNG("data/heart.png", false));
 	playerRender->SetPosition(playerPosition);
 	playerRender->SetRadius(playerRadius);
@@ -160,7 +160,7 @@ void Manager::CreatePlayers()
 	playerRender->entityOwner = player;
 
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
-	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/tyrian_ball.png", false));
+	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/arrow.png", false));
 	playerProjectileComponent->SetVelocity(300);
 	playerProjectileComponent->SetRadius(playerRadius);
 	playerProjectileComponent->SetClipSize(6);
