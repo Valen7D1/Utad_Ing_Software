@@ -57,3 +57,10 @@ public:
     unsigned int newHP;
 };
 
+class NewDirectionMessage : public Message
+{
+public:
+    NewDirectionMessage(unsigned int _newDir) : newDir(_newDir) {}
+    unsigned int newDir;
+};
+
