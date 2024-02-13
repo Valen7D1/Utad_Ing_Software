@@ -14,11 +14,13 @@ void PlayerMovementComponent::Slot()
 	{
 		m_position.x -= m_velocity * manager->getTimer()->GetFrameTime();
 		entityOwner->SendMsg(new NewPositionMessage(m_position));
+		entityOwner->SendMsg(new NewDirectionMessage(1));
 	}
 	if (GetKeyState('D') & 0x8000)
 	{
 		m_position.x += m_velocity * manager->getTimer()->GetFrameTime();
 		entityOwner->SendMsg(new NewPositionMessage(m_position));
+		entityOwner->SendMsg(new NewDirectionMessage(0));
 	}
 	if (GetKeyState('W') & 0x8000)
 	{

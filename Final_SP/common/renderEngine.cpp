@@ -52,7 +52,7 @@ void RenderEngine::RenderObjects(){
 	CORE_RenderCenteredSprite(vec2(SCR_WIDTH/2, SCR_HEIGHT/2), vec2(SCR_WIDTH, SCR_HEIGHT), GetSprite()->getTexbkg());
 
 
-	unsigned int distance = FLOOR/2;
+	float distance = FLOOR/2;
 	for (int i = 0; i<10; ++i)
 	{
 		CORE_RenderCenteredSprite(vec2(distance, FLOOR/2), vec2(FLOOR, FLOOR), CORE_LoadPNG("data/tile.png", true));

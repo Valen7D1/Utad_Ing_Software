@@ -16,7 +16,7 @@ void PlayerProjectileComponent::Slot()
 
 	if (GetKeyState('X') & 0x8000)
 	{
-		if (m_clipSize > 0 && timeLimit <= 0)
+		if (timeLimit <= 0)
 		{
 			CreateProjectile();
 			timeLimit = 1;
@@ -54,7 +54,7 @@ void PlayerProjectileComponent::CreateProjectile()
 
 	ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
 	projectileColision->SetPosition(m_playerPosition);
-	projectileColision->SetRadius(m_radius);
+	projectileColision->SetRadius(m_radius/2);
 	projectileColision->entityOwner = bulletEntity;
 
 	ProjectileMovementComponent* projectileMovement = new ProjectileMovementComponent();
@@ -65,7 +65,7 @@ void PlayerProjectileComponent::CreateProjectile()
 	RenderComponent* renderComponent = new RenderComponent();
 	renderComponent->SetGfx(m_gfx);
 	renderComponent->SetPosition(m_playerPosition);
-	renderComponent->SetRadius(m_radius);
+	renderComponent->SetRadius(m_radius/2);
 	renderComponent->entityOwner = bulletEntity;
 
 	bulletEntity->AddComponent(projectileColision);

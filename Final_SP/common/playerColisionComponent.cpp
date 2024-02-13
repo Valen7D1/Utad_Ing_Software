@@ -36,7 +36,11 @@ void PlayerColisionComponent::HitControl()
 	{
 		entityOwner->toBeDeleted = true;
 	}
-	entityOwner->SendMsg(new NewHitPointsMessage(m_hitPoints));
+	else 
+	{
+		entityOwner->SendMsg(new NewHitPointsMessage(m_hitPoints));
+		Manager::getInstance()->ResetLevel();
+	}
 }
 
 

@@ -7,7 +7,7 @@
 void PlayerRenderComponent::Slot()
 {
 	// render player
-	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_gfx);
+	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_gfx[m_direction]);
 
 	float heartLocation = m_radius+16;
 
@@ -41,4 +41,11 @@ void PlayerRenderComponent::ReceiveMessage(Message* msg)
 	{
 		m_hitPoints = newHitPointsMessage->newHP;
 	}
+
+	NewDirectionMessage* newDirectionMessage = dynamic_cast<NewDirectionMessage*>(msg);
+	if (newDirectionMessage)
+	{
+		m_direction = newDirectionMessage->newDir;
+	}
+
 }

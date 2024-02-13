@@ -13,7 +13,6 @@ private:
 	float m_radius;
 	float m_velocity;
 	vec2 m_playerPosition;
-	unsigned int m_clipSize;
 
 	void CreateProjectile();
 
@@ -25,7 +24,6 @@ public:
 	void SetVelocity(float newVelocity) { m_velocity = newVelocity; }
 	void SetGfx(GLuint newGfx) { m_gfx = newGfx; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
-	void SetClipSize(unsigned int newClipSize) { m_clipSize = newClipSize; }
 	void SetPlayerPosition(vec2 newPlayerPosition) { m_playerPosition = newPlayerPosition; };
 
 
@@ -36,7 +34,6 @@ public:
 	GLuint GetId() { return m_gfx; };
 
 	float GetRadius() { return m_radius; };
-	unsigned int GetClipSize() { return m_clipSize; };
 
 	std::vector<Entity*> getProjectiles() { return m_projectiles; }
 };
