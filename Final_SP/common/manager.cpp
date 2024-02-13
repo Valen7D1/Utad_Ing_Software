@@ -13,8 +13,6 @@
 #include "renderComponent.h"
 #include <iostream>
 #include <vector>
-#include "../swalib_example/rapidjson/document.h"
-#include "../swalib_example/rapidjson/filereadstream.h"
 
 // instantiate manager to nullptr
 Manager* Manager::instance = nullptr;
@@ -138,6 +136,11 @@ Timer* Manager::getTimer()
 
 void Manager::CreateGame() 
 {
+	char readBuffer[1024];
+	FILE* fp;
+	fopen_s(&fp, entitiesFile, "rb");
+	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
+	doc.ParseStream(is);
 	CreatePlayers();
 	CreateEntities();
 }
@@ -145,11 +148,13 @@ void Manager::CreateGame()
 
 void Manager::CreatePlayers()
 {
+	const rapidjson::Value& playerData = doc["Player"];
+
 	player = new Entity();
-	float playerRadius = 25;
-	vec2 playerPosition = vec2(320, FLOOR + playerRadius);
-	float playerVelocity = 200;
-	unsigned int playerHP = 3;
+	float playerRadius = playerData["radius"].GetFloat();
+	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius);
+	float playerVelocity = playerData["speed"].GetFloat();
+	unsigned int playerHP = playerData["hitPoints"].GetUint();
 
 	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
 	playerColision->SetPosition(playerPosition);
@@ -164,7 +169,9 @@ void Manager::CreatePlayers()
 	playerMovement->entityOwner = player;
 
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
-	playerRender->SetGfx(CORE_LoadPNG("data/playerI.png", false), CORE_LoadPNG("data/playerD.png", false));
+	playerRender->SetGfx(
+		CORE_LoadPNG(playerData["spriteI"].GetString(), false),
+		CORE_LoadPNG(playerData["spriteD"].GetString(), false));
 	playerRender->SetHpGfx(CORE_LoadPNG("data/heart.png", false));
 	playerRender->SetPosition(playerPosition);
 	playerRender->SetRadius(playerRadius);
@@ -187,33 +194,28 @@ void Manager::CreatePlayers()
 
 void Manager::CreateEntities() 
 {
-
-
-	char readBuffer[1024];
-	FILE* fp;
-	fopen_s(&fp, entitiesFile, "rb");
-	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
-	rapidjson::Document doc;
-	doc.ParseStream(is);
-	const rapidjson::Value& ballData = doc["BALL"];
+	const rapidjson::Value& ballData = doc["Ball"];
 
 
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
-	float maxWidth = ballData["MAX_BALL_POSITION"].GetArray()[0].GetFloat();
-	float maxHeight = ballData["MAX_BALL_POSITION"].GetArray()[1].GetFloat();
-	float ballSpeed = ballData["MAX_BALL_SPEED"].GetFloat();
+	float minHeight = ballData["height"].GetArray()[0].GetFloat();
+	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
+
+	float minWidth = ballData["width"].GetArray()[0].GetFloat();
+	float maxWidth = ballData["width"].GetArray()[1].GetFloat();
+
+	float ballSpeed = ballData["speed"].GetFloat();
+	float radius = ballData["radius"].GetFloat();
 
 	for (int i = 0; i < NUM_BALLS; i++) {
 		Entity* ballEntity = new Entity();
 
 		//vec2 Position = vec2(CORE_FRand(0.0, maxWidth), CORE_FRand(0.0, maxHeight));
 		//vec2 Velocity = vec2(CORE_FRand(-ballSpeed, +ballSpeed), CORE_FRand(-ballSpeed, +ballSpeed));
-		vec2 Velocity = vec2(-100,0);
-		vec2 Position = vec2(250, 350);
-
-		float radius = 32.f;
+		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed),0);
+		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
 		ColisionComponent* colisionComponent = new ColisionComponent();
 		colisionComponent->SetPosition(Position);
@@ -227,7 +229,7 @@ void Manager::CreateEntities()
 		movementComponent->entityOwner = ballEntity;
 
 		RenderComponent* renderComponent = new RenderComponent();
-		renderComponent->SetGfx(CORE_LoadPNG(ballData["SPRITE"].GetString(), false));
+		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
