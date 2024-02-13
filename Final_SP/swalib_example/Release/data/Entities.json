@@ -1,14 +1,29 @@
 {
-  "BALL": 
-      {
-        "MAX_BALL_POSITION": [ 640.0, 480.0 ],
-    
-        "MAX_BALL_SPEED": 480.0,
-    
-        "RADIUS" : 16.0,
-    
-        "SPRITE" : "data/tyrian_ball.png"
-      }
-  
-    
+  "Ball": {
+
+    "speed": 100,
+
+    "radius": 32,
+
+    "sprite": "data/ball.png",
+
+    "height": [ 400, 450 ],
+
+    "width": [ 80, 400 ]
+  },
+
+  "Player": {
+
+    "speed": 200,
+
+    "radius": 25,
+
+    "spriteI": "data/playerI.png",
+
+    "spriteD": "data/playerD.png",
+
+    "position": 320,
+
+    "hitPoints":  3
+  }
 }

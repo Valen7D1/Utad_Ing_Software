@@ -189,4 +189,12 @@
       <Filter>Header Files\Game\Components\Player</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Release\data\entities.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\data\gameData.json">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

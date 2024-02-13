@@ -3,3 +3,30 @@
   manager.cpp
   core.cpp
   example.cpp
+  font.cpp
+  gameLogic.cpp
+  lodepng.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  message.cpp
+  playerColisionComponent.cpp
+  playerMovementComponent.cpp
+  playerProjectileComponent.cpp
+  playerRenderComponent.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.cpp(15,19): warning C4018: '<': signed/unsigned mismatch
+  projectileColisionComponent.cpp
+  projectileMovementComponent.cpp
+  timer.cpp
+  movementComponent.cpp
+  render.cpp
+  renderComponent.cpp
+  renderEngine.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(55,24): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(58,34): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(8,21): warning C4244: '+=': conversion from 'float' to 'unsigned int', possible loss of data
+  Generating Code...
+  Compiling...
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe

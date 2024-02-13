@@ -1,0 +1,8 @@
+{
+  "Menus": 
+      {
+    	"MainMenu" : "data/mainMenu.png"
+
+        "DeathScreen" : "data/DeathScreen.png"
+      }
+}

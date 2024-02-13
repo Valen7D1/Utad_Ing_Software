@@ -168,6 +168,10 @@
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Release\data\entities.json" />
+    <None Include="..\Release\data\gameData.json" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
