@@ -5,7 +5,7 @@
 const unsigned int NUM_BALLS = 1;  // Max. num balls.
 const float MAX_BALL_SPEED = 480.0f;   // Max vel. of ball (pixels/?).
 const float GRAVITY = -150.f;
-const float FLOOR = 100.f;
+const float FLOOR = 64.f;
 
 class Entity;
 class vec2;

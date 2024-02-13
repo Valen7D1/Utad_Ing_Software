@@ -33,20 +33,30 @@ void RenderEngine::RenderSetUp() {
 
 void RenderEngine::TexturesSetting() {
 	// Load textures
-	GetSprite()->setTexbkg(CORE_LoadPNG("data/circle-bkg-128.png", true));
+	GetSprite()->setTexbkg(CORE_LoadPNG("data/back.png", true));
 	GetSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
 }
 
 
 void RenderEngine::RenderObjects(){
 
-	// Render background
-	for (int i = 0; i <= SCR_WIDTH / 128; i++) 
+	//// Render background
+	//for (int i = 0; i <= SCR_WIDTH / 128; i++) 
+	//{
+	//	for (int j = 0; j <= SCR_HEIGHT / 128; j++) 
+	//	{
+	//		CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), GetSprite()->getTexbkg());
+	//	}
+	//}
+
+	CORE_RenderCenteredSprite(vec2(SCR_WIDTH/2, SCR_HEIGHT/2), vec2(SCR_WIDTH, SCR_HEIGHT), GetSprite()->getTexbkg());
+
+
+	unsigned int distance = FLOOR/2;
+	for (int i = 0; i<10; ++i)
 	{
-		for (int j = 0; j <= SCR_HEIGHT / 128; j++) 
-		{
-			CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), GetSprite()->getTexbkg());
-		}
+		CORE_RenderCenteredSprite(vec2(distance, FLOOR/2), vec2(FLOOR, FLOOR), CORE_LoadPNG("data/tile.png", true));
+		distance += FLOOR;
 	}
 
 	// get manager for balls render and timer data getters

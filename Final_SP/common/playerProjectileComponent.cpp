@@ -19,7 +19,7 @@ void PlayerProjectileComponent::Slot()
 		if (m_clipSize > 0 && timeLimit <= 0)
 		{
 			CreateProjectile();
-			timeLimit = 0.02;
+			timeLimit = 1;
 		}
 	}
 

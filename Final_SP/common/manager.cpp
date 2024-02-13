@@ -134,8 +134,8 @@ void Manager::CreateGame()
 void Manager::CreatePlayers()
 {
 	player = new Entity();
-	vec2 playerPosition = vec2(320, 100);
-	float playerRadius = 16;
+	float playerRadius = 25;
+	vec2 playerPosition = vec2(320, FLOOR + playerRadius);
 	float playerVelocity = 200;
 	unsigned int playerHP = 3;
 
@@ -152,7 +152,7 @@ void Manager::CreatePlayers()
 	playerMovement->entityOwner = player;
 
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
-	playerRender->SetGfx(CORE_LoadPNG("data/playerB.png", false));
+	playerRender->SetGfx(CORE_LoadPNG("data/playerD.png", false));
 	playerRender->SetHpGfx(CORE_LoadPNG("data/heart.png", false));
 	playerRender->SetPosition(playerPosition);
 	playerRender->SetRadius(playerRadius);

@@ -35,7 +35,7 @@ void ColisionComponent::Slot()
 		entityOwner->SendMsg(new LimitWorldCollMessage(vec2( -1, 1), currentPos));
 		marginCollided = true;
 	}
-	if ((currentPos.y > SCR_HEIGHT) || (currentPos.y < FLOOR)) {
+	if ((currentPos.y > SCR_HEIGHT) || (currentPos.y < FLOOR+radius)) {
 		entityOwner->SendMsg(new LimitWorldCollMessage(vec2( 1, -1), currentPos));
 		marginCollided = true;
 	}
