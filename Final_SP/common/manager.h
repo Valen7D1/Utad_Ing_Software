@@ -32,6 +32,7 @@ public:
 
     void CreatePlayers();
     void CreateGame();
+    void ResetLevel();
 
     void update();
 
