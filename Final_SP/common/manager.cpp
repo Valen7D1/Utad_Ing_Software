@@ -38,12 +38,24 @@ Entity* Manager::getPlayer() {
 	return player;
 }
 
+void Manager::ResetLevel()
+{
+	//for (int i = entities.size(); i <= 0; --i)
+	while(entities.size() > 0)
+	{
+		delete entities[entities.size()-1];
+		entities.pop_back();
+	}
+	CreateEntities();
+}
+
 // update for all game objects
 void Manager::update()
 {   
 	if (player->toBeDeleted)
 	{
-		//delete player;
+		ResetLevel();
+		CreatePlayers();
 	}
 	else
 	{
@@ -152,7 +164,7 @@ void Manager::CreatePlayers()
 	playerMovement->entityOwner = player;
 
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
-	playerRender->SetGfx(CORE_LoadPNG("data/playerD.png", false));
+	playerRender->SetGfx(CORE_LoadPNG("data/playerI.png", false), CORE_LoadPNG("data/playerD.png", false));
 	playerRender->SetHpGfx(CORE_LoadPNG("data/heart.png", false));
 	playerRender->SetPosition(playerPosition);
 	playerRender->SetRadius(playerRadius);
@@ -163,7 +175,6 @@ void Manager::CreatePlayers()
 	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/arrow.png", false));
 	playerProjectileComponent->SetVelocity(300);
 	playerProjectileComponent->SetRadius(playerRadius);
-	playerProjectileComponent->SetClipSize(6);
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
 	playerProjectileComponent->entityOwner = player;
 
