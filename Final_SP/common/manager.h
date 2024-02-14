@@ -12,18 +12,22 @@ const float FLOOR = 64.f;
 class Entity;
 class vec2;
 class Document;
-//class GLuint;
+class BaseLevel;
 
 class Manager {
 private:
     static Manager* instance;
     Timer timer;
-    std::vector<Entity*> entities;    
-    Entity* player; // in case you want coop
-
-    rapidjson::Document doc;
 
 public:
+    // this three should be private
+    Entity* player;
+    rapidjson::Document doc;
+    std::vector<Entity*> entities;
+    std::vector<BaseLevel*> levels;
+
+    unsigned int currentLevel = 0;
+
     //singleton
     static Manager* getInstance();
     //getters
@@ -31,10 +35,6 @@ public:
     Entity* getPlayer();
     Timer* getTimer();
 
-    void CreateEntities();
-    //void CreateBall(vec2 Velocity, vec2 Position, float radius, GLuint gfx);
-
-    void CreatePlayers();
     void CreateGame();
     void ResetLevel();
 
