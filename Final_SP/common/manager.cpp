@@ -11,6 +11,7 @@
 #include "playerProjectileComponent.h"
 #include "playerRenderComponent.h"
 #include "renderComponent.h"
+#include "sceneComponent.h"
 #include <iostream>
 #include <vector>
 
@@ -46,20 +47,22 @@ void Manager::ResetLevel()
 		delete entities[entities.size()-1];
 		entities.pop_back();
 	}
-	levels[currentLevel]->CreateLevel();
+	m_CurrentLevel->CreateLevel();
 }
 
 // update for all game objects
 void Manager::update()
 {   
-	if (player->toBeDeleted)
+	if (player)
 	{
-		ResetLevel();
-		levels[currentLevel]->CreatePlayer();
-	}
-	else
-	{
-		player->Slot();
+		if (player->toBeDeleted)
+		{
+			ResetLevel();
+		}
+		else
+		{
+			player->Slot();
+		}
 	}
 
 	std::vector<Entity*> tempEntities;
@@ -70,8 +73,16 @@ void Manager::update()
 
 		if (entity->toBeDeleted)
 		{	
-			it = entities.erase(it);
-			tempEntities.push_back(entity);
+			// if its scene type means its time for level change
+			if (entity->FindComponent<SceneLogicComponent>())
+			{
+
+			}
+			else
+			{
+				it = entities.erase(it);
+				tempEntities.push_back(entity);
+			}
 		}
 		else
 		{
@@ -144,10 +155,6 @@ void Manager::CreateGame()
 	rapidjson::FileReadStream is(fp, readBuffer, sizeof(readBuffer));
 	doc.ParseStream(is);
 
-	levels.push_back(new Level1());
-	levels.push_back(new Level2());
-
-
-	levels[currentLevel]->CreatePlayer();
-	levels[currentLevel]->CreateLevel();
+	m_CurrentLevel = new MainMenu();
+	m_CurrentLevel->CreateLevel();
 }

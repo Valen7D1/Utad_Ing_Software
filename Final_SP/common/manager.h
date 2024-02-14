@@ -24,7 +24,7 @@ public:
     Entity* player;
     rapidjson::Document doc;
     std::vector<Entity*> entities;
-    std::vector<BaseLevel*> levels;
+    BaseLevel* m_CurrentLevel;
 
     unsigned int currentLevel = 0;
 

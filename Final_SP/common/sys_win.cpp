@@ -149,7 +149,7 @@ void SYS_Pump()
   // Process messages if there are any
   while ( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE )  )
   {
-    if (msg.message == WM_QUIT)
+    if (msg.message == WM_QUIT || (GetKeyState(VK_ESCAPE) & 0x8000))
       WIN_bGottaQuit = true;
     else
     {

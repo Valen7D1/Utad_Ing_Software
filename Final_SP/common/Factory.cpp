@@ -10,6 +10,7 @@
 #include "playerRenderComponent.h"
 #include "renderComponent.h"
 #include "entity.h"
+#include "sceneComponent.h"
 
 
 void BaseLevel::CreatePlayer()
@@ -62,6 +63,8 @@ void BaseLevel::CreatePlayer()
 
 void Level1::CreateLevel()
 {
+	//CreatePlayer();
+
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
@@ -109,8 +112,84 @@ void Level1::CreateLevel()
 	}
 }
 
+
 void Level2::CreateLevel()
 {
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 }
+
+
+void DeathMenu::CreateLevel()
+{
+	Manager* manager = Manager::getInstance();
+	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	const rapidjson::Value& deathData = manager->doc["DeathScene"];
+
+	Entity* DeathScene = new Entity();
+
+	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
+	sceneLogicComponent->entityOwner = DeathScene;
+
+	SceneRenderComponent* sceneRenderComponent = new SceneRenderComponent();
+	sceneRenderComponent->SetSprite(CORE_LoadPNG(deathData["sprite"].GetString(), false));
+	sceneRenderComponent->entityOwner = DeathScene;
+
+	DeathScene->AddComponent(sceneLogicComponent);
+	DeathScene->AddComponent(sceneRenderComponent);
+
+	manager->entities.push_back(DeathScene);
+}
+
+
+void MainMenu::CreateLevel()
+{
+	Manager* manager = Manager::getInstance();
+	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	const rapidjson::Value& mainMenuData = manager->doc["MainMenu"];
+
+	Entity* MainMenuScene = new Entity();
+
+	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
+	sceneLogicComponent->entityOwner = MainMenuScene;
+
+	SceneRenderComponent* sceneRenderComponent = new SceneRenderComponent();
+	sceneRenderComponent->SetSprite(CORE_LoadPNG(mainMenuData["sprite"].GetString(), false));
+	sceneRenderComponent->entityOwner = MainMenuScene;
+
+	MainMenuScene->AddComponent(sceneLogicComponent);
+	MainMenuScene->AddComponent(sceneRenderComponent);
+
+	manager->entities.push_back(MainMenuScene);
+}
+
+void WinMenu::CreateLevel()
+{
+	Manager* manager = Manager::getInstance();
+	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	const rapidjson::Value& winData = manager->doc["WinScene"];
+
+	Entity* WinScene = new Entity();
+
+	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
+	sceneLogicComponent->entityOwner = WinScene;
+
+	SceneRenderComponent* sceneRenderComponent = new SceneRenderComponent();
+	sceneRenderComponent->SetSprite(CORE_LoadPNG(winData["sprite"].GetString(), false));
+	sceneRenderComponent->entityOwner = WinScene;
+
+
+	WinScene->AddComponent(sceneLogicComponent);
+	WinScene->AddComponent(sceneRenderComponent);
+
+	manager->entities.push_back(WinScene);
+}
+
+BaseLevel* MainMenu::NextLevel() { return new Level1(); }
+BaseLevel* Level1::NextLevel() { return new Level2(); }
+BaseLevel* Level2::NextLevel() { return new Level1(); }
+BaseLevel* DeathMenu::NextLevel() { return new WinMenu(); }
+BaseLevel* WinMenu::NextLevel() { return new Level1(); }

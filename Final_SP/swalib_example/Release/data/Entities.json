@@ -24,6 +24,22 @@
 
     "position": 320,
 
-    "hitPoints":  3
+    "hitPoints": 3
+  },
+
+  "DeathScene": {
+
+    "sprite": "data/deathScreen.png"
+  },
+
+  "MainMenu": {
+
+    "sprite": "data/mainMenu.png"
+  },
+
+  "WinScene": {
+
+    "sprite": "data/deathScreen.png"
   }
+
 }

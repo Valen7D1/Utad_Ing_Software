@@ -5,6 +5,7 @@
 #include "playerRenderComponent.h"
 #include "PlayerColisionComponent.h"
 #include "playerProjectileComponent.h"
+#include "sceneComponent.h"
 
 
 RenderEngine* RenderEngine::instance = nullptr;
@@ -61,18 +62,24 @@ void RenderEngine::RenderObjects(){
 	for (Entity* entity : entities) 
 	{
 		RenderComponent * renderComponent = entity->FindComponent<RenderComponent>();
-		renderComponent->Slot();
+		if (renderComponent){ renderComponent->Slot(); }
+
+		SceneRenderComponent* sceneRenderComponent = entity->FindComponent<SceneRenderComponent>();
+		if (sceneRenderComponent) { sceneRenderComponent->Slot(); }
 	}
 
-	PlayerRenderComponent* playerRenderComponent = player->FindComponent<PlayerRenderComponent>();
-	playerRenderComponent->Slot();
-
-	PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
-	std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
-	for (Entity* projectile : projectiles)
+	if (player)
 	{
-		RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
-		renderComponent->Slot();
+		PlayerRenderComponent* playerRenderComponent = player->FindComponent<PlayerRenderComponent>();
+		playerRenderComponent->Slot();
+
+		PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
+		std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
+		for (Entity* projectile : projectiles)
+		{
+			RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
+			renderComponent->Slot();
+		}
 	}
 
 }
