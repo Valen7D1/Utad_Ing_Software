@@ -122,6 +122,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\common\colisionComponent.cpp" />
     <ClCompile Include="..\..\common\entity.cpp" />
+    <ClCompile Include="..\..\common\Factory.cpp" />
     <ClCompile Include="..\..\common\manager.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="..\..\common\colisionComponent.h" />
     <ClInclude Include="..\..\common\component.h" />
     <ClInclude Include="..\..\common\entity.h" />
+    <ClInclude Include="..\..\common\Factory.h" />
     <ClInclude Include="..\..\common\manager.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />

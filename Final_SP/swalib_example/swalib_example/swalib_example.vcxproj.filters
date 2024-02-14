@@ -49,6 +49,12 @@
     <Filter Include="Header Files\Game\Components\Projectile">
       <UniqueIdentifier>{d0033fe1-4b9f-4481-8844-9917ebb74c29}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Factory">
+      <UniqueIdentifier>{81f5fe18-8b32-4235-a154-3c06568979bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Component\Factory">
+      <UniqueIdentifier>{bae30419-cda9-42f1-84ec-b60f4676b8c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -116,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="..\..\common\playerRenderComponent.cpp">
       <Filter>Source Files\Game\Component\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Factory.cpp">
+      <Filter>Source Files\Game\Component\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="..\..\common\playerRenderComponent.h">
       <Filter>Header Files\Game\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Factory.h">
+      <Filter>Header Files\Game\Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,1 +1,7 @@
 en el render engine hay que mejorar lo de llamar al slot de render component con una función de render específica
+pasar a privados: 
+Entity* player;
+ rapidjson::Document doc;
+ std::vector<Entity*> entities;
+
+estan en manager y se usan en factory
