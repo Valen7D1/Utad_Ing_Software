@@ -25,17 +25,17 @@ void BaseLevel::CreatePlayer()
 	float playerVelocity = playerData["speed"].GetFloat();
 	unsigned int playerHP = playerData["hitPoints"].GetUint();
 
-	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
-	playerColision->SetPosition(playerPosition);
-	playerColision->SetRadius(playerRadius);
-	playerColision->SetHitPoints(playerHP);
-	playerColision->entityOwner = manager->player;
-
 	PlayerMovementComponent* playerMovement = new PlayerMovementComponent();
 	playerMovement->SetPosition(playerPosition);
 	playerMovement->SetVelocity(playerVelocity);
 	playerMovement->SetRadius(playerRadius);
 	playerMovement->entityOwner = manager->player;
+
+	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
+	playerColision->SetPosition(playerPosition);
+	playerColision->SetRadius(playerRadius);
+	playerColision->SetHitPoints(playerHP);
+	playerColision->entityOwner = manager->player;
 
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
 	playerRender->SetGfx(
@@ -63,7 +63,7 @@ void BaseLevel::CreatePlayer()
 
 void Level1::CreateLevel()
 {
-	//CreatePlayer();
+	CreatePlayer();
 
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
@@ -79,11 +79,9 @@ void Level1::CreateLevel()
 	float ballSpeed = ballData["speed"].GetFloat();
 	float radius = ballData["radius"].GetFloat();
 
-	for (int i = 0; i < NUM_BALLS; i++) {
+	for (int i = 0; i < 1; i++) {
 		Entity* ballEntity = new Entity();
 
-		//vec2 Position = vec2(CORE_FRand(0.0, maxWidth), CORE_FRand(0.0, maxHeight));
-		//vec2 Velocity = vec2(CORE_FRand(-ballSpeed, +ballSpeed), CORE_FRand(-ballSpeed, +ballSpeed));
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
@@ -115,8 +113,52 @@ void Level1::CreateLevel()
 
 void Level2::CreateLevel()
 {
+	CreatePlayer();
+
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	const rapidjson::Value& ballData = manager->doc["Ball"];
+
+	float minHeight = ballData["height"].GetArray()[0].GetFloat();
+	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
+
+	float minWidth = ballData["width"].GetArray()[0].GetFloat();
+	float maxWidth = ballData["width"].GetArray()[1].GetFloat();
+
+	float ballSpeed = ballData["speed"].GetFloat();
+	float radius = ballData["radius"].GetFloat();
+
+	for (int i = 0; i < NUM_BALLS; i++) {
+		Entity* ballEntity = new Entity();
+
+		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
+		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
+
+		ColisionComponent* colisionComponent = new ColisionComponent();
+		colisionComponent->SetPosition(Position);
+		colisionComponent->SetVelocity(Velocity);
+		colisionComponent->SetRadius(radius);
+		colisionComponent->entityOwner = ballEntity;
+
+		MovementComponent* movementComponent = new MovementComponent();
+		movementComponent->SetPosition(Position);
+		movementComponent->SetVelocity(Velocity);
+		movementComponent->entityOwner = ballEntity;
+
+		RenderComponent* renderComponent = new RenderComponent();
+		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
+		renderComponent->SetPosition(Position);
+		renderComponent->SetRadius(radius);
+		renderComponent->entityOwner = ballEntity;
+
+		ballEntity->AddComponent(movementComponent);
+		ballEntity->AddComponent(colisionComponent);
+		ballEntity->AddComponent(renderComponent);
+
+		manager->entities.push_back(ballEntity);
+	}
+
 }
 
 
@@ -125,7 +167,7 @@ void DeathMenu::CreateLevel()
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
-	const rapidjson::Value& deathData = manager->doc["DeathScene"];
+	const rapidjson::Value& deathData = manager->doc["DeathMenu"];
 
 	Entity* DeathScene = new Entity();
 

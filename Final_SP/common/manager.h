@@ -18,7 +18,6 @@ class Manager {
 private:
     static Manager* instance;
     Timer timer;
-
 public:
     // this three should be private
     Entity* player;
@@ -27,6 +26,7 @@ public:
     BaseLevel* m_CurrentLevel;
 
     unsigned int currentLevel = 0;
+    int reset = 0;
 
     //singleton
     static Manager* getInstance();
@@ -35,11 +35,11 @@ public:
     Entity* getPlayer();
     Timer* getTimer();
 
+    void SetReset(int value);
+
     void CreateGame();
     void ResetLevel();
 
     void update();
-
-public:
     const char* entitiesFile = "data/entities.json";
 };

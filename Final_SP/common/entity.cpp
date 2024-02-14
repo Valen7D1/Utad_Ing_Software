@@ -6,7 +6,8 @@ void Entity::Slot()
 {
 	for (Component* component : components)
 	{
-		component->Slot();
+		if (components.size() <= 0 && !component) { break; }
+		component->Slot(); 
 	}
 
 }

@@ -1,181 +1,18 @@
 ﻿  colisionComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
+  entity.cpp
+  Factory.cpp
   manager.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): error C2371: 'GLuint': redefinition; different basic types
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(1254,27): error C2526: 'glGenLists': C linkage function cannot return C++ class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(10,12): error C2079: 'Sprite::texbkg' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(11,12): error C2079: 'Sprite::texsmallball' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(12,9): error C2079: 'PlayerProjectileComponent::m_gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(25,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(25,39): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(34,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(9,9): error C2079: 'PlayerRenderComponent::m_gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(10,9): error C2079: 'PlayerRenderComponent::m_HpGfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(19,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(19,46): error C2109: subscript requires array or pointer type
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(20,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(20,45): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(26,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(26,32): error C2109: subscript requires array or pointer type
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(27,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(8,9): error C2079: 'RenderComponent::gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,37): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(21,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(110,70): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(110,21): error C2664: 'void RenderComponent::SetGfx(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(110,77): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,7): message : see declaration of 'RenderComponent::SetGfx'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(110,21): message : while trying to match the argument list '(GLuint)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(173,3): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(174,3): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(172,14): error C2664: 'void PlayerRenderComponent::SetGfx(GLuint,GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(173,15): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(19,7): message : see declaration of 'PlayerRenderComponent::SetGfx'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(172,14): message : while trying to match the argument list '(GLuint, GLuint)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(175,25): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(175,14): error C2664: 'void PlayerRenderComponent::SetHpGfx(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(175,37): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(20,7): message : see declaration of 'PlayerRenderComponent::SetHpGfx'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(175,14): message : while trying to match the argument list '(GLuint)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(182,36): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(182,27): error C2664: 'void PlayerProjectileComponent::SetGfx(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(182,48): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(25,7): message : see declaration of 'PlayerProjectileComponent::SetGfx'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(182,27): message : while trying to match the argument list '(GLuint)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(232,27): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(232,18): error C2664: 'void RenderComponent::SetGfx(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(232,39): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,7): message : see declaration of 'RenderComponent::SetGfx'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp(232,18): message : while trying to match the argument list '(GLuint)'
   gameLogic.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(10,12): error C2079: 'Sprite::texbkg' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(11,12): error C2079: 'Sprite::texsmallball' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(34,42): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(34,2): error C2664: 'void CORE_UnloadPNG(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(34,53): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\core.h(53,8): message : see declaration of 'CORE_UnloadPNG'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(34,2): message : while trying to match the argument list '(GLuint)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(35,42): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(35,2): error C2664: 'void CORE_UnloadPNG(GLuint)': cannot convert argument 1 from 'GLuint' to 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(35,59): message : use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\core.h(53,8): message : see declaration of 'CORE_UnloadPNG'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp(35,2): message : while trying to match the argument list '(GLuint)'
-  message.cpp
   playerColisionComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
   playerMovementComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
   playerProjectileComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
+  playerRenderComponent.cpp
   projectileColisionComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
   projectileMovementComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
+  sceneComponent.cpp
   movementComponent.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
   render.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(10,12): error C2079: 'Sprite::texbkg' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(11,12): error C2079: 'Sprite::texsmallball' uses undefined class 'GLuint'
   renderEngine.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): error C2371: 'GLuint': redefinition; different basic types
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\gl\gl.h(57,22): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(23,12): error C2079: 'Manager::thing' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(8,9): error C2079: 'RenderComponent::gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(17,37): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.h(21,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(9,9): error C2079: 'PlayerRenderComponent::m_gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(10,9): error C2079: 'PlayerRenderComponent::m_HpGfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(19,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(19,46): error C2109: subscript requires array or pointer type
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(20,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(20,45): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(26,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(26,32): error C2109: subscript requires array or pointer type
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.h(27,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(12,9): error C2079: 'PlayerProjectileComponent::m_gfx' uses undefined class 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(25,7): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(25,39): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.h(34,9): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(106,28): error C2556: 'GLuint Sprite::getTexbkg(void)': overloaded function differs only by return type from 'GLuint Sprite::getTexbkg(void)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(14,12): message : see declaration of 'Sprite::getTexbkg'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(106,16): error C2371: 'Sprite::getTexbkg': redefinition; different basic types
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(14,12): message : see declaration of 'Sprite::getTexbkg'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(108,34): error C2556: 'GLuint Sprite::getTexsmallball(void)': overloaded function differs only by return type from 'GLuint Sprite::getTexsmallball(void)'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(15,12): message : see declaration of 'Sprite::getTexsmallball'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(108,16): error C2371: 'Sprite::getTexsmallball': redefinition; different basic types
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(15,12): message : see declaration of 'Sprite::getTexsmallball'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(110,14): error C2511: 'void Sprite::setTexbkg(GLuint)': overloaded member function not found in 'Sprite'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(8,7): message : see declaration of 'Sprite'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(110,14): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(110,41): error C2597: illegal reference to non-static member 'Sprite::texbkg'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(10,12): message : see declaration of 'Sprite::texbkg'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(112,14): error C2511: 'void Sprite::setTexsmallball(GLuint)': overloaded member function not found in 'Sprite'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(8,7): message : see declaration of 'Sprite'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(112,14): error C2027: use of undefined type 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.h(15,7): message : see declaration of 'GLuint'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(112,53): error C2597: illegal reference to non-static member 'Sprite::texsmallball'
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.h(11,12): message : see declaration of 'Sprite::texsmallball'
+  sys_win.cpp
   Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe

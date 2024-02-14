@@ -12,7 +12,7 @@ void PlayerRenderComponent::Slot()
 	float heartLocation = m_radius+16;
 
 	// render hearts
-	for (int i = 0; i<m_hitPoints; ++i)
+	for (unsigned int i = 0; i<m_hitPoints; ++i)
 	{
 		CORE_RenderCenteredSprite(vec2(heartLocation, SCR_HEIGHT - m_radius-16), vec2(m_radius * 1.5f, m_radius * 1.5f), m_HpGfx);
 		heartLocation += m_radius * 2;

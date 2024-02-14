@@ -21,11 +21,16 @@ void PlayerColisionComponent::Slot()
 		float limit2 = (m_radius + otherEntityCollision->GetRadius()) * (m_radius + otherEntityCollision->GetRadius());
 
 		if (vlen2(m_position - otherEntityCollision->GetPosition()) <= limit2) {
-			otherEntityCollision->entityOwner->toBeDeleted = true;
+			otherEntity->toBeDeleted = true;
 			HitControl();
 			break;
 		}
 	}
+
+	/*if ((currentPos.x > (SCR_WIDTH - radius / 2)) || (currentPos.x < radius / 2)) {
+		entityOwner->SendMsg(new LimitWorldCollMessage(vec2(-1, 1), currentPos));
+		marginCollided = true;
+	}*/
 }
 
 
@@ -39,7 +44,7 @@ void PlayerColisionComponent::HitControl()
 	else 
 	{
 		entityOwner->SendMsg(new NewHitPointsMessage(m_hitPoints));
-		Manager::getInstance()->ResetLevel();
+		Manager::getInstance()->SetReset(1);
 	}
 }
 

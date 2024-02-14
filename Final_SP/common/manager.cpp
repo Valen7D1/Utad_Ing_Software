@@ -14,7 +14,7 @@
 #include "sceneComponent.h"
 #include <iostream>
 #include <vector>
-
+#include "message.h"
 #include "Factory.h"
 
 // instantiate manager to nullptr
@@ -42,6 +42,11 @@ Entity* Manager::getPlayer() {
 void Manager::ResetLevel()
 {
 	//for (int i = entities.size(); i <= 0; --i)
+	if (player)
+	{
+		delete player;
+		player = nullptr;
+	}
 	while(entities.size() > 0)
 	{
 		delete entities[entities.size()-1];
@@ -53,10 +58,19 @@ void Manager::ResetLevel()
 // update for all game objects
 void Manager::update()
 {   
+	if (reset == 1)
+	{
+		float hp = player->FindComponent<PlayerColisionComponent>()->GetHitPoints();
+		ResetLevel();
+		player->SendMsg(new NewHitPointsMessage(hp));
+		reset = 0;
+	}
+
 	if (player)
 	{
 		if (player->toBeDeleted)
 		{
+			m_CurrentLevel = new DeathMenu();
 			ResetLevel();
 		}
 		else
@@ -67,6 +81,12 @@ void Manager::update()
 
 	std::vector<Entity*> tempEntities;
 
+	if (entities.size() <= 0)
+	{
+		m_CurrentLevel = m_CurrentLevel->NextLevel();
+		ResetLevel();
+	}
+
 	for (auto it = entities.begin(); it != entities.end(); )
 	{
 		Entity* entity = *it;
@@ -76,7 +96,9 @@ void Manager::update()
 			// if its scene type means its time for level change
 			if (entity->FindComponent<SceneLogicComponent>())
 			{
-
+				m_CurrentLevel = m_CurrentLevel->NextLevel();
+				ResetLevel();
+				break;
 			}
 			else
 			{
@@ -144,6 +166,11 @@ void Manager::update()
 Timer* Manager::getTimer() 
 {
     return &timer;
+}
+
+void Manager::SetReset(int value)
+{
+	reset = value;
 }
 
 

@@ -27,9 +27,9 @@
     "hitPoints": 3
   },
 
-  "DeathScene": {
+  "DeathMenu": {
 
-    "sprite": "data/deathScreen.png"
+    "sprite": "data/deathMenu.png"
   },
 
   "MainMenu": {

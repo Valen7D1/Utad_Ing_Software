@@ -1,5 +1,6 @@
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\colisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\colisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\entity.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\entity.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\Factory.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\Factory.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\manager.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\core.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\core.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\example.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\example.obj
@@ -13,6 +14,7 @@ D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.cpp;D:\U-Ta
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\playerRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\projectileColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\projectileColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\projectileMovementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\projectileMovementComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\sceneComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\sceneComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\timer.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\timer.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\movementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\movementComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\render.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\x64\Debug\render.obj
