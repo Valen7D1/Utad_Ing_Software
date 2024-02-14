@@ -33,23 +33,14 @@ void RenderEngine::RenderSetUp() {
 
 void RenderEngine::TexturesSetting() {
 	// Load textures
-	GetSprite()->setTexbkg(CORE_LoadPNG("data/back.png", true));
-	GetSprite()->setTexsmallball(CORE_LoadPNG("data/tyrian_ball.png", false));
+	GetSprite()->setBackgroundSprite(CORE_LoadPNG("data/back.png", true));
 }
 
 
 void RenderEngine::RenderObjects(){
 
-	//// Render background
-	//for (int i = 0; i <= SCR_WIDTH / 128; i++) 
-	//{
-	//	for (int j = 0; j <= SCR_HEIGHT / 128; j++) 
-	//	{
-	//		CORE_RenderCenteredSprite(vec2(i * 128.f + 64.f, j * 128.f + 64.f), vec2(128.f, 128.f), GetSprite()->getTexbkg());
-	//	}
-	//}
-
-	CORE_RenderCenteredSprite(vec2(SCR_WIDTH/2, SCR_HEIGHT/2), vec2(SCR_WIDTH, SCR_HEIGHT), GetSprite()->getTexbkg());
+	// render background
+	CORE_RenderCenteredSprite(vec2(SCR_WIDTH/2, SCR_HEIGHT/2), vec2(SCR_WIDTH, SCR_HEIGHT), GetSprite()->getBackgroundSprite());
 
 
 	float distance = FLOOR/2;
@@ -98,15 +89,3 @@ void RenderEngine::RenderText()
 	//snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
 	//FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
 }
-
-Sprite* RenderEngine::GetSprite() { return &sprite; }
-
-
-
-GLuint Sprite::getTexbkg() { return texbkg; }
-
-GLuint Sprite::getTexsmallball() { return texsmallball; }
-
-void Sprite::setTexbkg(GLuint Texbkg) { texbkg = Texbkg; }
-
-void Sprite::setTexsmallball(GLuint Texsmallball) { texsmallball = Texsmallball; }

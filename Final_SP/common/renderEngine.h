@@ -7,17 +7,13 @@
 // deprecated class
 class Sprite {
 private:
-    GLuint texbkg;
-    GLuint texsmallball;
+    GLuint m_backgroundSprite;
 public:
 
-    GLuint getTexbkg();
-    GLuint getTexsmallball();
+    GLuint getBackgroundSprite() { return m_backgroundSprite; }
 
-    void setTexbkg(GLuint Texbkg);
-    void setTexsmallball(GLuint texsmallball);
+    void setBackgroundSprite(GLuint _backgroundSprite) { m_backgroundSprite = _backgroundSprite; }
 };
-
 
 class RenderEngine {
 private:
@@ -32,8 +28,5 @@ public:
     void RenderObjects();
     void RenderText();
 
-    Sprite* GetSprite();
-
-    //GLuint texbkg;
-    //GLuint texsmallball;
+    Sprite* GetSprite() { return &sprite; }
 };
