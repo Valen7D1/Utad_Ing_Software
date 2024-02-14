@@ -31,8 +31,7 @@ void LogicSlot()
 void Shutdown()
 {
 	// Unload textures.
-	CORE_UnloadPNG(renderEngine->GetSprite()->getTexbkg());
-	CORE_UnloadPNG(renderEngine->GetSprite()->getTexsmallball());
+	CORE_UnloadPNG(renderEngine->GetSprite()->getBackgroundSprite());
 	FONT_End();
 }
 
