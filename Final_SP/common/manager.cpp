@@ -71,9 +71,11 @@ void Manager::update()
 {   
 	if (reset == 1)
 	{
-		float hp = player->FindComponent<PlayerColisionComponent>()->GetHitPoints();
+		unsigned int hp = player->FindComponent<PlayerColisionComponent>()->GetHitPoints();
 		ResetLevel();
-		player->SendMsg(new NewHitPointsMessage(hp));
+		NewHitPointsMessage* newHitPointsMessage = new NewHitPointsMessage(hp);
+		player->SendMsg(newHitPointsMessage);
+		delete newHitPointsMessage;
 		reset = 0;
 	}
 
@@ -81,6 +83,7 @@ void Manager::update()
 	{
 		if (player->toBeDeleted)
 		{
+			delete m_CurrentLevel;
 			m_CurrentLevel = new DeathMenu();
 			ResetLevel();
 		}

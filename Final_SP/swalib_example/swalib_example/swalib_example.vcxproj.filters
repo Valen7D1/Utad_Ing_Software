@@ -215,9 +215,6 @@
     <ClInclude Include="..\..\common\renderComponent.h">
       <Filter>Header Files\Game\Components\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\playerRenderComponent.h">
-      <Filter>Header Files\Game\Components\Player</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\Factory.h">
       <Filter>Header Files\Game\Factory</Filter>
     </ClInclude>
@@ -229,6 +226,9 @@
     </ClInclude>
     <ClInclude Include="..\..\common\platformColisionComponent.h">
       <Filter>Header Files\Game\Components\Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\playerRenderComponent.h">
+      <Filter>Header Files\Game\Components\Projectile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

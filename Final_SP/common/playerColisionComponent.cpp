@@ -26,11 +26,6 @@ void PlayerColisionComponent::Slot()
 			break;
 		}
 	}
-
-	/*if ((currentPos.x > (SCR_WIDTH - radius / 2)) || (currentPos.x < radius / 2)) {
-		entityOwner->SendMsg(new LimitWorldCollMessage(vec2(-1, 1), currentPos));
-		marginCollided = true;
-	}*/
 }
 
 
@@ -43,8 +38,10 @@ void PlayerColisionComponent::HitControl()
 	}
 	else 
 	{
-		entityOwner->SendMsg(new NewHitPointsMessage(m_hitPoints));
+		NewHitPointsMessage* newHitPointsMessage = new NewHitPointsMessage(m_hitPoints);
+		entityOwner->SendMsg(newHitPointsMessage);
 		Manager::getInstance()->SetReset(1);
+		delete newHitPointsMessage;
 	}
 }
 

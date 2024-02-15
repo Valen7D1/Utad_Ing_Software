@@ -11,7 +11,10 @@ void ProjectileMovementComponent::Slot()
 { 
 	Manager* manager = Manager::getInstance();
 	m_position.y += m_velocity* manager->getTimer()->GetFrameTime();
+
+	NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(new NewPositionMessage(m_position));
+	delete newPositionMessage;
 }
 
 void ProjectileMovementComponent::ReceiveMessage(Message* msg)

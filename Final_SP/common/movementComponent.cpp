@@ -12,8 +12,9 @@ void MovementComponent::Slot()
 	Manager* manager = Manager::getInstance();
 	pos = pos + vel * manager->getTimer()->GetFrameTime();
 	// its redundant because msg will call to movement position but doesnt matter
-	entityOwner->SendMsg(new NewPositionMessage(pos));
-
+	NewPositionMessage* msg = new NewPositionMessage(pos);
+	entityOwner->SendMsg(msg);
+	delete msg;
 }
 
 void MovementComponent::ReceiveMessage(Message* msg) 

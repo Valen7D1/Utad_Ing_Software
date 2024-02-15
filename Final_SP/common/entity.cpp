@@ -24,9 +24,10 @@ void Entity::SendMsg(Message* msg)
 
 Entity::~Entity()
 {
-	for (Component* component : components)
+	while (components.size() > 0)
 	{
-		delete component;
+		delete components[components.size() - 1];
+		components.pop_back();
 	}
 }
 

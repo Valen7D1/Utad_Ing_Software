@@ -8,6 +8,8 @@ D:\U-Tad\Utad_Ing_Software\Final_SP\common\font.cpp;D:\U-Tad\Utad_Ing_Software\F
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\gameLogic.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\lodepng.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\message.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\message.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\platformColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\platformColisionComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\platformRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\platformRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerMovementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerMovementComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerProjectileComponent.obj

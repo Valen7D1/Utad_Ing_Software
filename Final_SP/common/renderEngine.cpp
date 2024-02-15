@@ -16,7 +16,10 @@ RenderEngine* RenderEngine::instance = nullptr;
 RenderEngine* RenderEngine::getInstance()
 {
 	// if not created already then create it
-	if (instance == nullptr) {instance = new RenderEngine();}
+	if (instance == nullptr) 
+	{
+		instance = new RenderEngine();
+	}
 	return instance;
 }
 

@@ -5,8 +5,8 @@
 
 void PLatformRenderComponent::Slot()
 {
-	int sizeX = m_size.x / m_proportions.x;
-	int sizeY = m_size.y / m_proportions.y;
+	float sizeX = m_size.x / m_proportions.x;
+	float sizeY = m_size.y / m_proportions.y;
 
 	vec2 initialPosition = vec2(m_position-m_size/2);
 

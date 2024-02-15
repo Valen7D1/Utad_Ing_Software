@@ -13,14 +13,26 @@ void PlayerMovementComponent::Slot()
 	if (GetKeyState('A') & 0x8000/*Check if high-order bit is set (1 << 15)*/)
 	{
 		m_position.x -= m_velocity * manager->getTimer()->GetFrameTime();
-		entityOwner->SendMsg(new NewPositionMessage(m_position));
-		entityOwner->SendMsg(new NewDirectionMessage(1));
+		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
+		NewDirectionMessage* newDirectionMessage = new NewDirectionMessage(1);
+
+		entityOwner->SendMsg(newPositionMessage);
+		entityOwner->SendMsg(newDirectionMessage);
+
+		delete newPositionMessage;
+		delete newDirectionMessage;
 	}
 	if (GetKeyState('D') & 0x8000)
 	{
 		m_position.x += m_velocity * manager->getTimer()->GetFrameTime();
-		entityOwner->SendMsg(new NewPositionMessage(m_position));
-		entityOwner->SendMsg(new NewDirectionMessage(0));
+		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
+		NewDirectionMessage* newDirectionMessage = new NewDirectionMessage(0);
+
+		entityOwner->SendMsg(newPositionMessage);
+		entityOwner->SendMsg(newDirectionMessage);
+
+		delete newDirectionMessage;
+		delete newPositionMessage;
 	}
 	if (GetKeyState('W') & 0x8000)
 	{
