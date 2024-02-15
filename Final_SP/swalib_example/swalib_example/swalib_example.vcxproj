@@ -130,6 +130,8 @@
     <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\message.cpp" />
+    <ClCompile Include="..\..\common\platformColisionComponent.cpp" />
+    <ClCompile Include="..\..\common\platformRenderComponent.cpp" />
     <ClCompile Include="..\..\common\playerColisionComponent.cpp" />
     <ClCompile Include="..\..\common\playerMovementComponent.cpp" />
     <ClCompile Include="..\..\common\playerProjectileComponent.cpp" />
@@ -156,6 +158,8 @@
     <ClInclude Include="..\..\common\gameLogic.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\message.h" />
+    <ClInclude Include="..\..\common\platformColisionComponent.h" />
+    <ClInclude Include="..\..\common\platformRenderComponent.h" />
     <ClInclude Include="..\..\common\PlayerColisionComponent.h" />
     <ClInclude Include="..\..\common\playerMovementComponent.h" />
     <ClInclude Include="..\..\common\playerProjectileComponent.h" />

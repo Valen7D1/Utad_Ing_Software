@@ -65,7 +65,7 @@ void BaseLevel::CreatePlayer()
 
 void Level1::CreateLevel()
 {
-	CreatePlayer();
+	//CreatePlayer();
 
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
@@ -83,7 +83,7 @@ void Level1::CreateLevel()
 	float radius = ballData["radius"].GetFloat();
 
 	// create balls
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 10; i++) {
 		Entity* ballEntity = new Entity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
@@ -92,7 +92,7 @@ void Level1::CreateLevel()
 		ColisionComponent* colisionComponent = new ColisionComponent();
 		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
-		colisionComponent->SetRadius(radius);
+		colisionComponent->SetRadius(16);
 		colisionComponent->entityOwner = ballEntity;
 
 		MovementComponent* movementComponent = new MovementComponent();
@@ -103,7 +103,7 @@ void Level1::CreateLevel()
 		RenderComponent* renderComponent = new RenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
-		renderComponent->SetRadius(radius);
+		renderComponent->SetRadius(16);
 		renderComponent->entityOwner = ballEntity;
 
 		ballEntity->AddComponent(movementComponent);

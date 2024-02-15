@@ -10,6 +10,7 @@
     "height": [ 400, 450 ],
 
     "width": [ 80, 400 ]
+
   },
 
   "Player": {
@@ -26,6 +27,23 @@
 
     "hitPoints": 3
   },
+
+  "Platform": {
+
+    "position": [
+      [ 150, 250 ]
+    ],
+
+    "height": 50,
+
+    "width": 150,
+
+    "size":  [50, 50],
+
+    "sprite": "data/platform.png"
+
+  },
+
 
   "DeathMenu": {
 

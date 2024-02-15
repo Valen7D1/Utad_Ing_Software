@@ -100,21 +100,32 @@ void RenderEngine::RenderText()
 {
 	Manager* manager = Manager::getInstance();
 	Entity* player = manager->getPlayer();
-	Entity* ball = manager->getEntities()[0];
+	if (manager->getPlatforms().size() > 0 &&
+		manager->getEntities().size() > 0)
+	{
+		Entity* platform = manager->getPlatforms()[0];
+		Entity* ball = manager->getEntities()[0];
 
-	RenderComponent* renderBall = ball->FindComponent<RenderComponent>();
-	if (player) {
-		PlayerRenderComponent* renderPlayer = player->FindComponent<PlayerRenderComponent>();
+		RenderComponent* renderBall = ball->FindComponent<RenderComponent>();
+		PLatformRenderComponent* renderPlatform = platform->FindComponent<PLatformRenderComponent>();
 
-		vec2 ballPos = renderBall->GetPosition();
-		vec2 playerPos = renderPlayer->GetPosition();
+		if (player) {
+			PlayerRenderComponent* renderPlayer = player->FindComponent<PlayerRenderComponent>();
+
+			vec2 platlPos = renderPlatform->GetPosition();
+			vec2 ballPos = renderBall->GetPosition();
+			vec2 playerPos = renderPlayer->GetPosition();
 
 
-		float angle = atan2(ballPos.y - playerPos.y, ballPos.x - playerPos.x) * 180 / 3.14;;
+			float angle = atan2(ballPos.y - platlPos.y, ballPos.x - platlPos.x) * 180 / 3.14;;
 
-		// Frames per second
-		char fpsString[50] = { 0 };
-		snprintf(fpsString, 50, "ANGLE:%f", angle);
-		FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+			if (angle < 0) { angle += 360; }
+			//float angle = atan2(0 - -1, 0 - 0) * 180 / 3.14;;
+
+			// Frames per second
+			char fpsString[50] = { 0 };
+			snprintf(fpsString, 50, "ANGLE:%f", angle);
+			FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+		}
 	}
 }

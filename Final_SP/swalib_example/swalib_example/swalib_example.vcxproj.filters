@@ -61,6 +61,12 @@
     <Filter Include="Header Files\Game\Components\Scenes">
       <UniqueIdentifier>{75aae875-e750-4edf-9f11-22fb17ca4e1a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Component\Platforms">
+      <UniqueIdentifier>{a1db2f60-967e-4485-a897-6badf54a649b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Components\Platforms">
+      <UniqueIdentifier>{a5fcc97c-5510-4bf8-97fe-b183c73a4371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -134,6 +140,12 @@
     </ClCompile>
     <ClCompile Include="..\..\common\sceneComponent.cpp">
       <Filter>Source Files\Game\Component\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\platformRenderComponent.cpp">
+      <Filter>Source Files\Game\Component\Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\platformColisionComponent.cpp">
+      <Filter>Source Files\Game\Component\Platforms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="..\..\common\sceneComponent.h">
       <Filter>Header Files\Game\Components\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\platformRenderComponent.h">
+      <Filter>Header Files\Game\Components\Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\platformColisionComponent.h">
+      <Filter>Header Files\Game\Components\Platforms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

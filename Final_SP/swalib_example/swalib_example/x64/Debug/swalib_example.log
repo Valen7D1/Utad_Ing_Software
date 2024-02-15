@@ -2,7 +2,16 @@
   entity.cpp
   Factory.cpp
   manager.cpp
+C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\common\manager.cpp(63,12): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\common\manager.cpp(65,43): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+  core.cpp
+  example.cpp
+  font.cpp
   gameLogic.cpp
+  lodepng.cpp
+C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  message.cpp
   playerColisionComponent.cpp
   playerMovementComponent.cpp
   playerProjectileComponent.cpp
@@ -10,9 +19,14 @@
   projectileColisionComponent.cpp
   projectileMovementComponent.cpp
   sceneComponent.cpp
+  timer.cpp
   movementComponent.cpp
   render.cpp
+  Generating Code...
+  Compiling...
+  renderComponent.cpp
   renderEngine.cpp
+  stdafx.cpp
   sys_win.cpp
   Generating Code...
-  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe
+  swalib_example.vcxproj -> C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe

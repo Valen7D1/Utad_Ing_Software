@@ -26,11 +26,13 @@ void ColisionComponent::Slot()
 	{
 		PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
 		vec2 pPos = pData->GetPosition(); // platform position
-		vec2 cornerPos = vec2(pPos.x + SCR_WIDTH/2, pPos.y + SCR_HEIGHT/2);
+		vec2 cornerPos = vec2(pPos.x + pData->GetSize().x/2, pPos.y + pData->GetSize().y / 2);
 
 		// get angle from center to top right corner of platform
 		float angle = atan2(cornerPos.y - pPos.y, cornerPos.x - pPos.x) * 180 / 3.14;
 		float colisionAngle = atan2(newPos.y - pPos.y, newPos.x - pPos.x) * 180 / 3.14;;
+
+		if (colisionAngle < 0) { colisionAngle += 360; }
 
 		vec2 position = pData->GetPosition();
 		vec2 size = pData->GetSize();
