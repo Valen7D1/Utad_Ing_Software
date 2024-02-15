@@ -5,6 +5,7 @@
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
+#include <math.h>
 #include "sys.h"
 
 void ColisionComponent::Slot() 
@@ -20,31 +21,50 @@ void ColisionComponent::Slot()
 	std::vector<Entity*> platforms = manager->getPlatforms();
 
 	//platforms colision
+	vec2 newVel; // if collided we need new vel
 	for (Entity* platform: platforms)
 	{
 		PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
+		vec2 pPos = pData->GetPosition(); // platform position
+		vec2 cornerPos = vec2(pPos.x + SCR_WIDTH/2, pPos.y + SCR_HEIGHT/2);
+
+		// get angle from center to top right corner of platform
+		float angle = atan2(cornerPos.y - pPos.y, cornerPos.x - pPos.x) * 180 / 3.14;
+		float colisionAngle = atan2(newPos.y - pPos.y, newPos.x - pPos.x) * 180 / 3.14;;
+
 		vec2 position = pData->GetPosition();
 		vec2 size = pData->GetSize();
 
-		// left collision
-		if(position.x+size.x/2 > newPos.x-radius && position.x + size.x / 2 < newPos.x + radius)
-		{
+		float distanceX = abs(pPos.x - newPos.x);
+		float distanceY = abs(pPos.y - newPos.y);
 
-		}
-		// right collision
-		if (true)
-		{
+		float maxDistanceX = abs(pData->GetSize().x/2 + radius);
+		float maxDistanceY = abs(pData->GetSize().y/2 + radius);
 
-		}
-		// up collision
-		if (true)
+		if (distanceX < maxDistanceX && distanceY < maxDistanceY) 
 		{
-
-		}
-		// down collision
-		if (true)
-		{
-
+			colliding = true;
+			// up collision
+			if (colisionAngle > angle && colisionAngle < 180 - angle)
+			{
+				newVel = vec2(vel.x, -vel.y);
+			}
+			// down collision
+			else if (colisionAngle > 180 + angle && colisionAngle < 360 + angle)
+			{
+				newVel = vec2(vel.x, -vel.y);
+			}
+			// left collision
+			else if (colisionAngle >= 180 - angle && colisionAngle <= 180 + angle)
+			{
+				newVel = vec2(-vel.x, vel.y);
+			}
+			// right collision
+			else if (colisionAngle >= 360 - angle || colisionAngle <= 0 + angle)
+			{
+				newVel = vec2(-vel.x, vel.y);
+			}
+			break;
 		}
 	}
 
@@ -55,9 +75,9 @@ void ColisionComponent::Slot()
 	// if collision ocurred
 	else {
 		// current poss sent to entity
-		entityOwner->SendMsg(new EntCollisionMessage(currentPos));
-		// same but only so that it changes direction
-		entityColliding->SendMsg(new EntCollisionMessage(otherEntityCollision->GetPosition()));
+		//vel = newVel;
+		entityOwner->SendMsg(new NewPositionMessage(currentPos));
+		entityOwner->SendMsg(new NewVelocityMessage(newVel));
 	}
 
 	bool marginCollided = false;
@@ -70,7 +90,7 @@ void ColisionComponent::Slot()
 		entityOwner->SendMsg(new LimitWorldCollMessage(vec2( 1, -1), currentPos));
 		marginCollided = true;
 	}
-	if (!marginCollided)
+	if (!marginCollided && !colliding)
 	{
 		float addedVel = GRAVITY* manager->getTimer()->GetFrameTime();
 		entityOwner->SendMsg(new NewVelocityMessage(vec2(vel.x, vel.y+addedVel)));

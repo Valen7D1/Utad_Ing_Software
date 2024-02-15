@@ -7,6 +7,7 @@
 #include "playerProjectileComponent.h"
 #include "platformRenderComponent.h"
 #include "sceneComponent.h"
+#include <math.h>
 
 
 RenderEngine* RenderEngine::instance = nullptr;
@@ -97,12 +98,23 @@ void RenderEngine::RenderObjects(){
 
 void RenderEngine::RenderText() 
 {
-	//Manager* manager = Manager::getInstance();
-	//// get timer
-	//Timer* m_timer = manager->getTimer();
+	Manager* manager = Manager::getInstance();
+	Entity* player = manager->getPlayer();
+	Entity* ball = manager->getEntities()[0];
 
-	//// Frames per second
-	//char fpsString[50] = { 0 };
-	//snprintf(fpsString, 50, "FPS:%f", 1 / m_timer->GetTime_fps());
-	//FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+	RenderComponent* renderBall = ball->FindComponent<RenderComponent>();
+	if (player) {
+		PlayerRenderComponent* renderPlayer = player->FindComponent<PlayerRenderComponent>();
+
+		vec2 ballPos = renderBall->GetPosition();
+		vec2 playerPos = renderPlayer->GetPosition();
+
+
+		float angle = atan2(ballPos.y - playerPos.y, ballPos.x - playerPos.x) * 180 / 3.14;;
+
+		// Frames per second
+		char fpsString[50] = { 0 };
+		snprintf(fpsString, 50, "ANGLE:%f", angle);
+		FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+	}
 }
