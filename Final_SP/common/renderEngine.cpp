@@ -5,6 +5,7 @@
 #include "playerRenderComponent.h"
 #include "PlayerColisionComponent.h"
 #include "playerProjectileComponent.h"
+#include "platformRenderComponent.h"
 #include "sceneComponent.h"
 
 
@@ -55,6 +56,7 @@ void RenderEngine::RenderObjects(){
 	Manager* manager = Manager::getInstance();
 
 	std::vector<Entity*> entities = manager->getEntities();
+	std::vector<Entity*> platforms = manager->getPlatforms();
 	Entity* player = manager->getPlayer();
 
 	// for every object render it using its location and radius values
@@ -81,7 +83,15 @@ void RenderEngine::RenderObjects(){
 			renderComponent->Slot();
 		}
 	}
+	//if (manager->platforms != nullptr){}
+	//for (auto item = manager->platforms.begin(); item != manager->platforms.end(); )
+	for (Entity* platform : platforms)
 
+	{
+		//Entity* platform = *item;
+		PLatformRenderComponent* platformRender = platform->FindComponent<PLatformRenderComponent>();
+		platformRender->Slot();
+	}
 }
 
 

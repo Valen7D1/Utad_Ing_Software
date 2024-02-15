@@ -1,6 +1,7 @@
 #include "colisionComponent.h"
 #include "movementComponent.h"
 #include "renderComponent.h"
+#include "platformRenderComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
@@ -16,6 +17,36 @@ void ColisionComponent::Slot()
 	// call to entity vector for collision checking
 	Manager* manager = manager->getInstance();
 	std::vector<Entity*> entities = manager->getEntities();
+	std::vector<Entity*> platforms = manager->getPlatforms();
+
+	//platforms colision
+	for (Entity* platform: platforms)
+	{
+		PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
+		vec2 position = pData->GetPosition();
+		vec2 size = pData->GetSize();
+
+		// left collision
+		if(position.x+size.x/2 > newPos.x-radius && position.x + size.x / 2 < newPos.x + radius)
+		{
+
+		}
+		// right collision
+		if (true)
+		{
+
+		}
+		// up collision
+		if (true)
+		{
+
+		}
+		// down collision
+		if (true)
+		{
+
+		}
+	}
 
 
 	if (!colliding) {

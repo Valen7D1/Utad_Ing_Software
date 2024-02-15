@@ -11,6 +11,8 @@
 #include "renderComponent.h"
 #include "entity.h"
 #include "sceneComponent.h"
+#include "platformColisionComponent.h"
+#include "platformRenderComponent.h"
 
 
 void BaseLevel::CreatePlayer()
@@ -68,6 +70,7 @@ void Level1::CreateLevel()
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
+	// get balls data
 	const rapidjson::Value& ballData = manager->doc["Ball"];
 
 	float minHeight = ballData["height"].GetArray()[0].GetFloat();
@@ -79,6 +82,7 @@ void Level1::CreateLevel()
 	float ballSpeed = ballData["speed"].GetFloat();
 	float radius = ballData["radius"].GetFloat();
 
+	// create balls
 	for (int i = 0; i < 1; i++) {
 		Entity* ballEntity = new Entity();
 
@@ -107,6 +111,52 @@ void Level1::CreateLevel()
 		ballEntity->AddComponent(renderComponent);
 
 		manager->entities.push_back(ballEntity);
+	}
+
+
+	// get platforms data
+
+	const rapidjson::Value& platformData = manager->doc["Platform"];
+
+	// all platforms to be created
+	std::vector<vec2> platforms;
+	const rapidjson::Value& platformPositions = platformData["position"];
+	for (int i = 0; i < platformPositions.Size(); i++) {
+		platforms.push_back(vec2(
+			platformPositions.GetArray()[i][0].GetFloat(),
+			platformPositions.GetArray()[i][1].GetFloat()));
+	}
+
+	float platformWidth = platformData["width"].GetFloat();
+	float platformHeight = platformData["height"].GetFloat();
+	vec2 proportions = vec2(
+		platformData["size"].GetArray()[0].GetFloat(),
+		platformData["size"].GetArray()[1].GetFloat()
+	);
+
+	// create platforms
+	// loop using position array as control
+
+	for (auto item = platforms.begin(); item != platforms.end(); )
+	{
+		vec2 position = *item;
+		Entity* platformEntity = new Entity();
+
+		PlatformColisionComponent* platformColisionComponent = new PlatformColisionComponent();
+		platformColisionComponent->SetHeight(vec2(position.x - platformWidth/2, position.y + platformWidth / 2));
+		platformColisionComponent->SetWidth(vec2(position.x - platformHeight / 2, position.y + platformHeight / 2));
+
+		PLatformRenderComponent* pLatformRenderComponent = new PLatformRenderComponent();
+		pLatformRenderComponent->SetPosition(position);
+		pLatformRenderComponent->SetSize(vec2(platformWidth, platformHeight));
+		pLatformRenderComponent->SetProportions(proportions);
+		pLatformRenderComponent->SetSprite(CORE_LoadPNG(platformData["sprite"].GetString(), false));
+
+		platformEntity->AddComponent(platformColisionComponent);
+		platformEntity->AddComponent(pLatformRenderComponent);
+
+		manager->platforms.push_back(platformEntity);
+		++item;
 	}
 }
 

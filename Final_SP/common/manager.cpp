@@ -35,6 +35,11 @@ std::vector<Entity*> Manager::getEntities() {
     return entities;
 }
 
+std::vector<Entity*> Manager::getPlatforms() {
+	return platforms;
+}
+
+
 Entity* Manager::getPlayer() {
 	return player;
 }
@@ -51,6 +56,12 @@ void Manager::ResetLevel()
 	{
 		delete entities[entities.size()-1];
 		entities.pop_back();
+	}
+
+	while (platforms.size() > 0)
+	{
+		delete platforms[platforms.size() - 1];
+		platforms.pop_back();
 	}
 	m_CurrentLevel->CreateLevel();
 }

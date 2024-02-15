@@ -23,6 +23,7 @@ public:
     Entity* player;
     rapidjson::Document doc;
     std::vector<Entity*> entities;
+    std::vector<Entity*> platforms;
     BaseLevel* m_CurrentLevel;
 
     unsigned int currentLevel = 0;
@@ -32,6 +33,7 @@ public:
     static Manager* getInstance();
     //getters
     std::vector<Entity*> getEntities();
+    std::vector<Entity*> getPlatforms();
     Entity* getPlayer();
     Timer* getTimer();
 

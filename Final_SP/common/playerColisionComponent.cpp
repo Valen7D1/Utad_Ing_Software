@@ -21,7 +21,7 @@ void PlayerColisionComponent::Slot()
 		float limit2 = (m_radius + otherEntityCollision->GetRadius()) * (m_radius + otherEntityCollision->GetRadius());
 
 		if (vlen2(m_position - otherEntityCollision->GetPosition()) <= limit2) {
-			otherEntity->toBeDeleted = true;
+			//otherEntity->toBeDeleted = true;
 			HitControl();
 			break;
 		}
