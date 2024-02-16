@@ -1,17 +1,3 @@
-﻿  Factory.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\Factory.cpp(124,20): warning C4018: '<': signed/unsigned mismatch
-  colisionComponent.cpp
-  gameLogic.cpp
-  manager.cpp
-  movementComponent.cpp
-  playerColisionComponent.cpp
-  playerMovementComponent.cpp
-  playerProjectileComponent.cpp
-  projectileColisionComponent.cpp
-  projectileMovementComponent.cpp
-  render.cpp
-  renderEngine.cpp
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(123,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  timer.cpp
-  Generating Code...
+﻿  renderEngine.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp(124,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\Debug\swalib_example.exe

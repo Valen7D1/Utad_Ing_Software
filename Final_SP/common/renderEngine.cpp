@@ -40,6 +40,7 @@ void RenderEngine::RenderSetUp() {
 void RenderEngine::TexturesSetting() {
 	// Load textures
 	GetSprite()->setBackgroundSprite(CORE_LoadPNG("data/back.png", true));
+	GetSprite()->setTileSprite(CORE_LoadPNG("data/tile.png", true));
 }
 
 
@@ -52,7 +53,8 @@ void RenderEngine::RenderObjects(){
 	float distance = FLOOR/2;
 	for (int i = 0; i<10; ++i)
 	{
-		CORE_RenderCenteredSprite(vec2(distance, FLOOR/2), vec2(FLOOR, FLOOR), CORE_LoadPNG("data/tile.png", true));
+		CORE_RenderCenteredSprite(vec2(distance, FLOOR / 2), vec2(FLOOR, FLOOR), GetSprite()->getTileSprite());
+		//CORE_RenderCenteredSprite(vec2(distance, FLOOR / 2), vec2(FLOOR, FLOOR), CORE_LoadPNG("data/tile.png", true));
 		distance += FLOOR;
 	}
 
@@ -87,8 +89,7 @@ void RenderEngine::RenderObjects(){
 			renderComponent->Slot();
 		}
 	}
-	//if (manager->platforms != nullptr){}
-	//for (auto item = manager->platforms.begin(); item != manager->platforms.end(); )
+
 	for (Entity* platform : platforms)
 
 	{
@@ -123,7 +124,6 @@ void RenderEngine::RenderText()
 			float angle = atan2(ballPos.y - platlPos.y, ballPos.x - platlPos.x) * 180 / 3.14;;
 
 			if (angle < 0) { angle += 360; }
-			//float angle = atan2(0 - -1, 0 - 0) * 180 / 3.14;;
 
 			// Frames per second
 			char fpsString[50] = { 0 };
