@@ -83,31 +83,31 @@ void Level1::CreateLevel()
 	float radius = ballData["radius"].GetFloat();
 
 	// create balls
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 50; i++) {
 		Entity* ballEntity = new Entity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
-
-		ColisionComponent* colisionComponent = new ColisionComponent();
-		colisionComponent->SetPosition(Position);
-		colisionComponent->SetVelocity(Velocity);
-		colisionComponent->SetRadius(16);
-		colisionComponent->entityOwner = ballEntity;
 
 		MovementComponent* movementComponent = new MovementComponent();
 		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
+		ColisionComponent* colisionComponent = new ColisionComponent();
+		colisionComponent->SetPosition(Position);
+		colisionComponent->SetVelocity(Velocity);
+		colisionComponent->SetRadius(8);
+		colisionComponent->entityOwner = ballEntity;
+
 		RenderComponent* renderComponent = new RenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
-		renderComponent->SetRadius(16);
+		renderComponent->SetRadius(8);
 		renderComponent->entityOwner = ballEntity;
 
-		ballEntity->AddComponent(movementComponent);
 		ballEntity->AddComponent(colisionComponent);
+		ballEntity->AddComponent(movementComponent);
 		ballEntity->AddComponent(renderComponent);
 
 		manager->entities.push_back(ballEntity);
@@ -121,7 +121,7 @@ void Level1::CreateLevel()
 	// all platforms to be created
 	std::vector<vec2> platforms;
 	const rapidjson::Value& platformPositions = platformData["position"];
-	for (int i = 0; i < platformPositions.Size(); i++) {
+	for (unsigned int i = 0; i < platformPositions.Size(); i++) {
 		platforms.push_back(vec2(
 			platformPositions.GetArray()[i][0].GetFloat(),
 			platformPositions.GetArray()[i][1].GetFloat()));

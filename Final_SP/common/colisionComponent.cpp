@@ -21,7 +21,7 @@ void ColisionComponent::Slot()
 	std::vector<Entity*> platforms = manager->getPlatforms();
 
 	//platforms colision
-	vec2 newVel; // if collided we need new vel
+	vec2 newVel = vel; // if collided we need new vel
 	for (Entity* platform: platforms)
 	{
 		PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
@@ -49,22 +49,22 @@ void ColisionComponent::Slot()
 			// up collision
 			if (colisionAngle >= angle && colisionAngle <= 180 - angle)
 			{
-				newVel = vec2(vel.x, -vel.y);
+				if (newVel.y < 0) { newVel.y *= -1; } //newVel = vec2(vel.x, -vel.y);
 			}
 			// down collision
-			else if (colisionAngle >= 180 + angle && colisionAngle <= 360 + angle)
+			if (colisionAngle >= 180 + angle && colisionAngle <= 360 - angle)
 			{
-				newVel = vec2(vel.x, -vel.y);
+				if (newVel.y > 0) { newVel.y *= -1; }//newVel = vec2(vel.x, -vel.y);
 			}
 			// left collision
-			else if (colisionAngle >= 180 - angle && colisionAngle <= 180 + angle)
+			if (colisionAngle >= 180 - angle && colisionAngle <= 180 + angle)
 			{
-				newVel = vec2(-vel.x, vel.y);
+				if (newVel.x > 0) { newVel.x *= -1; } //newVel = vec2(-vel.x, vel.y);
 			}
 			// right collision
-			else if (colisionAngle >= 360 - angle || colisionAngle <= 0 + angle)
+			if (colisionAngle >= 360 - angle || colisionAngle <= 0 + angle)
 			{
-				newVel = vec2(-vel.x, vel.y);
+				if (newVel.x < 0) { newVel.x *= -1; } //newVel = vec2(-vel.x, vel.y);
 			}
 			break;
 		}
@@ -76,6 +76,7 @@ void ColisionComponent::Slot()
 	}
 	// if collision ocurred
 	else {
+		currentPos += vel*manager->getTimer()->GetFrameTime();
 		NewPositionMessage* newPositionMessage = new NewPositionMessage(currentPos);
 		NewVelocityMessage* newVelocityMessage = new NewVelocityMessage(newVel);
 
