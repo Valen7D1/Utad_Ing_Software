@@ -1,7 +1,7 @@
 #include "playerProjectileComponent.h"
 #include "projectileColisionComponent.h"
 #include "projectileMovementComponent.h"
-#include "renderComponent.h"
+#include "projectileRenderComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
@@ -16,10 +16,11 @@ void PlayerProjectileComponent::Slot()
 
 	if (GetKeyState('X') & 0x8000)
 	{
-		if (timeLimit <= 0)
+		//if (timeLimit <= 0)
+		if(m_projectiles.size()<=0)
 		{
 			CreateProjectile();
-			timeLimit = 1;
+			timeLimit = 0.1;
 		}
 	}
 
@@ -62,10 +63,12 @@ void PlayerProjectileComponent::CreateProjectile()
 	projectileMovement->SetVelocity(m_velocity);
 	projectileMovement->entityOwner = bulletEntity;
 
-	RenderComponent* renderComponent = new RenderComponent();
+	ProjectileRenderComponent* renderComponent = new ProjectileRenderComponent();
 	renderComponent->SetGfx(m_gfx);
+	renderComponent->SetTraceSprite(m_trace);
 	renderComponent->SetPosition(m_playerPosition);
 	renderComponent->SetRadius(m_radius/2);
+	renderComponent->SetStartingPosition(m_playerPosition);
 	renderComponent->entityOwner = bulletEntity;
 
 	bulletEntity->AddComponent(projectileColision);

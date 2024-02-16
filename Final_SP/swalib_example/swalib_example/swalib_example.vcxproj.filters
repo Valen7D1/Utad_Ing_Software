@@ -147,6 +147,9 @@
     <ClCompile Include="..\..\common\platformColisionComponent.cpp">
       <Filter>Source Files\Game\Component\Platforms</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\common\projectileRenderComponent.cpp">
+      <Filter>Source Files\Game\Component\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\core.h">
@@ -228,6 +231,9 @@
       <Filter>Header Files\Game\Components\Platforms</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\playerRenderComponent.h">
+      <Filter>Header Files\Game\Components\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\projectileRenderComponent.h">
       <Filter>Header Files\Game\Components\Projectile</Filter>
     </ClInclude>
   </ItemGroup>

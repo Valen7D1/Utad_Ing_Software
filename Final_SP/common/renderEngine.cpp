@@ -6,6 +6,7 @@
 #include "PlayerColisionComponent.h"
 #include "playerProjectileComponent.h"
 #include "platformRenderComponent.h"
+#include "projectileRenderComponent.h"
 #include "sceneComponent.h"
 #include <math.h>
 
@@ -85,7 +86,7 @@ void RenderEngine::RenderObjects(){
 		std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
 		for (Entity* projectile : projectiles)
 		{
-			RenderComponent* renderComponent = projectile->FindComponent<RenderComponent>();
+			ProjectileRenderComponent* renderComponent = projectile->FindComponent<ProjectileRenderComponent>();
 			renderComponent->Slot();
 		}
 	}
@@ -102,33 +103,33 @@ void RenderEngine::RenderObjects(){
 
 void RenderEngine::RenderText() 
 {
-	Manager* manager = Manager::getInstance();
-	Entity* player = manager->getPlayer();
-	if (manager->getPlatforms().size() > 0 &&
-		manager->getEntities().size() > 0)
-	{
-		Entity* platform = manager->getPlatforms()[0];
-		Entity* ball = manager->getEntities()[0];
+	//Manager* manager = Manager::getInstance();
+	//Entity* player = manager->getPlayer();
+	//if (manager->getPlatforms().size() > 0 &&
+	//	manager->getEntities().size() > 0)
+	//{
+	//	Entity* platform = manager->getPlatforms()[0];
+	//	Entity* ball = manager->getEntities()[0];
 
-		RenderComponent* renderBall = ball->FindComponent<RenderComponent>();
-		PLatformRenderComponent* renderPlatform = platform->FindComponent<PLatformRenderComponent>();
+	//	RenderComponent* renderBall = ball->FindComponent<RenderComponent>();
+	//	PLatformRenderComponent* renderPlatform = platform->FindComponent<PLatformRenderComponent>();
 
-		if (player) {
-			PlayerRenderComponent* renderPlayer = player->FindComponent<PlayerRenderComponent>();
+	//	if (player) {
+	//		PlayerRenderComponent* renderPlayer = player->FindComponent<PlayerRenderComponent>();
 
-			vec2 platlPos = renderPlatform->GetPosition();
-			vec2 ballPos = renderBall->GetPosition();
-			vec2 playerPos = renderPlayer->GetPosition();
+	//		vec2 platlPos = renderPlatform->GetPosition();
+	//		vec2 ballPos = renderBall->GetPosition();
+	//		vec2 playerPos = renderPlayer->GetPosition();
 
 
-			float angle = atan2(ballPos.y - platlPos.y, ballPos.x - platlPos.x) * 180 / 3.14;;
+	//		float angle = atan2(ballPos.y - platlPos.y, ballPos.x - platlPos.x) * 180 / 3.14;;
 
-			if (angle < 0) { angle += 360; }
+	//		if (angle < 0) { angle += 360; }
 
-			// Frames per second
-			char fpsString[50] = { 0 };
-			snprintf(fpsString, 50, "ANGLE:%f", angle);
-			FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
-		}
-	}
+	//		// Frames per second
+	//		char fpsString[50] = { 0 };
+	//		snprintf(fpsString, 50, "ANGLE:%f", angle);
+	//		FONT_DrawString(vec2(0, SCR_HEIGHT - 16), fpsString);
+	//	}
+	//}
 }

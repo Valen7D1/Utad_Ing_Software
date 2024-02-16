@@ -23,6 +23,10 @@
 
     "spriteD": "data/playerD.png",
 
+    "arrow": "data/arrow.png",
+
+    "trace": "data/trace.png",
+
     "position": 320,
 
     "hitPoints": 3

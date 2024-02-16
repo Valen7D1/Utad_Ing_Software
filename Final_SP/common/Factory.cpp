@@ -50,7 +50,8 @@ void BaseLevel::CreatePlayer()
 	playerRender->entityOwner = manager->player;
 
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
-	playerProjectileComponent->SetGfx(CORE_LoadPNG("data/arrow.png", false));
+	playerProjectileComponent->SetGfx(CORE_LoadPNG(playerData["arrow"].GetString(), false));
+	playerProjectileComponent->SetTraceSprite(CORE_LoadPNG(playerData["trace"].GetString(), false));
 	playerProjectileComponent->SetVelocity(300);
 	playerProjectileComponent->SetRadius(playerRadius);
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
@@ -65,7 +66,7 @@ void BaseLevel::CreatePlayer()
 
 void Level1::CreateLevel()
 {
-	//CreatePlayer();
+	CreatePlayer();
 
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
@@ -83,26 +84,26 @@ void Level1::CreateLevel()
 	float radius = ballData["radius"].GetFloat();
 
 	// create balls
-	for (int i = 0; i < 50; i++) {
+	for (int i = 0; i < 1; i++) {
 		Entity* ballEntity = new Entity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
 		MovementComponent* movementComponent = new MovementComponent();
-		movementComponent->SetPosition(Position);
+		movementComponent->SetPosition(vec2(-100, -100));
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
 		ColisionComponent* colisionComponent = new ColisionComponent();
-		colisionComponent->SetPosition(Position);
+		colisionComponent->SetPosition(vec2(-100, -100));
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(8);
 		colisionComponent->entityOwner = ballEntity;
 
 		RenderComponent* renderComponent = new RenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(Position);
+		renderComponent->SetPosition(vec2(-100, -100));
 		renderComponent->SetRadius(8);
 		renderComponent->entityOwner = ballEntity;
 
