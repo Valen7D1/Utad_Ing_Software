@@ -53,22 +53,24 @@ void PlayerProjectileComponent::CreateProjectile()
 {
 	Entity* bulletEntity = new Entity();
 
+	vec2 startingPosition = vec2(m_playerPosition.x, m_playerPosition.y + m_radius);
+
 	ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
-	projectileColision->SetPosition(m_playerPosition);
+	projectileColision->SetPosition(startingPosition);
 	projectileColision->SetRadius(m_radius/2);
 	projectileColision->entityOwner = bulletEntity;
 
 	ProjectileMovementComponent* projectileMovement = new ProjectileMovementComponent();
-	projectileMovement->SetPosition(m_playerPosition);
+	projectileMovement->SetPosition(startingPosition);
 	projectileMovement->SetVelocity(m_velocity);
 	projectileMovement->entityOwner = bulletEntity;
 
 	ProjectileRenderComponent* renderComponent = new ProjectileRenderComponent();
 	renderComponent->SetGfx(m_gfx);
 	renderComponent->SetTraceSprite(m_trace);
-	renderComponent->SetPosition(m_playerPosition);
+	renderComponent->SetPosition(startingPosition);
 	renderComponent->SetRadius(m_radius/2);
-	renderComponent->SetStartingPosition(m_playerPosition);
+	renderComponent->SetStartingPosition(startingPosition);
 	renderComponent->entityOwner = bulletEntity;
 
 	bulletEntity->AddComponent(projectileColision);
