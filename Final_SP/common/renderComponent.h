@@ -17,8 +17,8 @@ public:
 	void SetGfx(GLuint newGfx) { gfx = newGfx; }
 	void SetRadius(float newRadius) { radius = newRadius; }
 	//getters
-	vec2 GetPosition() { return pos; };
-	GLuint GetId() { return gfx; };
-	float GetRadius() { return radius; };
+	vec2 GetPosition() { return pos; }
+	GLuint GetId() { return gfx; }
+	float GetRadius() { return radius; }
 
 };

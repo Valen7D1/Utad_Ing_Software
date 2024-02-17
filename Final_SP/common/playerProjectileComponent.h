@@ -26,7 +26,7 @@ public:
 	void SetGfx(GLuint newGfx) { m_gfx = newGfx; }
 	void SetTraceSprite(GLuint newGfx) { m_trace = newGfx; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
-	void SetPlayerPosition(vec2 newPlayerPosition) { m_playerPosition = newPlayerPosition; };
+	void SetPlayerPosition(vec2 newPlayerPosition) { m_playerPosition = newPlayerPosition; }
 
 	//getters
 	vec2 GetVelocity() { return m_velocity; }

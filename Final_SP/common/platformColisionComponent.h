@@ -13,7 +13,7 @@ public:
 
 	void SetHeight(vec2 newHeight) { m_height = newHeight; }
 	void SetWidth(vec2 newWidth) { m_width = newWidth; }
-	vec2 GetHeight() { return m_height; };
-	vec2 GetWidth() { return m_width; };
+	vec2 GetHeight() { return m_height; }
+	vec2 GetWidth() { return m_width; }
 
 };

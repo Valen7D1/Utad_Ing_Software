@@ -16,6 +16,6 @@ public:
 	void SetVelocity(float newVelocity) { m_velocity = newVelocity; }
 	void SetPosition(vec2 m_newPosition) { m_position = m_newPosition; }
 
-	float GetVelocity() { return m_velocity; };
-	vec2 GetPosition() { return m_position; };
+	float GetVelocity() { return m_velocity; }
+	vec2 GetPosition() { return m_position; }
 };

@@ -23,10 +23,10 @@ public:
 	void SetHitPoint(unsigned int newHitPoints) { m_hitPoints = newHitPoints; }
 
 	//getters
-	GLuint GetId(unsigned int id) { return m_gfx[id]; };
-	GLuint GetHpId() { return m_HpGfx; };
-	vec2 GetPosition() { return m_position; };
-	float GetRadius() { return m_radius; };
+	GLuint GetId(unsigned int id) { return m_gfx[id]; }
+	GLuint GetHpId() { return m_HpGfx; }
+	vec2 GetPosition() { return m_position; }
+	float GetRadius() { return m_radius; }
 	unsigned int GetHitPoint() { return m_hitPoints; }
 
 };

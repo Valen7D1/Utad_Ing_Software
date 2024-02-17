@@ -21,10 +21,10 @@ public:
 	void SetTraceSprite(GLuint newGfx) { m_trace = newGfx; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
 	//getters
-	vec2 GetPosition() { return m_position; };
-	GLuint GetId() { return m_sprite; };
+	vec2 GetPosition() { return m_position; }
+	GLuint GetId() { return m_sprite; }
 	GLuint GetTraceSprite() { return m_trace; }
-	float GetRadius() { return m_radius; };
+	float GetRadius() { return m_radius; }
 	vec2 GetStartingPosition() { return m_startingPosition; }
 
 

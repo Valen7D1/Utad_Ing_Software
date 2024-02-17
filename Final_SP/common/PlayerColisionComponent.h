@@ -18,8 +18,8 @@ public:
 	void SetRadius(float newRadius) { m_radius = newRadius; }
 	void SetHitPoints(unsigned int newHitPoints) { m_hitPoints = newHitPoints; }
 
-	vec2 GetPosition() { return m_position; };
-	float GetRadius() { return m_radius; };
-	unsigned int GetHitPoints() { return m_hitPoints; };
+	vec2 GetPosition() { return m_position; }
+	float GetRadius() { return m_radius; }
+	unsigned int GetHitPoints() { return m_hitPoints; }
 
 };

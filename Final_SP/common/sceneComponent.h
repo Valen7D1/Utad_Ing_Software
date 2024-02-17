@@ -19,6 +19,6 @@ public:
 	virtual void Slot() override; // call render sprite
 
 	void SetSprite(GLuint newGfx) { m_sceneSprite = newGfx; }
-	GLuint GetId() { return m_sceneSprite; };
+	GLuint GetId() { return m_sceneSprite; }
 	virtual void  ReceiveMessage(Message* msg) {}
 };

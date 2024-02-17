@@ -18,7 +18,7 @@ public:
 	void SetPosition(vec2 m_newPosition) { m_position = m_newPosition; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
 
-	float GetVelocity() { return m_velocity; };
-	vec2 GetPosition() { return m_position; };
-	float GetRadius() { return m_radius; };
+	float GetVelocity() { return m_velocity; }
+	vec2 GetPosition() { return m_position; }
+	float GetRadius() { return m_radius; }
 };

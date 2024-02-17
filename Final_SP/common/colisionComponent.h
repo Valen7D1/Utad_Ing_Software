@@ -18,8 +18,8 @@ public:
 	void SetVelocity(vec2 newVelocity) { vel = newVelocity; }
 	void SetRadius(float newRadius) { radius = newRadius; }
 	// getters
-	vec2 GetPosition() { return currentPos; };
-	vec2 GetVelocity() { return vel; };
-	float GetRadius() { return radius; };
+	vec2 GetPosition() { return currentPos; }
+	vec2 GetVelocity() { return vel; }
+	float GetRadius() { return radius; }
 
 };

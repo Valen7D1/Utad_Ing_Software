@@ -18,9 +18,9 @@ public:
 	void SetProportions(vec2 newProportions) { m_proportions = newProportions; }
 	void SetSprite(GLuint newSprite) { m_sprite = newSprite; }
 
-	vec2 GetPosition() { return m_position; };
+	vec2 GetPosition() { return m_position; }
 	vec2 GetSize() { return m_size; }
 	vec2 GetProportions() { return m_proportions; }
-	GLuint GetSprite() { return m_sprite; };
+	GLuint GetSprite() { return m_sprite; }
 
 };
