@@ -64,6 +64,7 @@ void Manager::ResetLevel()
 // update for all game objects
 void Manager::update()
 {   
+	// reset level
 	if (reset == 1)
 	{
 		unsigned int hp = player->FindComponent<PlayerColisionComponent>()->GetHitPoints();
@@ -73,7 +74,7 @@ void Manager::update()
 		delete newHitPointsMessage;
 		reset = 0;
 	}
-
+	// player update
 	if (player)
 	{
 		if (player->toBeDeleted)
@@ -88,6 +89,7 @@ void Manager::update()
 		}
 	}
 
+	// entities update
 	std::vector<Entity*> tempEntities;
 
 	if (entities.size() <= 0)

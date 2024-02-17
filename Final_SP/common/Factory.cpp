@@ -11,7 +11,6 @@
 #include "ballRenderComponent.h"
 #include "entity.h"
 #include "sceneComponent.h"
-#include "platformColisionComponent.h"
 #include "platformRenderComponent.h"
 
 //cosos mios
@@ -149,17 +148,12 @@ void Level1::CreateLevel()
 		vec2 position = *item;
 		Entity* platformEntity = new PlatformEntity();
 
-		PlatformColisionComponent* platformColisionComponent = new PlatformColisionComponent();
-		platformColisionComponent->SetHeight(vec2(position.x - platformWidth/2, position.y + platformWidth / 2));
-		platformColisionComponent->SetWidth(vec2(position.x - platformHeight / 2, position.y + platformHeight / 2));
-
 		PLatformRenderComponent* pLatformRenderComponent = new PLatformRenderComponent();
 		pLatformRenderComponent->SetPosition(position);
 		pLatformRenderComponent->SetSize(vec2(platformWidth, platformHeight));
 		pLatformRenderComponent->SetProportions(proportions);
 		pLatformRenderComponent->SetSprite(CORE_LoadPNG(platformData["sprite"].GetString(), false));
 
-		platformEntity->AddComponent(platformColisionComponent);
 		platformEntity->AddComponent(pLatformRenderComponent);
 
 		manager->platforms.push_back(platformEntity);
