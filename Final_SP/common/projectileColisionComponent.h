@@ -7,7 +7,7 @@ class ProjectileColisionComponent : public Component
 private:
 	vec2 m_position;
 	vec2 m_startingPosition;
-	float m_radius;
+	float m_radius = 0;
 public:
 	virtual void Slot() override; 
 	virtual void  ReceiveMessage(Message* msg) override;
@@ -19,6 +19,4 @@ public:
 	vec2 GetStartingPosition() { return m_startingPosition; }
 	vec2 GetPosition() { return m_position; }
 	float GetRadius() { return m_radius; }
-
-
 };

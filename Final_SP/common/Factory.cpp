@@ -14,6 +14,12 @@
 #include "platformColisionComponent.h"
 #include "platformRenderComponent.h"
 
+//cosos mios
+//[150, 200],
+//[250, 350],
+//[350, 250],
+//[420, 150],
+//[450, 350]
 
 void BaseLevel::CreatePlayer()
 {
@@ -91,20 +97,20 @@ void Level1::CreateLevel()
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
 		MovementComponent* movementComponent = new MovementComponent();
-		movementComponent->SetPosition(vec2(-100, -100));
+		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
 		ColisionComponent* colisionComponent = new ColisionComponent();
-		colisionComponent->SetPosition(vec2(-100, -100));
+		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
-		colisionComponent->SetRadius(8);
+		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
 
 		RenderComponent* renderComponent = new RenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(vec2(-100, -100));
-		renderComponent->SetRadius(8);
+		renderComponent->SetPosition(Position);
+		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
 
 		ballEntity->AddComponent(colisionComponent);

@@ -57,6 +57,7 @@ void PlayerProjectileComponent::CreateProjectile()
 
 	ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
 	projectileColision->SetPosition(startingPosition);
+	projectileColision->SetStartingPosition(startingPosition);
 	projectileColision->SetRadius(m_radius/2);
 	projectileColision->entityOwner = bulletEntity;
 

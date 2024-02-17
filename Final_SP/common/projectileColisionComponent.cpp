@@ -23,9 +23,29 @@ void ProjectileColisionComponent::Slot()
 		if (entityOwner != otherEntity)
 		{
 			otherEntityCollision = otherEntity->FindComponent<ColisionComponent>();
-			float limit2 = (m_radius + otherEntityCollision->GetRadius()) * (m_radius + otherEntityCollision->GetRadius());
 
-			if (vlen2(m_position - otherEntityCollision->GetPosition()) <= limit2) {
+			float ballRadius = otherEntityCollision->GetRadius();
+			vec2 ballPosition = otherEntityCollision->GetPosition();
+
+			float limit2 = (m_radius + ballRadius) * (m_radius + ballRadius);
+
+			// collision with the projectile head
+			if (vlen2(m_position - ballPosition) <= limit2) {
+				colliding = true;
+				otherEntityCollision->entityOwner->toBeDeleted = true;
+				break;
+			}
+
+			// collision with the projectile trace
+			// range from where no collision
+			float maxDistanceX = (m_radius / 2) + ballRadius;
+
+			bool topCheck = m_position.y > ballPosition.y;
+			bool botCheck = m_startingPosition.y < ballPosition.y;
+			bool distanceCheck = maxDistanceX >= abs(m_position.x - ballPosition.x);
+
+			if (distanceCheck && topCheck && botCheck)
+			{
 				colliding = true;
 				otherEntityCollision->entityOwner->toBeDeleted = true;
 				break;
