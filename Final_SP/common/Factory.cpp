@@ -2,13 +2,13 @@
 #include "manager.h"
 #include "renderEngine.h"
 
-#include "movementComponent.h"
-#include "colisionComponent.h"
+#include "ballMovementComponent.h"
+#include "ballColisionComponent.h"
 #include "playerMovementComponent.h"
 #include "playerColisionComponent.h"
 #include "playerProjectileComponent.h"
 #include "playerRenderComponent.h"
-#include "renderComponent.h"
+#include "ballRenderComponent.h"
 #include "entity.h"
 #include "sceneComponent.h"
 #include "platformColisionComponent.h"
@@ -27,7 +27,7 @@ void BaseLevel::CreatePlayer()
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 	const rapidjson::Value& playerData = manager->doc["Player"];
 
-	manager->player = new Entity();
+	manager->player = new PlayerEntity();
 	float playerRadius = playerData["radius"].GetFloat();
 	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius);
 	float playerVelocity = playerData["speed"].GetFloat();
@@ -91,30 +91,30 @@ void Level1::CreateLevel()
 
 	// create balls
 	for (int i = 0; i < 1; i++) {
-		Entity* ballEntity = new Entity();
+		Entity* ballEntity = new BallEntity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
-		MovementComponent* movementComponent = new MovementComponent();
+		BallMovementComponent* movementComponent = new BallMovementComponent();
 		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
-		ColisionComponent* colisionComponent = new ColisionComponent();
+		BallColisionComponent* colisionComponent = new BallColisionComponent();
 		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
 
-		RenderComponent* renderComponent = new RenderComponent();
+		BallRenderComponent* renderComponent = new BallRenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
 
-		ballEntity->AddComponent(colisionComponent);
 		ballEntity->AddComponent(movementComponent);
+		ballEntity->AddComponent(colisionComponent);
 		ballEntity->AddComponent(renderComponent);
 
 		manager->entities.push_back(ballEntity);
@@ -147,7 +147,7 @@ void Level1::CreateLevel()
 	for (auto item = platforms.begin(); item != platforms.end(); )
 	{
 		vec2 position = *item;
-		Entity* platformEntity = new Entity();
+		Entity* platformEntity = new PlatformEntity();
 
 		PlatformColisionComponent* platformColisionComponent = new PlatformColisionComponent();
 		platformColisionComponent->SetHeight(vec2(position.x - platformWidth/2, position.y + platformWidth / 2));
@@ -187,23 +187,23 @@ void Level2::CreateLevel()
 	float radius = ballData["radius"].GetFloat();
 
 	for (int i = 0; i < NUM_BALLS; i++) {
-		Entity* ballEntity = new Entity();
+		Entity* ballEntity = new BallEntity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
-		ColisionComponent* colisionComponent = new ColisionComponent();
+		BallColisionComponent* colisionComponent = new BallColisionComponent();
 		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
 
-		MovementComponent* movementComponent = new MovementComponent();
+		BallMovementComponent* movementComponent = new BallMovementComponent();
 		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
-		RenderComponent* renderComponent = new RenderComponent();
+		BallRenderComponent* renderComponent = new BallRenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
@@ -226,7 +226,7 @@ void DeathMenu::CreateLevel()
 
 	const rapidjson::Value& deathData = manager->doc["DeathMenu"];
 
-	Entity* DeathScene = new Entity();
+	Entity* DeathScene = new SceneEntity();
 
 	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
 	sceneLogicComponent->entityOwner = DeathScene;
@@ -249,7 +249,7 @@ void MainMenu::CreateLevel()
 
 	const rapidjson::Value& mainMenuData = manager->doc["MainMenu"];
 
-	Entity* MainMenuScene = new Entity();
+	Entity* MainMenuScene = new SceneEntity();
 
 	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
 	sceneLogicComponent->entityOwner = MainMenuScene;
@@ -271,7 +271,7 @@ void WinMenu::CreateLevel()
 
 	const rapidjson::Value& winData = manager->doc["WinScene"];
 
-	Entity* WinScene = new Entity();
+	Entity* WinScene = new SceneEntity();
 
 	SceneLogicComponent* sceneLogicComponent = new SceneLogicComponent();
 	sceneLogicComponent->entityOwner = WinScene;

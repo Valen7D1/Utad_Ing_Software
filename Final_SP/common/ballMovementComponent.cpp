@@ -1,52 +1,52 @@
-#include "movementComponent.h"
-#include "colisionComponent.h"
-#include "renderComponent.h"
+#include "ballMovementComponent.h"
+#include "ballColisionComponent.h"
+#include "ballRenderComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
 
 // we need to apply mrua
 
-void MovementComponent::Slot() 
+void BallMovementComponent::Slot()
 {
 	Manager* manager = Manager::getInstance();
-	pos = pos + vel * manager->getTimer()->GetFrameTime();
+	m_position = m_position + m_velocity * manager->getTimer()->GetFrameTime();
 	// its redundant because msg will call to movement position but doesnt matter
-	NewPositionMessage* msg = new NewPositionMessage(pos);
+	NewPositionMessage* msg = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(msg);
 	delete msg;
 }
 
-void MovementComponent::ReceiveMessage(Message* msg) 
+void BallMovementComponent::ReceiveMessage(Message* msg)
 {
 	// if collision with entity
 	EntCollisionMessage* entCollisionMessage = dynamic_cast<EntCollisionMessage*>(msg);
 	if (entCollisionMessage)
 	{
-		pos = entCollisionMessage->newPos;
-		vel = vel * (-1);
+		m_position = entCollisionMessage->newPos;
+		m_velocity = m_velocity * (-1);
 	}
 
 	// if collision with world limits
 	LimitWorldCollMessage* limitWorldCollMessage = dynamic_cast<LimitWorldCollMessage*>(msg);
 	if (limitWorldCollMessage)
 	{
-		pos = limitWorldCollMessage->newPos;
-		vel = vel * limitWorldCollMessage->entityDirection;
+		m_position = limitWorldCollMessage->newPos;
+		m_velocity = m_velocity * limitWorldCollMessage->entityDirection;
 	}
 
 	//if new position
 	NewPositionMessage* newPositionMessage = dynamic_cast<NewPositionMessage*>(msg);
 	if (newPositionMessage)
 	{
-		pos = newPositionMessage->newPos;
+		m_position = newPositionMessage->newPos;
 	}
 
 	// new velocity
 	NewVelocityMessage* newVelocityMessage = dynamic_cast<NewVelocityMessage*>(msg);
 	if (newVelocityMessage)
 	{
-		vel = newVelocityMessage->newVel;
+		m_velocity = newVelocityMessage->newVel;
 	}
 
 }

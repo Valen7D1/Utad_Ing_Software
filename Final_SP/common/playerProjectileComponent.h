@@ -2,7 +2,7 @@
 #include "component.h"
 
 
-class PlayerProjectileComponent : public Component
+class PlayerProjectileComponent : public ProjectileComponent
 {
 private:
 	std::vector<Entity*> m_projectiles;

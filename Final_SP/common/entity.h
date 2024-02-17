@@ -20,12 +20,48 @@ public:
 	virtual ~Entity(); // for each component delete
 
 	void Slot(); // for each component call slot method
-	void Render();
+	virtual void Destroy() = 0;
 	void SendMsg(Message* msg); //for each component call to receive msg
 
 	bool toBeDeleted = false;
 
 };
+
+class PlayerEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
+class BallEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
+class PlatformEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
+class SceneEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
+class BulletEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
 
 
 template<class T>

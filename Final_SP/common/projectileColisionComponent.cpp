@@ -1,8 +1,8 @@
 #include "projectileMovementComponent.h"
 #include "projectileColisionComponent.h"
 #include "platformRenderComponent.h"
-#include "renderComponent.h"
-#include "colisionComponent.h"
+#include "ballRenderComponent.h"
+#include "ballColisionComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
@@ -15,14 +15,14 @@ void ProjectileColisionComponent::Slot()
 	std::vector<Entity*> platforms = manager->getPlatforms();
 
 
-	ColisionComponent* otherEntityCollision = nullptr;
+	BallColisionComponent* otherEntityCollision = nullptr;
 	bool colliding = false;
 	// collision with balls
 	for (Entity* otherEntity : entities)
 	{
 		if (entityOwner != otherEntity)
 		{
-			otherEntityCollision = otherEntity->FindComponent<ColisionComponent>();
+			otherEntityCollision = otherEntity->FindComponent<BallColisionComponent>();
 
 			float ballRadius = otherEntityCollision->GetRadius();
 			vec2 ballPosition = otherEntityCollision->GetPosition();

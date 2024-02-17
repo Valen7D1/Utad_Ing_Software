@@ -1,7 +1,7 @@
 #pragma once
 #include "component.h"
 
-class PLatformRenderComponent : public Component
+class PLatformRenderComponent : public RenderComponent
 {
 private:
 	GLuint m_sprite;

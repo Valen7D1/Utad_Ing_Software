@@ -1,6 +1,6 @@
 #include "playerMovementComponent.h"
 #include "playerColisionComponent.h"
-#include "renderComponent.h"
+#include "ballRenderComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"

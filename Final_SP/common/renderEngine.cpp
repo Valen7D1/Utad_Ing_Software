@@ -1,7 +1,7 @@
 #include "renderEngine.h"
 #include "manager.h"
 #include "entity.h"
-#include "renderComponent.h"
+#include "ballRenderComponent.h"
 #include "playerRenderComponent.h"
 #include "PlayerColisionComponent.h"
 #include "playerProjectileComponent.h"
@@ -67,35 +67,22 @@ void RenderEngine::RenderObjects(){
 	Entity* player = manager->getPlayer();
 
 	// for every object render it using its location and radius values
-	// maybe get a get all objects?
 	for (Entity* entity : entities) 
 	{
-		RenderComponent * renderComponent = entity->FindComponent<RenderComponent>();
+		RenderComponent* renderComponent = entity->FindComponent<RenderComponent>();
 		if (renderComponent){ renderComponent->Slot(); }
-
-		SceneRenderComponent* sceneRenderComponent = entity->FindComponent<SceneRenderComponent>();
-		if (sceneRenderComponent) { sceneRenderComponent->Slot(); }
 	}
 
+	// render player if exists
 	if (player)
 	{
-		PlayerRenderComponent* playerRenderComponent = player->FindComponent<PlayerRenderComponent>();
+		RenderComponent* playerRenderComponent = player->FindComponent<RenderComponent>();
 		playerRenderComponent->Slot();
-
-		PlayerProjectileComponent* playerProjectileComponent = player->FindComponent<PlayerProjectileComponent>();
-		std::vector<Entity*> projectiles = playerProjectileComponent->getProjectiles();
-		for (Entity* projectile : projectiles)
-		{
-			ProjectileRenderComponent* renderComponent = projectile->FindComponent<ProjectileRenderComponent>();
-			renderComponent->Slot();
-		}
 	}
 
 	for (Entity* platform : platforms)
-
 	{
-		//Entity* platform = *item;
-		PLatformRenderComponent* platformRender = platform->FindComponent<PLatformRenderComponent>();
+		RenderComponent* platformRender = platform->FindComponent<RenderComponent>();
 		platformRender->Slot();
 	}
 }

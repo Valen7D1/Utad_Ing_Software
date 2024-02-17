@@ -1,7 +1,7 @@
 #include "playerColisionComponent.h"
 #include "playerMovementComponent.h"
-#include "renderComponent.h"
-#include "colisionComponent.h"
+#include "ballRenderComponent.h"
+#include "ballColisionComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
@@ -13,11 +13,11 @@ void PlayerColisionComponent::Slot()
 	Manager* manager = manager->getInstance();
 	std::vector<Entity*> entities = manager->getEntities();
 
-	ColisionComponent* otherEntityCollision = nullptr;
+	BallColisionComponent* otherEntityCollision = nullptr;
 
 	for (Entity* otherEntity : entities)
 	{
-		otherEntityCollision = otherEntity->FindComponent<ColisionComponent>();
+		otherEntityCollision = otherEntity->FindComponent<BallColisionComponent>();
 		float limit2 = (m_radius + otherEntityCollision->GetRadius()) * (m_radius + otherEntityCollision->GetRadius());
 
 		if (vlen2(m_position - otherEntityCollision->GetPosition()) <= limit2) {

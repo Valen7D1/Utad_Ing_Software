@@ -1,20 +1,20 @@
-#include "renderComponent.h"
+#include "ballRenderComponent.h"
 #include "core.h"
 #include "message.h"
 
 
-void RenderComponent::Slot() 
+void BallRenderComponent::Slot()
 {
-	CORE_RenderCenteredSprite(pos, vec2(radius * 2.f, radius * 2.f), gfx);
+	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_sprite);
 }
 
-void RenderComponent::ReceiveMessage(Message* msg) 
+void BallRenderComponent::ReceiveMessage(Message* msg)
 {
 	//if new position
 	NewPositionMessage* newPositionMessage = dynamic_cast<NewPositionMessage*>(msg);
 	if (newPositionMessage)
 	{
-		pos = newPositionMessage->newPos;
+		m_position = newPositionMessage->newPos;
 	}
 
 	// current position != new position from colision component
@@ -22,6 +22,6 @@ void RenderComponent::ReceiveMessage(Message* msg)
 	CollisionMessage* collisionMessage = dynamic_cast<CollisionMessage*>(msg);
 	if (collisionMessage)
 	{
-		pos = collisionMessage->newPos;
+		m_position = collisionMessage->newPos;
 	}
 }

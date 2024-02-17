@@ -33,6 +33,7 @@ public:
     static Manager* getInstance();
     //getters
     std::vector<Entity*> getEntities();
+    void addEntity(Entity* entity);
     std::vector<Entity*> getPlatforms();
     Entity* getPlayer();
     Timer* getTimer();

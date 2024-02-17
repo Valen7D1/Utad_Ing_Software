@@ -1,7 +1,7 @@
 #pragma once
 #include "component.h"
 
-class PlayerRenderComponent : public Component
+class PlayerRenderComponent : public RenderComponent
 {
 private:
 	vec2 m_position;

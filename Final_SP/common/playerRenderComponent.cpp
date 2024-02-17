@@ -1,4 +1,7 @@
 #include "playerRenderComponent.h"
+#include "playerProjectileComponent.h"
+#include "projectileRenderComponent.h"
+#include "entity.h"
 #include "core.h"
 #include "message.h"
 #include "sys.h"
@@ -17,6 +20,14 @@ void PlayerRenderComponent::Slot()
 		CORE_RenderCenteredSprite(vec2(heartLocation, SCR_HEIGHT - m_radius-16), vec2(m_radius * 1.5f, m_radius * 1.5f), m_HpGfx);
 		heartLocation += m_radius * 2;
 	}
+
+	std::vector<Entity*> projectiles = entityOwner->FindComponent<PlayerProjectileComponent>()->getProjectiles();
+
+	for (Entity* projectil : projectiles)
+	{
+		projectil->FindComponent<ProjectileRenderComponent>()->Slot();
+	}
+	
 }
 
 void PlayerRenderComponent::ReceiveMessage(Message* msg)

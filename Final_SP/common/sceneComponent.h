@@ -10,7 +10,7 @@ public:
 
 
 
-class SceneRenderComponent : public Component
+class SceneRenderComponent : public RenderComponent
 {
 private:
 	GLuint m_sceneSprite;

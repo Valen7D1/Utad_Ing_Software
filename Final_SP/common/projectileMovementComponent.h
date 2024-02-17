@@ -2,7 +2,7 @@
 #include "component.h"
 
 
-class ProjectileMovementComponent : public Component
+class ProjectileMovementComponent : public MovementComponent
 {
 private:
 	vec2 m_position;

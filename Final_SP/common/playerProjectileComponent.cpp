@@ -51,7 +51,7 @@ void PlayerProjectileComponent::Slot()
 
 void PlayerProjectileComponent::CreateProjectile() 
 {
-	Entity* bulletEntity = new Entity();
+	Entity* bulletEntity = new BulletEntity();
 
 	vec2 startingPosition = vec2(m_playerPosition.x, m_playerPosition.y + m_radius);
 

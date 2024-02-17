@@ -2,7 +2,7 @@
 #include "component.h"
 
 
-class PlatformColisionComponent : public Component
+class PlatformColisionComponent : public CollisionComponent
 {
 private:
 	vec2 m_height;
