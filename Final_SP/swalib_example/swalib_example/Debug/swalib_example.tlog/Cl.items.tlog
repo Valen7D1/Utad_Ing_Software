@@ -1,4 +1,4 @@
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\colisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\colisionComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\ballColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\ballColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\entity.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\entity.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\Factory.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\Factory.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\manager.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\manager.obj
@@ -8,7 +8,6 @@ D:\U-Tad\Utad_Ing_Software\Final_SP\common\font.cpp;D:\U-Tad\Utad_Ing_Software\F
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\gameLogic.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\gameLogic.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\lodepng.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\message.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\message.obj
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\platformColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\platformColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\platformRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\platformRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerMovementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerMovementComponent.obj
@@ -16,11 +15,12 @@ D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerProjectileComponent.cpp;D:\U-Ta
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\playerRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\playerRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\projectileColisionComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\projectileColisionComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\projectileMovementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\projectileMovementComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\projectileRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\projectileRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\sceneComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\sceneComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\timer.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\timer.obj
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\movementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\movementComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\ballMovementComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\ballMovementComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\render.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\render.obj
-D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\renderComponent.obj
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\ballRenderComponent.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\ballRenderComponent.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\renderEngine.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\renderEngine.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\stdafx.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\stdafx.obj
 D:\U-Tad\Utad_Ing_Software\Final_SP\common\sys_win.cpp;D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\swalib_example\Debug\sys_win.obj

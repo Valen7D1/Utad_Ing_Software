@@ -120,7 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\common\colisionComponent.cpp" />
+    <ClCompile Include="..\..\common\ballColisionComponent.cpp" />
     <ClCompile Include="..\..\common\entity.cpp" />
     <ClCompile Include="..\..\common\Factory.cpp" />
     <ClCompile Include="..\..\common\manager.cpp" />
@@ -130,7 +130,6 @@
     <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\message.cpp" />
-    <ClCompile Include="..\..\common\platformColisionComponent.cpp" />
     <ClCompile Include="..\..\common\platformRenderComponent.cpp" />
     <ClCompile Include="..\..\common\playerColisionComponent.cpp" />
     <ClCompile Include="..\..\common\playerMovementComponent.cpp" />
@@ -141,15 +140,15 @@
     <ClCompile Include="..\..\common\projectileRenderComponent.cpp" />
     <ClCompile Include="..\..\common\sceneComponent.cpp" />
     <ClCompile Include="..\..\common\timer.cpp" />
-    <ClCompile Include="..\..\common\movementComponent.cpp" />
+    <ClCompile Include="..\..\common\ballMovementComponent.cpp" />
     <ClCompile Include="..\..\common\render.cpp" />
-    <ClCompile Include="..\..\common\renderComponent.cpp" />
+    <ClCompile Include="..\..\common\ballRenderComponent.cpp" />
     <ClCompile Include="..\..\common\renderEngine.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\common\colisionComponent.h" />
+    <ClInclude Include="..\..\common\ballColisionComponent.h" />
     <ClInclude Include="..\..\common\component.h" />
     <ClInclude Include="..\..\common\entity.h" />
     <ClInclude Include="..\..\common\Factory.h" />
@@ -159,7 +158,6 @@
     <ClInclude Include="..\..\common\gameLogic.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\message.h" />
-    <ClInclude Include="..\..\common\platformColisionComponent.h" />
     <ClInclude Include="..\..\common\platformRenderComponent.h" />
     <ClInclude Include="..\..\common\PlayerColisionComponent.h" />
     <ClInclude Include="..\..\common\playerMovementComponent.h" />
@@ -170,9 +168,9 @@
     <ClInclude Include="..\..\common\projectileRenderComponent.h" />
     <ClInclude Include="..\..\common\sceneComponent.h" />
     <ClInclude Include="..\..\common\timer.h" />
-    <ClInclude Include="..\..\common\movementComponent.h" />
+    <ClInclude Include="..\..\common\ballMovementComponent.h" />
     <ClInclude Include="..\..\common\render.h" />
-    <ClInclude Include="..\..\common\renderComponent.h" />
+    <ClInclude Include="..\..\common\ballRenderComponent.h" />
     <ClInclude Include="..\..\common\renderEngine.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />

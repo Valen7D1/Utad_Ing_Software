@@ -114,10 +114,10 @@
     <ClCompile Include="..\..\common\playerMovementComponent.cpp">
       <Filter>Source Files\Game\Component\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\colisionComponent.cpp">
+    <ClCompile Include="..\..\common\ballColisionComponent.cpp">
       <Filter>Source Files\Game\Component\Ball</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\movementComponent.cpp">
+    <ClCompile Include="..\..\common\ballMovementComponent.cpp">
       <Filter>Source Files\Game\Component\Ball</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\projectileMovementComponent.cpp">
@@ -129,7 +129,7 @@
     <ClCompile Include="..\..\common\playerProjectileComponent.cpp">
       <Filter>Source Files\Game\Component\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\renderComponent.cpp">
+    <ClCompile Include="..\..\common\ballRenderComponent.cpp">
       <Filter>Source Files\Game\Component\Ball</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\playerRenderComponent.cpp">
@@ -142,9 +142,6 @@
       <Filter>Source Files\Game\Component\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\platformRenderComponent.cpp">
-      <Filter>Source Files\Game\Component\Platforms</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\platformColisionComponent.cpp">
       <Filter>Source Files\Game\Component\Platforms</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\projectileRenderComponent.cpp">
@@ -194,10 +191,10 @@
     <ClInclude Include="..\..\common\message.h">
       <Filter>Header Files\Game\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\colisionComponent.h">
+    <ClInclude Include="..\..\common\ballColisionComponent.h">
       <Filter>Header Files\Game\Components\Ball</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\movementComponent.h">
+    <ClInclude Include="..\..\common\ballMovementComponent.h">
       <Filter>Header Files\Game\Components\Ball</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\PlayerColisionComponent.h">
@@ -215,7 +212,7 @@
     <ClInclude Include="..\..\common\playerProjectileComponent.h">
       <Filter>Header Files\Game\Components\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\renderComponent.h">
+    <ClInclude Include="..\..\common\ballRenderComponent.h">
       <Filter>Header Files\Game\Components\Ball</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\Factory.h">
@@ -225,9 +222,6 @@
       <Filter>Header Files\Game\Components\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\platformRenderComponent.h">
-      <Filter>Header Files\Game\Components\Platforms</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\platformColisionComponent.h">
       <Filter>Header Files\Game\Components\Platforms</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\playerRenderComponent.h">
