@@ -67,6 +67,12 @@
     <Filter Include="Header Files\Game\Components\Platforms">
       <UniqueIdentifier>{a5fcc97c-5510-4bf8-97fe-b183c73a4371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Component\Ladder">
+      <UniqueIdentifier>{ee51e2f6-8a1b-4c2d-ac51-4d9f8d757c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Components\Ladders">
+      <UniqueIdentifier>{30a2f0f8-6bd4-4000-a5a4-017c368f5b17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -146,6 +152,9 @@
     </ClCompile>
     <ClCompile Include="..\..\common\projectileRenderComponent.cpp">
       <Filter>Source Files\Game\Component\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\ladderRenderComponent.cpp">
+      <Filter>Source Files\Game\Component\Ladder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,6 +238,9 @@
     </ClInclude>
     <ClInclude Include="..\..\common\projectileRenderComponent.h">
       <Filter>Header Files\Game\Components\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\ladderRenderComponent.h">
+      <Filter>Header Files\Game\Components\Ladders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

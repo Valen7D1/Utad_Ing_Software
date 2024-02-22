@@ -8,6 +8,7 @@ private:
 	vec2 m_position;
 	float m_velocity;
 	float m_radius;
+	bool m_onLadder = false;
 
 public:
 	// update position based on velocity

@@ -6,6 +6,7 @@ class PlayerColisionComponent : public CollisionComponent
 {
 private:
 	vec2 m_position;
+	vec2 m_newPos;
 	float m_radius;
 	unsigned int m_hitPoints;
 public:

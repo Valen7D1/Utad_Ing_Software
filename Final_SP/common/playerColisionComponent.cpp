@@ -2,6 +2,7 @@
 #include "playerMovementComponent.h"
 #include "ballRenderComponent.h"
 #include "ballColisionComponent.h"
+#include "ladderRenderComponent.h"
 #include "entity.h"
 #include "manager.h"
 #include "message.h"
@@ -12,6 +13,7 @@ void PlayerColisionComponent::Slot()
 
 	Manager* manager = manager->getInstance();
 	std::vector<Entity*> entities = manager->getEntities();
+	std::vector<Entity*> platforms = manager->getPlatforms();
 
 	BallColisionComponent* otherEntityCollision = nullptr;
 
@@ -24,6 +26,26 @@ void PlayerColisionComponent::Slot()
 			//otherEntity->toBeDeleted = true;
 			HitControl();
 			break;
+		}
+	}
+
+
+	LadderRenderComponent* platformData = nullptr;
+	for (Entity* platform : platforms)
+	{
+		platformData = platform->FindComponent<LadderRenderComponent>();
+
+		vec2 pos = platformData->GetPosition();
+		float rad = platformData->GetRadius();
+
+		float distanceX = abs(pos.x - m_position.x);
+		float distanceY = abs(pos.y - m_position.y);
+
+		if (distanceX <= rad && distanceY <= rad)
+		{
+			NewOnLadderMessage* newOnLadderMessage = new NewOnLadderMessage(true);
+			entityOwner->SendMsg(newOnLadderMessage);
+			delete newOnLadderMessage;
 		}
 	}
 }
@@ -52,7 +74,7 @@ void PlayerColisionComponent::ReceiveMessage(Message* msg)
 	NewPositionMessage* newPositionMessage = dynamic_cast<NewPositionMessage*>(msg);
 	if (newPositionMessage)
 	{
-		m_position = newPositionMessage->newPos;
+		m_newPos = newPositionMessage->newPos;
 	}
 
 	NewHitPointsMessage* newHitPointsMessage = dynamic_cast<NewHitPointsMessage*>(msg);

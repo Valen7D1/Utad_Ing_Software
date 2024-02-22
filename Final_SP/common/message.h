@@ -64,3 +64,18 @@ public:
     unsigned int newDir;
 };
 
+class NewOnSurfaceMessage : public Message
+{
+public:
+    NewOnSurfaceMessage(bool _onSurface) : onSurface(_onSurface) {}
+    bool onSurface;
+};
+
+class NewOnLadderMessage : public Message
+{
+public:
+    NewOnLadderMessage(bool _onLadder) : onLadder(_onLadder) {}
+    bool onLadder;
+};
+
+

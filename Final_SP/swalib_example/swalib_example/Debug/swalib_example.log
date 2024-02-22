@@ -1,1 +1,30 @@
-﻿  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\Debug\swalib_example.exe
+﻿  ballColisionComponent.cpp
+  entity.cpp
+  Factory.cpp
+  manager.cpp
+  core.cpp
+  example.cpp
+  font.cpp
+  gameLogic.cpp
+  lodepng.cpp
+  message.cpp
+  platformRenderComponent.cpp
+  playerColisionComponent.cpp
+  playerMovementComponent.cpp
+  playerProjectileComponent.cpp
+  playerRenderComponent.cpp
+  projectileColisionComponent.cpp
+  projectileMovementComponent.cpp
+  projectileRenderComponent.cpp
+  sceneComponent.cpp
+  timer.cpp
+  Generating Code...
+  Compiling...
+  ballMovementComponent.cpp
+  render.cpp
+  ballRenderComponent.cpp
+  renderEngine.cpp
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\Debug\swalib_example.exe

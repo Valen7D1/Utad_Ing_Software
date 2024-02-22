@@ -1,18 +1,32 @@
-﻿  colisionComponent.cpp
+﻿  ballColisionComponent.cpp
   entity.cpp
   Factory.cpp
   manager.cpp
+  core.cpp
+  example.cpp
+  font.cpp
   gameLogic.cpp
-  platformColisionComponent.cpp
+  lodepng.cpp
+  message.cpp
   platformRenderComponent.cpp
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp(798,10): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+D:\U-Tad\Utad_Ing_Software\Final_SP\common\lodepng.cpp(3478,25): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
   playerColisionComponent.cpp
   playerMovementComponent.cpp
   playerProjectileComponent.cpp
+  playerRenderComponent.cpp
   projectileColisionComponent.cpp
   projectileMovementComponent.cpp
   projectileRenderComponent.cpp
-  movementComponent.cpp
-  render.cpp
-  renderEngine.cpp
+  sceneComponent.cpp
+  timer.cpp
   Generating Code...
-  swalib_example.vcxproj -> C:\Users\gonzalo.valenti\Documents\MisCosas\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe
+  Compiling...
+  ballMovementComponent.cpp
+  render.cpp
+  ballRenderComponent.cpp
+  renderEngine.cpp
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Utad_Ing_Software\Final_SP\swalib_example\x64\Debug\swalib_example.exe
