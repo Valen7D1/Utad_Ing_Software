@@ -36,6 +36,7 @@ std::vector<Entity*> Manager::getEntities() { return entities; }
 void Manager::addEntity(Entity* entity) { entities.push_back(entity); }
 
 std::vector<Entity*> Manager::getPlatforms() { return platforms; }
+std::vector<Entity*> Manager::getLadders() { return ladders; }
 
 Entity* Manager::getPlayer() { return player; }
 

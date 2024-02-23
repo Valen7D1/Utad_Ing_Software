@@ -39,14 +39,14 @@ void PlayerMovementComponent::Slot()
 		m_position.y -= m_velocity * manager->getTimer()->GetFrameTime();
 	}
 
-	if (!m_onLadder)
+	if (!m_onLadder && !m_onSurface)
 	{
-		m_position.y -= GRAVITY * manager->getTimer()->GetFrameTime();
+		m_position.y += GRAVITY * manager->getTimer()->GetFrameTime();
 	}
 
 	NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(newPositionMessage);
-
+	delete newPositionMessage;
 }
 
 void PlayerMovementComponent::ReceiveMessage(Message* msg) 
@@ -61,5 +61,11 @@ void PlayerMovementComponent::ReceiveMessage(Message* msg)
 	if (newOnLadderMessage)
 	{
 		m_onLadder = newOnLadderMessage->onLadder;
+	}
+
+	NewOnSurfaceMessage* newOnSurfaceMessage = dynamic_cast<NewOnSurfaceMessage*>(msg);
+	if (newOnSurfaceMessage)
+	{
+		m_onSurface = newOnSurfaceMessage->onSurface;
 	}
 }

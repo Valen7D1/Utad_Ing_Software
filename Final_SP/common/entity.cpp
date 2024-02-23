@@ -108,3 +108,6 @@ void BulletEntity::Destroy()
 
 }
 
+void LadderEntity::Destroy()
+{
+}

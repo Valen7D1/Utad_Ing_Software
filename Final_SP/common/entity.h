@@ -49,6 +49,13 @@ public:
 };
 
 
+class LadderEntity : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
 class SceneEntity : public Entity
 {
 public:

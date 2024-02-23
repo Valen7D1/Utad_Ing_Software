@@ -1,6 +1,6 @@
 #include "ladderRenderComponent.h"
-#include "core.h"
 #include "message.h"
+#include "core.h"
 
 
 void LadderRenderComponent::Slot()

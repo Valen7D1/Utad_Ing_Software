@@ -24,6 +24,7 @@ public:
     rapidjson::Document doc;
     std::vector<Entity*> entities;
     std::vector<Entity*> platforms;
+    std::vector<Entity*> ladders;
     BaseLevel* m_CurrentLevel;
 
     unsigned int currentLevel = 0;
@@ -33,8 +34,10 @@ public:
     static Manager* getInstance();
     //getters
     std::vector<Entity*> getEntities();
-    void addEntity(Entity* entity);
     std::vector<Entity*> getPlatforms();
+    std::vector<Entity*> getLadders();
+
+    void addEntity(Entity* entity);
     Entity* getPlayer();
     Timer* getTimer();
 

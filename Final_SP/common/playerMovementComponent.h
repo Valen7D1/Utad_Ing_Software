@@ -9,6 +9,7 @@ private:
 	float m_velocity;
 	float m_radius;
 	bool m_onLadder = false;
+	bool m_onSurface = false;
 
 public:
 	// update position based on velocity

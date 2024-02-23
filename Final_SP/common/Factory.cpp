@@ -12,6 +12,7 @@
 #include "entity.h"
 #include "sceneComponent.h"
 #include "platformRenderComponent.h"
+#include "ladderRenderComponent.h"
 
 //cosos mios
 //[150, 200],
@@ -28,7 +29,7 @@ void BaseLevel::CreatePlayer()
 
 	manager->player = new PlayerEntity();
 	float playerRadius = playerData["radius"].GetFloat();
-	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius);
+	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius + 300);
 	float playerVelocity = playerData["speed"].GetFloat();
 	unsigned int playerHP = playerData["hitPoints"].GetUint();
 
@@ -62,8 +63,8 @@ void BaseLevel::CreatePlayer()
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
 	playerProjectileComponent->entityOwner = manager->player;
 
-	manager->player->AddComponent(playerColision);
 	manager->player->AddComponent(playerMovement);
+	manager->player->AddComponent(playerColision);
 	manager->player->AddComponent(playerRender);
 	manager->player->AddComponent(playerProjectileComponent);
 }
@@ -76,6 +77,7 @@ void Level1::CreateLevel()
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
+	///////////////////////////////////////////////////////////////////////
 	// get balls data
 	const rapidjson::Value& ballData = manager->doc["Ball"];
 
@@ -96,19 +98,19 @@ void Level1::CreateLevel()
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
 		BallMovementComponent* movementComponent = new BallMovementComponent();
-		movementComponent->SetPosition(Position);
+		movementComponent->SetPosition(vec2(-100, -100));
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
 		BallColisionComponent* colisionComponent = new BallColisionComponent();
-		colisionComponent->SetPosition(Position);
+		colisionComponent->SetPosition(vec2(-100, -100));
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
 
 		BallRenderComponent* renderComponent = new BallRenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(Position);
+		renderComponent->SetPosition(vec2(-100, -100));
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
 
@@ -119,7 +121,7 @@ void Level1::CreateLevel()
 		manager->entities.push_back(ballEntity);
 	}
 
-
+	///////////////////////////////////////////////////////////////////////
 	// get platforms data
 
 	const rapidjson::Value& platformData = manager->doc["Platform"];
@@ -159,6 +161,45 @@ void Level1::CreateLevel()
 		manager->platforms.push_back(platformEntity);
 		++item;
 	}
+
+	///////////////////////////////////////////////////////////////////////
+	// get ladders data
+
+	const rapidjson::Value& ladderData = manager->doc["Ladder"];
+
+	// all platforms to be created
+	std::vector<vec2> ladders;
+	const rapidjson::Value& ladderPositions = ladderData["position"];
+	for (unsigned int i = 0; i < ladderPositions.Size(); i++) {
+		ladders.push_back(vec2(
+			ladderPositions.GetArray()[i][0].GetFloat(),
+			ladderPositions.GetArray()[i][1].GetFloat()));
+	}
+
+	float ladderRadius = ladderData["radius"].GetFloat();
+
+	// create ladders
+	// loop using position array as control
+
+	for (auto item = ladders.begin(); item != ladders.end(); )
+	{
+		vec2 position = *item;
+		Entity* ladderEntity = new LadderEntity();
+
+		LadderRenderComponent* ladderRenderComponent = new LadderRenderComponent();
+		ladderRenderComponent->SetPosition(position);
+		ladderRenderComponent->SetRadius(ladderRadius);
+		ladderRenderComponent->SetSprite(CORE_LoadPNG(ladderData["sprite"].GetString(), false));
+
+		ladderEntity->AddComponent(ladderRenderComponent);
+
+		manager->ladders.push_back(ladderEntity);
+		++item;
+	}
+
+
+
+
 }
 
 

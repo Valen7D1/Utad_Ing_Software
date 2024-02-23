@@ -7,6 +7,7 @@
 #include "playerProjectileComponent.h"
 #include "platformRenderComponent.h"
 #include "projectileRenderComponent.h"
+#include "ladderRenderComponent.h"
 #include "sceneComponent.h"
 #include <math.h>
 
@@ -64,13 +65,28 @@ void RenderEngine::RenderObjects(){
 
 	std::vector<Entity*> entities = manager->getEntities();
 	std::vector<Entity*> platforms = manager->getPlatforms();
+	std::vector<Entity*> ladders = manager->getLadders();
+
 	Entity* player = manager->getPlayer();
 
 	// for every object render it using its location and radius values
-	for (Entity* entity : entities) 
+
+	for (Entity* platform : platforms)
+	{
+		RenderComponent* platformRender = platform->FindComponent<RenderComponent>();
+		platformRender->Slot();
+	}
+
+	for (Entity* ladder : ladders)
+	{
+		LadderRenderComponent* ladderRender = ladder->FindComponent<LadderRenderComponent>();
+		ladderRender->Slot();
+	}
+
+	for (Entity* entity : entities)
 	{
 		RenderComponent* renderComponent = entity->FindComponent<RenderComponent>();
-		if (renderComponent){ renderComponent->Slot(); }
+		if (renderComponent) { renderComponent->Slot(); }
 	}
 
 	// render player if exists
@@ -80,11 +96,6 @@ void RenderEngine::RenderObjects(){
 		playerRenderComponent->Slot();
 	}
 
-	for (Entity* platform : platforms)
-	{
-		RenderComponent* platformRender = platform->FindComponent<RenderComponent>();
-		platformRender->Slot();
-	}
 }
 
 
