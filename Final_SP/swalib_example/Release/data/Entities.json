@@ -34,15 +34,29 @@
 
   "Platform": {
 
-    "position": [ [ 150, 200 ] ],
+    "position": [ [ 320, 200 ] ],
 
     "height": 50,
 
     "width": 150,
 
-    "size":  [50, 50],
+    "size": [ 50, 50 ],
 
     "sprite": "data/platform.png"
+
+  },
+
+  "Ladder": {
+
+    "position": [
+      [ 320, 200 ],
+      [ 320, 150 ],
+      [ 320, 100 ]
+    ],
+
+    "radius": 50,
+
+    "sprite": "data/ladder.png"
 
   },
 

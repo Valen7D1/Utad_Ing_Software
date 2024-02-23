@@ -110,7 +110,11 @@ void PlayerColisionComponent::Slot()
 			float maxDistanceX = abs(pData->GetSize().x / 2 + m_radius);
 			float maxDistanceY = abs(pData->GetSize().y / 2 + m_radius);
 
-			if (distanceX < maxDistanceX && distanceY < maxDistanceY)
+			// if entre las X
+			// if position antigua por encima
+			// if new position por debajo
+
+			if (distanceX < maxDistanceX && distanceY < maxDistanceY  && (pPos.y - m_newPos.y)<=0)
 			{
 				// up collision
 				if (colisionAngle >= angle && colisionAngle <= 180 - angle)
