@@ -5,6 +5,7 @@
 
 void BallRenderComponent::Slot()
 {
+	// render sprite on location
 	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_sprite);
 }
 
