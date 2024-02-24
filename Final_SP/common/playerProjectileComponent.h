@@ -11,11 +11,18 @@ private:
 
 	GLuint m_gfx;
 	GLuint m_trace;
+
 	float m_radius;
 	float m_velocity;
+
+	unsigned int m_maxBullets = 1;
+	unsigned int m_typeOfProjectile = 0;
+
 	vec2 m_playerPosition;
 
-	void CreateProjectile();
+	void CreateProjectile(); // selects projectile to be created
+	void BasicThreat(); // one projectile
+	void TrippleThreat(); // 3 projectiles no trace
 
 public:
 	void Slot();
@@ -36,6 +43,8 @@ public:
 	float GetRadius() { return m_radius; }
 
 	std::vector<Entity*> getProjectiles() { return m_projectiles; }
+
+
 
 	virtual ~PlayerProjectileComponent() 
 	{ 

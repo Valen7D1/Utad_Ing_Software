@@ -11,16 +11,17 @@
 void PlayerProjectileComponent::Slot()
 { 
 	Manager* manager = Manager::getInstance();
-	double elapsed = manager->getTimer()->GetElapsed();
+	double elapsed = manager->getTimer()->GetFrameTime();
 
 
 	if (GetKeyState('X') & 0x8000)
 	{
-		//if (timeLimit <= 0)
-		if(m_projectiles.size()<=0)
+		// if you want to test anything disable this If 
+		// and then you can fire infite bullets
+		if(m_projectiles.size() < m_maxBullets && timeLimit <= 0)
 		{
 			CreateProjectile();
-			timeLimit = 0.1;
+			timeLimit = 0.3;
 		}
 	}
 
@@ -51,6 +52,20 @@ void PlayerProjectileComponent::Slot()
 
 void PlayerProjectileComponent::CreateProjectile() 
 {
+	switch (m_typeOfProjectile) {
+	case 0:
+		BasicThreat();
+		break;
+	case 1:
+		TrippleThreat();
+		break;
+	default:
+		BasicThreat();
+	} 
+}
+
+void PlayerProjectileComponent::BasicThreat()
+{
 	Entity* bulletEntity = new BulletEntity();
 
 	vec2 startingPosition = vec2(m_playerPosition.x, m_playerPosition.y + m_radius);
@@ -58,7 +73,7 @@ void PlayerProjectileComponent::CreateProjectile()
 	ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
 	projectileColision->SetPosition(startingPosition);
 	projectileColision->SetStartingPosition(startingPosition);
-	projectileColision->SetRadius(m_radius/2);
+	projectileColision->SetRadius(m_radius / 2);
 	projectileColision->entityOwner = bulletEntity;
 
 	ProjectileMovementComponent* projectileMovement = new ProjectileMovementComponent();
@@ -70,7 +85,7 @@ void PlayerProjectileComponent::CreateProjectile()
 	renderComponent->SetGfx(m_gfx);
 	renderComponent->SetTraceSprite(m_trace);
 	renderComponent->SetPosition(startingPosition);
-	renderComponent->SetRadius(m_radius/2);
+	renderComponent->SetRadius(m_radius / 2);
 	renderComponent->SetStartingPosition(startingPosition);
 	renderComponent->entityOwner = bulletEntity;
 
@@ -79,6 +94,11 @@ void PlayerProjectileComponent::CreateProjectile()
 	bulletEntity->AddComponent(renderComponent);
 
 	m_projectiles.push_back(bulletEntity);
+}
+
+void PlayerProjectileComponent::TrippleThreat()
+{
+
 }
 
 
