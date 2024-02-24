@@ -16,31 +16,30 @@ void PlayerColisionComponent::Slot()
 
 
 	Manager* manager = manager->getInstance();
+
+	// get all three entities for collision checking
 	std::vector<Entity*> entities = manager->getEntities();
 	std::vector<Entity*> platforms = manager->getPlatforms();
 	std::vector<Entity*> ladders = manager->getLadders();
 
+	// boolean for movement update
 	bool collided = false;
-	// collision with lateral walls
-	if ((m_newPos.x > (SCR_WIDTH - m_radius / 2)) || (m_newPos.x < m_radius / 2)) {
 
-		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
-		entityOwner->SendMsg(newPositionMessage);
-		delete newPositionMessage;
+	// collision with lateral walls
+	if ((m_newPos.x >= (SCR_WIDTH - m_radius / 2)) || (m_newPos.x <= m_radius / 2)) 
+	{
+		m_position.y = m_newPos.y; // only need to update Y axis
+		m_newPos.x = m_position.x; // fix X newPos for later checkings
 		collided = true;
 	}
 
 	// collision with floor
-	if (m_newPos.y < (FLOOR + m_radius)) {
-		m_position.y = FLOOR + m_radius;
+	if (m_newPos.y <= (FLOOR + m_radius)) 
+	{
+		m_position.y = FLOOR + m_radius; // fix Y position and update X position
 		m_position.x = m_newPos.x;
-		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
-		entityOwner->SendMsg(newPositionMessage);
-		delete newPositionMessage;
-
-		NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(true);
-		entityOwner->SendMsg(newOnSurfaceMessage);
-		delete newOnSurfaceMessage;
+		m_newPos.y = m_position.y; // fix Y newPos for later checkings
+		 
 		collided = true;
 		collidedSurface = true;
 	}
@@ -58,7 +57,7 @@ void PlayerColisionComponent::Slot()
 
 		if (distanceX < maxDistance && distanceY < maxDistance)
 		{
-			HitControl();
+			HitControl(); // level reset or death
 			break;
 		}
 	}
@@ -66,8 +65,8 @@ void PlayerColisionComponent::Slot()
 
 	// collision with ladders
 	LadderRenderComponent* platformData = nullptr;
-
-	PlayerMovementComponent* pmov = entityOwner->FindComponent<PlayerMovementComponent>();
+	
+	bool WasOnLadder = entityOwner->FindComponent<PlayerMovementComponent>()->m_onLadder;
 
 	for (Entity* ladder : ladders)
 	{
@@ -83,18 +82,16 @@ void PlayerColisionComponent::Slot()
 
 		if (distanceX <= radX && distanceY <= radY)
 		{
-			NewOnLadderMessage* newOnLadderMessage = new NewOnLadderMessage(true);
-			entityOwner->SendMsg(newOnLadderMessage);
-			delete newOnLadderMessage;
-			collidedLadder = true;
-			if (pmov->m_onLadder){ m_position.y = m_newPos.y; }
+			// only if was on ladder apply new Y move
+			// else you would be applying gravity
+			if (WasOnLadder)
+			{ 
+				m_position.y = m_newPos.y; 
+			}
 			m_position.x = m_newPos.x;
 
-			NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
-			entityOwner->SendMsg(newPositionMessage);
-			delete newPositionMessage;
-
 			collided = true;
+			collidedLadder = true;
 		}
 	}
 
@@ -103,7 +100,7 @@ void PlayerColisionComponent::Slot()
 		for (Entity* platform : platforms)
 		{
 			PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
-			vec2 pPos = pData->GetPosition(); // platform position
+			vec2 pPos = pData->GetPosition();
 
 			vec2 position = pData->GetPosition();
 			vec2 size = pData->GetSize();
@@ -119,16 +116,9 @@ void PlayerColisionComponent::Slot()
 
 			if (distanceX < maxDistanceX && distanceY <= maxDistanceY && lastDistanceY >= maxDistanceY)
 			{
-
+				// get Y position just above collision
 				m_position.y = pPos.y + pData->GetSize().y / 2 + m_radius;
 				m_position.x = m_newPos.x;
-				NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
-				entityOwner->SendMsg(newPositionMessage);
-				delete newPositionMessage;
-
-				NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(true);
-				entityOwner->SendMsg(newOnSurfaceMessage);
-				delete newOnSurfaceMessage;
 
 				collided = true;
 				collidedSurface = true;
@@ -136,25 +126,26 @@ void PlayerColisionComponent::Slot()
 		}
 	}
 
+	// update movement booleans
+	NewOnLadderMessage* newOnLadderMessage = new NewOnLadderMessage(collidedLadder);
+	entityOwner->SendMsg(newOnLadderMessage);
+	delete newOnLadderMessage;
 
-	if (!collidedLadder)
-	{
-		NewOnLadderMessage* newOnLadderMessage = new NewOnLadderMessage(false);
-		entityOwner->SendMsg(newOnLadderMessage);
-		delete newOnLadderMessage;
-	}
+	NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(collidedSurface);
+	entityOwner->SendMsg(newOnSurfaceMessage);
+	delete newOnSurfaceMessage;
 
-	if (!collidedSurface)
-	{
-		NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(false);
-		entityOwner->SendMsg(newOnSurfaceMessage);
-		delete newOnSurfaceMessage;
-	}
-
-
+	// if not collided apply gravity and X movement
 	if(!collided)
 	{
 		m_position = m_newPos;
+	}
+	else
+	{
+		// new position based on adjustments made by collisions
+		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
+		entityOwner->SendMsg(newPositionMessage);
+		delete newPositionMessage;
 	}
 }
 
