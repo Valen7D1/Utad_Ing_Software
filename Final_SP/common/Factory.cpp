@@ -29,7 +29,7 @@ void BaseLevel::CreatePlayer()
 
 	manager->player = new PlayerEntity();
 	float playerRadius = playerData["radius"].GetFloat();
-	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius + 300);
+	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius);
 	float playerVelocity = playerData["speed"].GetFloat();
 	unsigned int playerHP = playerData["hitPoints"].GetUint();
 
@@ -98,19 +98,19 @@ void Level1::CreateLevel()
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
 
 		BallMovementComponent* movementComponent = new BallMovementComponent();
-		movementComponent->SetPosition(vec2(-100, -100));
+		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
 
 		BallColisionComponent* colisionComponent = new BallColisionComponent();
-		colisionComponent->SetPosition(vec2(-100, -100));
+		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
 
 		BallRenderComponent* renderComponent = new BallRenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(vec2(-100, -100));
+		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
 

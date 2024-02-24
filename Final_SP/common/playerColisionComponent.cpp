@@ -33,6 +33,7 @@ void PlayerColisionComponent::Slot()
 	// collision with floor
 	if (m_newPos.y < (FLOOR + m_radius)) {
 		m_position.y = FLOOR + m_radius;
+		m_position.x = m_newPos.x;
 		NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 		entityOwner->SendMsg(newPositionMessage);
 		delete newPositionMessage;
