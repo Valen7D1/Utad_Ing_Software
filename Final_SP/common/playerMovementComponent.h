@@ -8,6 +8,7 @@ private:
 	vec2 m_position;
 	float m_velocity;
 	float m_radius;
+public:
 	bool m_onLadder = false;
 	bool m_onSurface = false;
 

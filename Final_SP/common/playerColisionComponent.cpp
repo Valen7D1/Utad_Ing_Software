@@ -65,6 +65,9 @@ void PlayerColisionComponent::Slot()
 
 	// collision with ladders
 	LadderRenderComponent* platformData = nullptr;
+
+	PlayerMovementComponent* pmov = entityOwner->FindComponent<PlayerMovementComponent>();
+
 	for (Entity* ladder : ladders)
 	{
 		platformData = ladder->FindComponent<LadderRenderComponent>();
@@ -83,23 +86,23 @@ void PlayerColisionComponent::Slot()
 			entityOwner->SendMsg(newOnLadderMessage);
 			delete newOnLadderMessage;
 			collidedLadder = true;
+			if (pmov->m_onLadder){ m_position.y = m_newPos.y; }
+			m_position.x = m_newPos.x;
+
+			NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
+			entityOwner->SendMsg(newPositionMessage);
+			delete newPositionMessage;
+
+			collided = true;
 		}
 	}
 
-	// collision with platforms
 	if (!collidedLadder)
 	{
 		for (Entity* platform : platforms)
 		{
 			PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
 			vec2 pPos = pData->GetPosition(); // platform position
-			vec2 cornerPos = vec2(pPos.x + pData->GetSize().x / 2, pPos.y + pData->GetSize().y / 2);
-
-			// get angle from center to top right corner of platform
-			float angle = static_cast<float>(atan2(cornerPos.y - pPos.y, cornerPos.x - pPos.x) * 180 / 3.14);
-			float colisionAngle = static_cast<float>(atan2(m_newPos.y - pPos.y, m_newPos.x - pPos.x) * 180 / 3.14);
-
-			if (colisionAngle < 0) { colisionAngle += 360; }
 
 			vec2 position = pData->GetPosition();
 			vec2 size = pData->GetSize();
@@ -107,31 +110,27 @@ void PlayerColisionComponent::Slot()
 			float distanceX = abs(pPos.x - m_newPos.x);
 			float distanceY = abs(pPos.y - m_newPos.y);
 
+			float lastDistanceY = m_position.y - pPos.y;
+
 			float maxDistanceX = abs(pData->GetSize().x / 2 + m_radius);
 			float maxDistanceY = abs(pData->GetSize().y / 2 + m_radius);
 
-			// if entre las X
-			// if position antigua por encima
-			// if new position por debajo
 
-			if (distanceX < maxDistanceX && distanceY < maxDistanceY  && (pPos.y - m_newPos.y)<=0)
+			if (distanceX < maxDistanceX && distanceY <= maxDistanceY && lastDistanceY >= maxDistanceY)
 			{
-				// up collision
-				if (colisionAngle >= angle && colisionAngle <= 180 - angle)
-				{
-					m_position.y = pPos.y + pData->GetSize().y / 2 + m_radius;
-					NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
-					entityOwner->SendMsg(newPositionMessage);
-					delete newPositionMessage;
 
-					NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(true);
-					entityOwner->SendMsg(newOnSurfaceMessage);
-					delete newOnSurfaceMessage;
+				m_position.y = pPos.y + pData->GetSize().y / 2 + m_radius;
+				m_position.x = m_newPos.x;
+				NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
+				entityOwner->SendMsg(newPositionMessage);
+				delete newPositionMessage;
 
-					collided = true;
-					collidedSurface = true;
-				}
-				break;
+				NewOnSurfaceMessage* newOnSurfaceMessage = new NewOnSurfaceMessage(true);
+				entityOwner->SendMsg(newOnSurfaceMessage);
+				delete newOnSurfaceMessage;
+
+				collided = true;
+				collidedSurface = true;
 			}
 		}
 	}

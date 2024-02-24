@@ -44,6 +44,8 @@ void PlayerMovementComponent::Slot()
 		m_position.y += GRAVITY * manager->getTimer()->GetFrameTime();
 	}
 
+
+
 	NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(newPositionMessage);
 	delete newPositionMessage;
