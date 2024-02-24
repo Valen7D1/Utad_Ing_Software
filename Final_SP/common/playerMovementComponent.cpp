@@ -11,7 +11,10 @@ void PlayerMovementComponent::Slot()
 { 
 	Manager* manager = Manager::getInstance();
 
-	if (GetKeyState('A') & 0x8000/*Check if high-order bit is set (1 << 15)*/)
+
+	/////////////////////////////////////////////////////////////////////////////
+	// X axis movement
+	if (GetKeyState('A') & 0x8000)
 	{
 		m_position.x -= m_velocity * manager->getTimer()->GetFrameTime();
 
@@ -29,6 +32,8 @@ void PlayerMovementComponent::Slot()
 		delete newDirectionMessage;
 	}
 
+	/////////////////////////////////////////////////////////////////////////////
+	// ladder movements ( Y axis )
 	if (GetKeyState('W') & 0x8000 && m_onLadder)
 	{
 		m_position.y += m_velocity * manager->getTimer()->GetFrameTime();
@@ -39,13 +44,13 @@ void PlayerMovementComponent::Slot()
 		m_position.y -= m_velocity * manager->getTimer()->GetFrameTime();
 	}
 
-	if (!m_onLadder && !m_onSurface)
+	/////////////////////////////////////////////////////////////////////////////
+	if (!m_onLadder && !m_onSurface) // apply gravity if not in surface or ladder
 	{
 		m_position.y += GRAVITY * manager->getTimer()->GetFrameTime();
 	}
 
-
-
+	// update position on all components
 	NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(newPositionMessage);
 	delete newPositionMessage;
@@ -59,12 +64,13 @@ void PlayerMovementComponent::ReceiveMessage(Message* msg)
 	{
 		m_position = newPositionMessage->newPos;
 	}
+	// if on ladder detected in collision component
 	NewOnLadderMessage * newOnLadderMessage = dynamic_cast<NewOnLadderMessage*>(msg);
 	if (newOnLadderMessage)
 	{
 		m_onLadder = newOnLadderMessage->onLadder;
 	}
-
+	// if on surface detected in collision component
 	NewOnSurfaceMessage* newOnSurfaceMessage = dynamic_cast<NewOnSurfaceMessage*>(msg);
 	if (newOnSurfaceMessage)
 	{
