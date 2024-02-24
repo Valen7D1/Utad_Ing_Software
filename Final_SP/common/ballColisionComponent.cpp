@@ -32,14 +32,16 @@ void BallColisionComponent::Slot()
 		float angle = static_cast<float>(atan2(cornerPos.y - pPos.y, cornerPos.x - pPos.x) * 180 / 3.14);
 		float colisionAngle = static_cast<float>(atan2(m_newPos.y - pPos.y, m_newPos.x - pPos.x) * 180 / 3.14);
 
+		// change angle from -180:180 format to 0-360 format
 		if (colisionAngle < 0) { colisionAngle += 360; }
 
 		vec2 position = pData->GetPosition();
 		vec2 size = pData->GetSize();
 
+		// distance from platform
 		float distanceX = abs(pPos.x - m_newPos.x);
 		float distanceY = abs(pPos.y - m_newPos.y);
-
+		// max distance for collision to be true
 		float maxDistanceX = abs(pData->GetSize().x/2 + m_radius);
 		float maxDistanceY = abs(pData->GetSize().y/2 + m_radius);
 
@@ -89,6 +91,7 @@ void BallColisionComponent::Slot()
 
 	// collisions with margins
 	bool marginCollided = false;
+	// side margins
 	if ((m_currentPos.x > (SCR_WIDTH- m_radius /2)) || (m_currentPos.x < m_radius / 2)) {
 
 		LimitWorldCollMessage* limitWorldCollMessage = new LimitWorldCollMessage(vec2(-1, 1), m_currentPos);
@@ -96,6 +99,7 @@ void BallColisionComponent::Slot()
 		delete limitWorldCollMessage;
 		marginCollided = true;
 	}
+	// up / down margins
 	if ((m_currentPos.y > SCR_HEIGHT) || (m_currentPos.y < FLOOR+ m_radius)) {
 		LimitWorldCollMessage* limitWorldCollMessage = new LimitWorldCollMessage(vec2(1, -1), m_currentPos);
 		entityOwner->SendMsg(limitWorldCollMessage);
@@ -116,10 +120,11 @@ void BallColisionComponent::Slot()
 
 void BallColisionComponent::Divide()
 {
+	// get manager for entities list
 	Manager* manager = Manager::getInstance();
 	if (m_radius > 8.f)
 	{
-
+		// split ball into two with +/- X velocity and radius/2
 		for (int i = 0; i < 2; i++) {
 			Entity* ballEntity = new BallEntity();
 			m_velocity.x *= -1;
