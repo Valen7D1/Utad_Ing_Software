@@ -1,50 +1,50 @@
 #include "Factory.h"
 #include "manager.h"
+#include "entity.h"
 #include "renderEngine.h"
 
 #include "ballMovementComponent.h"
 #include "ballColisionComponent.h"
+#include "ballRenderComponent.h"
+
 #include "playerMovementComponent.h"
 #include "playerColisionComponent.h"
 #include "playerProjectileComponent.h"
 #include "playerRenderComponent.h"
-#include "ballRenderComponent.h"
-#include "entity.h"
+
 #include "sceneComponent.h"
 #include "platformRenderComponent.h"
 #include "ladderRenderComponent.h"
 
-//cosos mios
-//[150, 200],
-//[250, 350],
-//[350, 250],
-//[420, 150],
-//[450, 350]
 
 void BaseLevel::CreatePlayer()
 {
 	Manager* manager = Manager::getInstance();
-	RenderEngine* renderEngine = RenderEngine::getInstance();
-	const rapidjson::Value& playerData = manager->doc["Player"];
 
+	// create player entity in manager
 	manager->player = new PlayerEntity();
+	// get player data
+	const rapidjson::Value& playerData = manager->doc["Player"];
 	float playerRadius = playerData["radius"].GetFloat();
 	vec2 playerPosition = vec2(playerData["position"].GetFloat(), FLOOR + playerRadius);
 	float playerVelocity = playerData["speed"].GetFloat();
 	unsigned int playerHP = playerData["hitPoints"].GetUint();
-
+	///////////////////////////////////////////////////////////////////////
+	// set player movement values
 	PlayerMovementComponent* playerMovement = new PlayerMovementComponent();
 	playerMovement->SetPosition(playerPosition);
 	playerMovement->SetVelocity(playerVelocity);
 	playerMovement->SetRadius(playerRadius);
 	playerMovement->entityOwner = manager->player;
-
+	///////////////////////////////////////////////////////////////////////
+	// set player collision values
 	PlayerColisionComponent* playerColision = new PlayerColisionComponent();
 	playerColision->SetPosition(playerPosition);
 	playerColision->SetRadius(playerRadius);
 	playerColision->SetHitPoints(playerHP);
 	playerColision->entityOwner = manager->player;
-
+	///////////////////////////////////////////////////////////////////////
+	// set player render values
 	PlayerRenderComponent* playerRender = new PlayerRenderComponent();
 	playerRender->SetGfx(
 		CORE_LoadPNG(playerData["spriteI"].GetString(), false),
@@ -54,7 +54,8 @@ void BaseLevel::CreatePlayer()
 	playerRender->SetRadius(playerRadius);
 	playerRender->SetHitPoint(playerHP);
 	playerRender->entityOwner = manager->player;
-
+	///////////////////////////////////////////////////////////////////////
+	// set player projectile values
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
 	playerProjectileComponent->SetGfx(CORE_LoadPNG(playerData["arrow"].GetString(), false));
 	playerProjectileComponent->SetTraceSprite(CORE_LoadPNG(playerData["trace"].GetString(), false));
@@ -62,7 +63,8 @@ void BaseLevel::CreatePlayer()
 	playerProjectileComponent->SetRadius(playerRadius);
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
 	playerProjectileComponent->entityOwner = manager->player;
-
+	///////////////////////////////////////////////////////////////////////
+	// add all components to player entity
 	manager->player->AddComponent(playerMovement);
 	manager->player->AddComponent(playerColision);
 	manager->player->AddComponent(playerRender);
@@ -72,12 +74,12 @@ void BaseLevel::CreatePlayer()
 
 void Level1::CreateLevel()
 {
+	// first we create player
 	CreatePlayer();
 
 	Manager* manager = Manager::getInstance();
-	RenderEngine* renderEngine = RenderEngine::getInstance();
 
-	///////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	// get balls data
 	const rapidjson::Value& ballData = manager->doc["Ball"];
 
@@ -90,30 +92,36 @@ void Level1::CreateLevel()
 	float ballSpeed = ballData["speed"].GetFloat();
 	float radius = ballData["radius"].GetFloat();
 
-	// create balls
+	// create balls with random positions to 
+	// not make it too repetitive if you respawn
 	for (int i = 0; i < 1; i++) {
 		Entity* ballEntity = new BallEntity();
 
+		// get random speed values and starting position
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
 		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
-
+		///////////////////////////////////////////////////////////////////////
+		// set ball movement component
 		BallMovementComponent* movementComponent = new BallMovementComponent();
 		movementComponent->SetPosition(Position);
 		movementComponent->SetVelocity(Velocity);
 		movementComponent->entityOwner = ballEntity;
-
+		///////////////////////////////////////////////////////////////////////
+		// set ball collision component
 		BallColisionComponent* colisionComponent = new BallColisionComponent();
 		colisionComponent->SetPosition(Position);
 		colisionComponent->SetVelocity(Velocity);
 		colisionComponent->SetRadius(radius);
 		colisionComponent->entityOwner = ballEntity;
-
+		///////////////////////////////////////////////////////////////////////
+		// set ball render component
 		BallRenderComponent* renderComponent = new BallRenderComponent();
 		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
 		renderComponent->SetPosition(Position);
 		renderComponent->SetRadius(radius);
 		renderComponent->entityOwner = ballEntity;
-
+		///////////////////////////////////////////////////////////////////////
+		// add to ball entity the components
 		ballEntity->AddComponent(movementComponent);
 		ballEntity->AddComponent(colisionComponent);
 		ballEntity->AddComponent(renderComponent);
@@ -121,12 +129,13 @@ void Level1::CreateLevel()
 		manager->entities.push_back(ballEntity);
 	}
 
-	///////////////////////////////////////////////////////////////////////
+
+	////////////////////////////////////////////////////////////////////////////
 	// get platforms data
 
 	const rapidjson::Value& platformData = manager->doc["Platform"];
 
-	// all platforms to be created
+	// get all platforms to be created
 	std::vector<vec2> platforms;
 	const rapidjson::Value& platformPositions = platformData["position"];
 	for (unsigned int i = 0; i < platformPositions.Size(); i++) {
@@ -135,6 +144,7 @@ void Level1::CreateLevel()
 			platformPositions.GetArray()[i][1].GetFloat()));
 	}
 
+	// standard size values for platforms subsegments
 	float platformWidth = platformData["width"].GetFloat();
 	float platformHeight = platformData["height"].GetFloat();
 	vec2 proportions = vec2(
@@ -150,6 +160,8 @@ void Level1::CreateLevel()
 		vec2 position = *item;
 		Entity* platformEntity = new PlatformEntity();
 
+		// we only need platform render component since it wont control collisions
+		// things collide with it not the other way around
 		PLatformRenderComponent* pLatformRenderComponent = new PLatformRenderComponent();
 		pLatformRenderComponent->SetPosition(position);
 		pLatformRenderComponent->SetSize(vec2(platformWidth, platformHeight));
@@ -159,11 +171,12 @@ void Level1::CreateLevel()
 		platformEntity->AddComponent(pLatformRenderComponent);
 
 		manager->platforms.push_back(platformEntity);
+
 		++item;
 	}
 
-	///////////////////////////////////////////////////////////////////////
-	// get ladders data
+	////////////////////////////////////////////////////////////////////////////
+	// get ladders data (same idea than with platforms)
 
 	const rapidjson::Value& ladderData = manager->doc["Ladder"];
 
@@ -196,15 +209,12 @@ void Level1::CreateLevel()
 		manager->ladders.push_back(ladderEntity);
 		++item;
 	}
-
-
-
-
 }
 
 
 void Level2::CreateLevel()
 {
+	// same idea than with last level
 	CreatePlayer();
 
 	Manager* manager = Manager::getInstance();
@@ -253,6 +263,8 @@ void Level2::CreateLevel()
 
 }
 
+// menu levels only jave a render and a scene logic components
+// render and receive input to load / exit game
 
 void DeathMenu::CreateLevel()
 {
@@ -322,6 +334,8 @@ void WinMenu::CreateLevel()
 	manager->entities.push_back(WinScene);
 }
 
+
+// level control for next level automation
 BaseLevel* MainMenu::NextLevel() { return new Level1(); }
 BaseLevel* Level1::NextLevel() { return new Level2(); }
 BaseLevel* Level2::NextLevel() { return new Level1(); }
