@@ -58,16 +58,8 @@ void ProjectileColisionComponent::Slot()
 	for (Entity* platform : platforms)
 	{
 		PLatformRenderComponent* pData = platform->FindComponent<PLatformRenderComponent>();
-		vec2 pPos = pData->GetPosition(); // platform position
-		vec2 cornerPos = vec2(pPos.x + pData->GetSize().x / 2, pPos.y + pData->GetSize().y / 2);
 
-		// get angle from center to top right corner of platform
-		float angle = static_cast<float>(atan2(cornerPos.y - pPos.y, cornerPos.x - pPos.x) * 180 / 3.14);
-		float colisionAngle = static_cast<float>(atan2(m_position.y - pPos.y, m_position.x - pPos.x) * 180 / 3.14);
-
-		if (colisionAngle < 0) { colisionAngle += 360; }
-
-		vec2 position = pData->GetPosition();
+		vec2 pPos = pData->GetPosition(); 
 		vec2 size = pData->GetSize();
 
 		float distanceX = abs(pPos.x - m_position.x);
@@ -83,7 +75,9 @@ void ProjectileColisionComponent::Slot()
 		}
 	}
 
-	if ((m_position.y > SCR_HEIGHT) || (m_position.y < FLOOR) || colliding) {
+	// if collided or on ceiling
+	if ((m_position.y > SCR_HEIGHT) || (m_position.y < FLOOR) || colliding) 
+	{
 		entityOwner->toBeDeleted = true;
 	}
 }

@@ -86,6 +86,9 @@ void BallEntity::Destroy()
 }
 
 
+// i was gonna use this but I didnt have time at the end 
+// so... yeah xd
+
 void PlayerEntity::Destroy()
 {
 
@@ -103,10 +106,12 @@ void SceneEntity::Destroy()
 
 }
 
+
 void BulletEntity::Destroy()
 {
 
 }
+
 
 void LadderEntity::Destroy()
 {
