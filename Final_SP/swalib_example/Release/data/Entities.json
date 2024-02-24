@@ -29,7 +29,9 @@
 
     "position": 320,
 
-    "hitPoints": 3
+    "hitPoints": 3,
+
+    "arrowSpeed": 300
   },
 
   "Platform": {
