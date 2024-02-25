@@ -62,6 +62,16 @@
 
   },
 
+  "PowerUps": {
+
+    "radius": 16,
+
+    "speed": -100,
+
+    "sprite": [ "data/trace.png", "data/heart.png", "data/ball128.png" ]
+
+  },
+
 
   "DeathMenu": {
 

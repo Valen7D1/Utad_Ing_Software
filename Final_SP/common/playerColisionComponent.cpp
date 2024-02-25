@@ -49,16 +49,19 @@ void PlayerColisionComponent::Slot()
 	for (Entity* otherEntity : entities)
 	{
 		otherEntityCollision = otherEntity->FindComponent<BallColisionComponent>();
-		float maxDistance = (m_radius + otherEntityCollision->GetRadius());
-
-		float distanceX = abs(m_position.x - otherEntityCollision->GetPosition().x);
-		float distanceY = abs(m_position.y - otherEntityCollision->GetPosition().y);
-
-
-		if (distanceX < maxDistance && distanceY < maxDistance)
+		if (otherEntityCollision)
 		{
-			HitControl(); // level reset or death
-			break;
+			float maxDistance = (m_radius + otherEntityCollision->GetRadius());
+
+			float distanceX = abs(m_position.x - otherEntityCollision->GetPosition().x);
+			float distanceY = abs(m_position.y - otherEntityCollision->GetPosition().y);
+
+
+			if (distanceX < maxDistance && distanceY < maxDistance)
+			{
+				HitControl(); // level reset or death
+				break;
+			}
 		}
 	}
 

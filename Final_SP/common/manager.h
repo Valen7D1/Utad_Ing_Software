@@ -25,6 +25,7 @@ public:
     std::vector<Entity*> entities;
     std::vector<Entity*> platforms;
     std::vector<Entity*> ladders;
+    std::vector<Entity*> powerUps;
     BaseLevel* m_CurrentLevel;
 
     unsigned int currentLevel = 0;
@@ -36,8 +37,11 @@ public:
     std::vector<Entity*> getEntities();
     std::vector<Entity*> getPlatforms();
     std::vector<Entity*> getLadders();
+    std::vector<Entity*> getPowerUps();
 
     void addEntity(Entity* entity);
+    void addPowerUp(Entity* powerUp);
+
     Entity* getPlayer();
     Timer* getTimer();
 

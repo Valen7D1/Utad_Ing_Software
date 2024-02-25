@@ -66,6 +66,8 @@ void RenderEngine::RenderObjects(){
 	std::vector<Entity*> entities = manager->getEntities();
 	std::vector<Entity*> platforms = manager->getPlatforms();
 	std::vector<Entity*> ladders = manager->getLadders();
+	std::vector<Entity*> powerUps = manager->getPowerUps();
+
 
 	Entity* player = manager->getPlayer();
 
@@ -86,6 +88,12 @@ void RenderEngine::RenderObjects(){
 	for (Entity* entity : entities)
 	{
 		RenderComponent* renderComponent = entity->FindComponent<RenderComponent>();
+		if (renderComponent) { renderComponent->Slot(); }
+	}
+
+	for (Entity* powerUp : powerUps)
+	{
+		RenderComponent* renderComponent = powerUp->FindComponent<RenderComponent>();
 		if (renderComponent) { renderComponent->Slot(); }
 	}
 

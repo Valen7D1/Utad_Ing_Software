@@ -31,7 +31,7 @@ public:
 class PlayerEntity : public Entity
 {
 public:
-	virtual void Destroy() override;
+	virtual void Destroy() override {}
 };
 
 
@@ -45,29 +45,51 @@ public:
 class PlatformEntity : public Entity
 {
 public:
-	virtual void Destroy() override;
+	virtual void Destroy() override {}
 };
 
 
 class LadderEntity : public Entity
 {
 public:
-	virtual void Destroy() override;
+	virtual void Destroy() override {}
 };
 
 
 class SceneEntity : public Entity
 {
 public:
-	virtual void Destroy() override;
+	virtual void Destroy() override {}
 };
 
 
 class BulletEntity : public Entity
 {
 public:
+	virtual void Destroy() override {}
+};
+
+
+class TrippleThreatPowerUp : public Entity
+{
+public:
 	virtual void Destroy() override;
 };
+
+
+class HealthBoostPowerUp : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
+
+class MagazineBoostPowerUp : public Entity
+{
+public:
+	virtual void Destroy() override;
+};
+
 
 
 

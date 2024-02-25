@@ -130,12 +130,14 @@
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\gameLogic.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
-    <ClCompile Include="..\..\common\message.cpp" />
     <ClCompile Include="..\..\common\platformRenderComponent.cpp" />
     <ClCompile Include="..\..\common\playerColisionComponent.cpp" />
     <ClCompile Include="..\..\common\playerMovementComponent.cpp" />
     <ClCompile Include="..\..\common\playerProjectileComponent.cpp" />
     <ClCompile Include="..\..\common\playerRenderComponent.cpp" />
+    <ClCompile Include="..\..\common\powerUpColisionComponent.cpp" />
+    <ClCompile Include="..\..\common\powerUpMovementComponent.cpp" />
+    <ClCompile Include="..\..\common\powerUpRenderComponent.cpp" />
     <ClCompile Include="..\..\common\projectileColisionComponent.cpp" />
     <ClCompile Include="..\..\common\projectileMovementComponent.cpp" />
     <ClCompile Include="..\..\common\projectileRenderComponent.cpp" />
@@ -165,6 +167,9 @@
     <ClInclude Include="..\..\common\playerMovementComponent.h" />
     <ClInclude Include="..\..\common\playerProjectileComponent.h" />
     <ClInclude Include="..\..\common\playerRenderComponent.h" />
+    <ClInclude Include="..\..\common\powerUpColisionComponent.h" />
+    <ClInclude Include="..\..\common\powerUpMovementComponent.h" />
+    <ClInclude Include="..\..\common\powerUpRenderComponent.h" />
     <ClInclude Include="..\..\common\projectileColisionComponent.h" />
     <ClInclude Include="..\..\common\projectileMovementComponent.h" />
     <ClInclude Include="..\..\common\projectileRenderComponent.h" />

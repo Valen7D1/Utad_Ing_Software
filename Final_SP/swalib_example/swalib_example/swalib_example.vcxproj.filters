@@ -73,6 +73,15 @@
     <Filter Include="Header Files\Game\Components\Ladders">
       <UniqueIdentifier>{30a2f0f8-6bd4-4000-a5a4-017c368f5b17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Component\PowerUps">
+      <UniqueIdentifier>{58ab2359-3030-4b70-b218-388062e5c501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\Components\PowerUps">
+      <UniqueIdentifier>{551f78f7-a1e0-4b66-b7f9-c2e79c71cd77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PowerUps">
+      <UniqueIdentifier>{9a6f72a9-5ef0-47d8-b061-119b0e1e7a61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
@@ -110,9 +119,6 @@
     </ClCompile>
     <ClCompile Include="..\..\common\timer.cpp">
       <Filter>Source Files\Game\Controller</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\message.cpp">
-      <Filter>Source Files\Game\Component</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\playerColisionComponent.cpp">
       <Filter>Source Files\Game\Component\Player</Filter>
@@ -155,6 +161,15 @@
     </ClCompile>
     <ClCompile Include="..\..\common\ladderRenderComponent.cpp">
       <Filter>Source Files\Game\Component\Ladder</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\powerUpRenderComponent.cpp">
+      <Filter>Source Files\Game\Component\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\powerUpColisionComponent.cpp">
+      <Filter>Source Files\Game\Component\PowerUps</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\powerUpMovementComponent.cpp">
+      <Filter>Source Files\Game\Component\PowerUps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +256,15 @@
     </ClInclude>
     <ClInclude Include="..\..\common\ladderRenderComponent.h">
       <Filter>Header Files\Game\Components\Ladders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\powerUpRenderComponent.h">
+      <Filter>Header Files\Game\Components\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\powerUpColisionComponent.h">
+      <Filter>Header Files\Game\Components\PowerUps</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\powerUpMovementComponent.h">
+      <Filter>Header Files\Game\Components\PowerUps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -34,9 +34,11 @@ Manager* Manager::getInstance()
 std::vector<Entity*> Manager::getEntities() { return entities; }
 
 void Manager::addEntity(Entity* entity) { entities.push_back(entity); }
+void Manager::addPowerUp(Entity* powerUp) { powerUps.push_back(powerUp); }
 
 std::vector<Entity*> Manager::getPlatforms() { return platforms; }
 std::vector<Entity*> Manager::getLadders() { return ladders; }
+std::vector<Entity*> Manager::getPowerUps(){ return powerUps; }
 
 Entity* Manager::getPlayer() { return player; }
 
@@ -90,7 +92,8 @@ void Manager::update()
 		}
 	}
 
-	// entities update
+	////////////////////////////////////////////////////////////////////////////////////
+	// balls update
 	std::vector<Entity*> tempEntities;
 
 	if (entities.size() <= 0)
@@ -105,6 +108,42 @@ void Manager::update()
 
 		if (entity->toBeDeleted)
 		{	
+			// if its scene type means its time for level change
+			if (entity->FindComponent<SceneLogicComponent>())
+			{
+				m_CurrentLevel = m_CurrentLevel->NextLevel();
+				ResetLevel();
+				break;
+			}
+			else // collided balls
+			{
+				it = entities.erase(it);
+				tempEntities.push_back(entity);
+			}
+		}
+		else
+		{
+			entity->Slot();
+			++it;
+		}
+	}
+
+	for (auto it = tempEntities.begin(); it != tempEntities.end(); )
+	{
+		Entity* entity = *it;
+		entity->Destroy();
+		it = tempEntities.erase(it);
+		delete entity;
+	}
+	////////////////////////////////////////////////////////////////////////////////////
+	// power ups update
+
+	for (auto it = entities.begin(); it != entities.end(); )
+	{
+		Entity* entity = *it;
+
+		if (entity->toBeDeleted)
+		{
 			// if its scene type means its time for level change
 			if (entity->FindComponent<SceneLogicComponent>())
 			{
