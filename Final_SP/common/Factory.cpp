@@ -59,7 +59,9 @@ void BaseLevel::CreatePlayer()
 	PlayerProjectileComponent* playerProjectileComponent = new PlayerProjectileComponent();
 	playerProjectileComponent->SetGfx(CORE_LoadPNG(playerData["arrow"].GetString(), false));
 	playerProjectileComponent->SetTraceSprite(CORE_LoadPNG(playerData["trace"].GetString(), false));
-	playerProjectileComponent->SetVelocity(playerData["arrowSpeed"].GetFloat());
+	playerProjectileComponent->SetVelocity(
+		vec2(playerData["arrowSpeed"].GetFloat()*0.7f, 
+			playerData["arrowSpeed"].GetFloat()));
 	playerProjectileComponent->SetRadius(playerRadius);
 	playerProjectileComponent->SetPlayerPosition(playerPosition);
 	playerProjectileComponent->entityOwner = manager->player;

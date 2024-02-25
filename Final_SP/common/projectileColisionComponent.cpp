@@ -37,18 +37,21 @@ void ProjectileColisionComponent::Slot()
 			}
 
 			// collision with the projectile trace
-			// range from where no collision
-			float maxDistanceX = (m_radius / 2) + ballRadius;
-
-			bool topCheck = m_position.y > ballPosition.y;
-			bool botCheck = m_startingPosition.y < ballPosition.y;
-			bool distanceCheck = maxDistanceX >= abs(m_position.x - ballPosition.x);
-
-			if (distanceCheck && topCheck && botCheck)
+			if (m_typeOfProjectile == 0)
 			{
-				colliding = true;
-				otherEntityCollision->entityOwner->toBeDeleted = true;
-				break;
+				// range from where no collision
+				float maxDistanceX = (m_radius / 2) + ballRadius;
+
+				bool topCheck = m_position.y > ballPosition.y;
+				bool botCheck = m_startingPosition.y < ballPosition.y;
+				bool distanceCheck = maxDistanceX >= abs(m_position.x - ballPosition.x);
+
+				if (distanceCheck && topCheck && botCheck)
+				{
+					colliding = true;
+					otherEntityCollision->entityOwner->toBeDeleted = true;
+					break;
+				}
 			}
 		}
 	}

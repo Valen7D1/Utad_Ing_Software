@@ -79,3 +79,11 @@ public:
 };
 
 
+class NewProjectileTypeMessage : public Message
+{
+public:
+    NewProjectileTypeMessage(unsigned int _newType) : newType(_newType) {}
+    unsigned int newType;
+};
+
+

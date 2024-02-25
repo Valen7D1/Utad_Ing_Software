@@ -13,10 +13,10 @@ private:
 	GLuint m_trace;
 
 	float m_radius;
-	float m_velocity;
+	vec2 m_velocity;
 
 	unsigned int m_maxBullets = 1;
-	unsigned int m_typeOfProjectile = 0;
+	unsigned int m_typeOfProjectile = 1;
 
 	vec2 m_playerPosition;
 
@@ -29,7 +29,7 @@ public:
 	void ReceiveMessage(Message* msg);
 
 	//setters
-	void SetVelocity(float newVelocity) { m_velocity = newVelocity; }
+	void SetVelocity(vec2 newVelocity) { m_velocity = newVelocity; }
 	void SetGfx(GLuint newGfx) { m_gfx = newGfx; }
 	void SetTraceSprite(GLuint newGfx) { m_trace = newGfx; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
@@ -41,6 +41,7 @@ public:
 	GLuint GetId() { return m_gfx; }
 	GLuint GetTraceSprite() { return m_trace; }
 	float GetRadius() { return m_radius; }
+	unsigned int GetTypeOfProjectile() { return m_typeOfProjectile; }
 
 	std::vector<Entity*> getProjectiles() { return m_projectiles; }
 

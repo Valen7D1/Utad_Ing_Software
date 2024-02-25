@@ -5,19 +5,23 @@
 
 void ProjectileRenderComponent::Slot()
 {
+	if (m_typeOfProjectile == 0) { RenderTrace(); }
+	// render for main projectile
+	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_sprite);
+}
+
+
+void ProjectileRenderComponent::RenderTrace()
+{
 	int traceSize = static_cast<int>(round((m_position.y - m_startingPosition.y) / m_radius));
 	vec2 currentPosition = m_startingPosition;
-
-	// render for trace
-	for (int i=0; i < traceSize; i++ )
+	for (int i = 0; i < traceSize; i++)
 	{
 		CORE_RenderCenteredSprite(currentPosition, vec2(m_radius, m_radius), m_trace);
 		currentPosition.y += m_radius;
 	}
-
-	// render for main projectile
-	CORE_RenderCenteredSprite(m_position, vec2(m_radius * 2.f, m_radius * 2.f), m_sprite);
 }
+
 
 void ProjectileRenderComponent::ReceiveMessage(Message* msg)
 {

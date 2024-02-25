@@ -10,7 +10,13 @@
 void ProjectileMovementComponent::Slot()
 { 
 	Manager* manager = Manager::getInstance();
-	m_position.y += m_velocity* manager->getTimer()->GetFrameTime();
+
+	if (m_typeOfProjectile != 0)
+	{
+		m_position.x += m_velocity.x * manager->getTimer()->GetFrameTime();
+	}
+
+	m_position.y += m_velocity.y* manager->getTimer()->GetFrameTime();
 
 	NewPositionMessage* newPositionMessage = new NewPositionMessage(m_position);
 	entityOwner->SendMsg(new NewPositionMessage(m_position));

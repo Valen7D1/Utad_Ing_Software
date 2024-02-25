@@ -98,7 +98,45 @@ void PlayerProjectileComponent::BasicThreat()
 
 void PlayerProjectileComponent::TrippleThreat()
 {
+	vec2 tempVelocity = m_velocity;
+	for (unsigned int i = 0; i<3; ++i)
+	{
+		Entity* bulletEntity = new BulletEntity();
 
+		vec2 startingPosition = vec2(m_playerPosition.x, m_playerPosition.y + m_radius);
+
+		ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
+		projectileColision->SetPosition(startingPosition);
+		projectileColision->SetStartingPosition(startingPosition);
+		projectileColision->SetRadius(m_radius / 2);
+		projectileColision->entityOwner = bulletEntity;
+		projectileColision->SetTypeOfProjectile(m_typeOfProjectile);
+
+
+		ProjectileMovementComponent* projectileMovement = new ProjectileMovementComponent();
+		projectileMovement->SetPosition(startingPosition);
+		projectileMovement->SetVelocity(tempVelocity);
+		projectileMovement->entityOwner = bulletEntity;
+		projectileMovement->SetTypeOfProjectile(m_typeOfProjectile);
+
+
+		ProjectileRenderComponent* renderComponent = new ProjectileRenderComponent();
+		renderComponent->SetGfx(m_gfx);
+		renderComponent->SetTraceSprite(m_trace);
+		renderComponent->SetPosition(startingPosition);
+		renderComponent->SetRadius(m_radius / 2);
+		renderComponent->SetStartingPosition(startingPosition);
+		renderComponent->entityOwner = bulletEntity;
+		renderComponent->SetTypeOfProjectile(m_typeOfProjectile);
+
+		bulletEntity->AddComponent(projectileColision);
+		bulletEntity->AddComponent(projectileMovement);
+		bulletEntity->AddComponent(renderComponent);
+
+		m_projectiles.push_back(bulletEntity);
+
+		tempVelocity.x -= m_velocity.x;
+	}
 }
 
 
