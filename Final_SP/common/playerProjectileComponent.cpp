@@ -18,7 +18,7 @@ void PlayerProjectileComponent::Slot()
 	{
 		// if you want to test anything disable this If 
 		// and then you can fire infite bullets
-		if(m_projectiles.size() < m_maxBullets && timeLimit <= 0)
+		if(m_projectiles.size() <= m_maxBullets && timeLimit <= 0)
 		{
 			CreateProjectile();
 			timeLimit = 0.3;
@@ -72,6 +72,7 @@ void PlayerProjectileComponent::BasicThreat()
 
 	ProjectileColisionComponent* projectileColision = new ProjectileColisionComponent();
 	projectileColision->SetPosition(startingPosition);
+	projectileColision->SetTypeOfProjectile(m_typeOfProjectile);
 	projectileColision->SetStartingPosition(startingPosition);
 	projectileColision->SetRadius(m_radius / 2);
 	projectileColision->entityOwner = bulletEntity;
@@ -79,6 +80,7 @@ void PlayerProjectileComponent::BasicThreat()
 	ProjectileMovementComponent* projectileMovement = new ProjectileMovementComponent();
 	projectileMovement->SetPosition(startingPosition);
 	projectileMovement->SetVelocity(m_velocity);
+	projectileMovement->SetTypeOfProjectile(m_typeOfProjectile);
 	projectileMovement->entityOwner = bulletEntity;
 
 	ProjectileRenderComponent* renderComponent = new ProjectileRenderComponent();
@@ -87,6 +89,7 @@ void PlayerProjectileComponent::BasicThreat()
 	renderComponent->SetPosition(startingPosition);
 	renderComponent->SetRadius(m_radius / 2);
 	renderComponent->SetStartingPosition(startingPosition);
+	renderComponent->SetTypeOfProjectile(m_typeOfProjectile);
 	renderComponent->entityOwner = bulletEntity;
 
 	bulletEntity->AddComponent(projectileColision);

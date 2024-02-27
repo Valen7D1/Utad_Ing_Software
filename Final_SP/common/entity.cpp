@@ -13,6 +13,9 @@
 #include "powerUpColisionComponent.h"
 #include "powerUpRenderComponent.h"
 
+#include "playerProjectileComponent.h"
+#include "PlayerColisionComponent.h"
+
 
 
 void Entity::Slot()
@@ -104,9 +107,9 @@ void BallEntity::Destroy()
 
 	// booster spawn chance depend on the size of the ball destroyed
 	float probability;
-	if (radius >= 32) { probability = 1.f; }
-	else if (radius >= 16) { probability = 1.f; }
-	else { probability = 1.f; }
+	if (radius >= 32) { probability = 0.1f; }
+	else if (radius >= 16) { probability = 0.25f; }
+	else { probability = 0.4f; }
 
 	if (CORE_FRand(0.f, 1.f) <= probability)
 	{
@@ -118,19 +121,19 @@ void BallEntity::Destroy()
 		switch (whichOne) {
 		case 0:
 			powerUpEntity = new HealthBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/ball.png", true);
+			powerUpSprite = CORE_LoadPNG("data/OneUp.png", true);
 			break;
 		case 1:
 			powerUpEntity = new MagazineBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/trace.png", true);
+			powerUpSprite = CORE_LoadPNG("data/ammo.png", true);
 			break;
 		case 2:
 			powerUpEntity = new TrippleThreatPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/ball128.png", true);
+			powerUpSprite = CORE_LoadPNG("data/TrippleThreat.png", true);
 			break;
 		default:
 			powerUpEntity = new HealthBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/ball.png", true);
+			powerUpSprite = CORE_LoadPNG("data/OneUp.png", true);
 			break;
 		}
 
@@ -163,31 +166,43 @@ void BallEntity::Destroy()
 // only apply boost if collided with player
 void TrippleThreatPowerUp::Destroy()
 {
+	Manager* manager = Manager::getInstance();
+
 	PowerUpColisionComponent* powerUp = FindComponent<PowerUpColisionComponent>();
 
 	if (FindComponent<PowerUpColisionComponent>()->GetCollision())
 	{
-
+		manager->getPlayer()->FindComponent<PlayerProjectileComponent>()->SetTypeOfProjectile(1);
 	}
-
 }
 
 void HealthBoostPowerUp::Destroy()
 {
+	Manager* manager = Manager::getInstance();
+
 	PowerUpColisionComponent* powerUp = FindComponent<PowerUpColisionComponent>();
+
 	if (FindComponent<PowerUpColisionComponent>()->GetCollision())
 	{
+		unsigned int hitpoints = manager->getPlayer()->FindComponent<PlayerColisionComponent>()->GetHitPoints();
 
+		if (hitpoints < 3)
+		{
+			NewHitPointsMessage* newHp = new NewHitPointsMessage(hitpoints + 1);
+			manager->getPlayer()->SendMsg(newHp);
+			delete newHp;
+		}
 	}
-
 }
 
 void MagazineBoostPowerUp::Destroy()
 {
+	Manager* manager = Manager::getInstance();
+
 	PowerUpColisionComponent* powerUp = FindComponent<PowerUpColisionComponent>();
+
 	if (FindComponent<PowerUpColisionComponent>()->GetCollision())
 	{
-
+		manager->getPlayer()->FindComponent<PlayerProjectileComponent>()->SetNumberOfProjectiles();
 	}
-
 }

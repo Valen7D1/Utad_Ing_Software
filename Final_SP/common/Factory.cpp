@@ -96,7 +96,7 @@ void Level1::CreateLevel()
 
 	// create balls with random positions to 
 	// not make it too repetitive if you respawn
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 0; i++) {
 		Entity* ballEntity = new BallEntity();
 
 		// get random speed values and starting position
@@ -130,7 +130,57 @@ void Level1::CreateLevel()
 
 		manager->entities.push_back(ballEntity);
 	}
+}
 
+
+void Level2::CreateLevel()
+{
+	// same idea than with last level
+	CreatePlayer();
+
+	Manager* manager = Manager::getInstance();
+	RenderEngine* renderEngine = RenderEngine::getInstance();
+
+	const rapidjson::Value& ballData = manager->doc["Ball"];
+
+	float minHeight = ballData["height"].GetArray()[0].GetFloat();
+	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
+
+	float minWidth = ballData["width"].GetArray()[0].GetFloat();
+	float maxWidth = ballData["width"].GetArray()[1].GetFloat();
+
+	float ballSpeed = ballData["speed"].GetFloat();
+	float radius = ballData["radius"].GetFloat();
+
+	for (int i = 0; i < NUM_BALLS; i++) {
+		Entity* ballEntity = new BallEntity();
+
+		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
+		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
+
+		BallColisionComponent* colisionComponent = new BallColisionComponent();
+		colisionComponent->SetPosition(Position);
+		colisionComponent->SetVelocity(Velocity);
+		colisionComponent->SetRadius(radius);
+		colisionComponent->entityOwner = ballEntity;
+
+		BallMovementComponent* movementComponent = new BallMovementComponent();
+		movementComponent->SetPosition(Position);
+		movementComponent->SetVelocity(Velocity);
+		movementComponent->entityOwner = ballEntity;
+
+		BallRenderComponent* renderComponent = new BallRenderComponent();
+		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
+		renderComponent->SetPosition(Position);
+		renderComponent->SetRadius(radius);
+		renderComponent->entityOwner = ballEntity;
+
+		ballEntity->AddComponent(movementComponent);
+		ballEntity->AddComponent(colisionComponent);
+		ballEntity->AddComponent(renderComponent);
+
+		manager->entities.push_back(ballEntity);
+	}
 
 	////////////////////////////////////////////////////////////////////////////
 	// get platforms data
@@ -211,57 +261,6 @@ void Level1::CreateLevel()
 		manager->ladders.push_back(ladderEntity);
 		++item;
 	}
-}
-
-
-void Level2::CreateLevel()
-{
-	// same idea than with last level
-	CreatePlayer();
-
-	Manager* manager = Manager::getInstance();
-	RenderEngine* renderEngine = RenderEngine::getInstance();
-
-	const rapidjson::Value& ballData = manager->doc["Ball"];
-
-	float minHeight = ballData["height"].GetArray()[0].GetFloat();
-	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
-
-	float minWidth = ballData["width"].GetArray()[0].GetFloat();
-	float maxWidth = ballData["width"].GetArray()[1].GetFloat();
-
-	float ballSpeed = ballData["speed"].GetFloat();
-	float radius = ballData["radius"].GetFloat();
-
-	for (int i = 0; i < NUM_BALLS; i++) {
-		Entity* ballEntity = new BallEntity();
-
-		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
-		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
-
-		BallColisionComponent* colisionComponent = new BallColisionComponent();
-		colisionComponent->SetPosition(Position);
-		colisionComponent->SetVelocity(Velocity);
-		colisionComponent->SetRadius(radius);
-		colisionComponent->entityOwner = ballEntity;
-
-		BallMovementComponent* movementComponent = new BallMovementComponent();
-		movementComponent->SetPosition(Position);
-		movementComponent->SetVelocity(Velocity);
-		movementComponent->entityOwner = ballEntity;
-
-		BallRenderComponent* renderComponent = new BallRenderComponent();
-		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(Position);
-		renderComponent->SetRadius(radius);
-		renderComponent->entityOwner = ballEntity;
-
-		ballEntity->AddComponent(movementComponent);
-		ballEntity->AddComponent(colisionComponent);
-		ballEntity->AddComponent(renderComponent);
-
-		manager->entities.push_back(ballEntity);
-	}
 
 }
 
@@ -340,6 +339,6 @@ void WinMenu::CreateLevel()
 // level control for next level automation
 BaseLevel* MainMenu::NextLevel() { return new Level1(); }
 BaseLevel* Level1::NextLevel() { return new Level2(); }
-BaseLevel* Level2::NextLevel() { return new Level1(); }
-BaseLevel* DeathMenu::NextLevel() { return new WinMenu(); }
+BaseLevel* Level2::NextLevel() { return new WinMenu(); }
+BaseLevel* DeathMenu::NextLevel() { return new MainMenu(); }
 BaseLevel* WinMenu::NextLevel() { return new Level1(); }

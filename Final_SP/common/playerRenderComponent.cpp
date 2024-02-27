@@ -26,7 +26,6 @@ void PlayerRenderComponent::Slot()
 	{
 		projectil->FindComponent<ProjectileRenderComponent>()->Slot();
 	}
-	
 }
 
 void PlayerRenderComponent::ReceiveMessage(Message* msg)
@@ -59,5 +58,4 @@ void PlayerRenderComponent::ReceiveMessage(Message* msg)
 	{
 		m_direction = newDirectionMessage->newDir;
 	}
-
 }

@@ -34,6 +34,8 @@ public:
 	void SetTraceSprite(GLuint newGfx) { m_trace = newGfx; }
 	void SetRadius(float newRadius) { m_radius = newRadius; }
 	void SetPlayerPosition(vec2 newPlayerPosition) { m_playerPosition = newPlayerPosition; }
+	void SetNumberOfProjectiles() { m_maxBullets += 1; }
+	void SetTypeOfProjectile(unsigned int newType) { m_typeOfProjectile = newType; }
 
 	//getters
 	vec2 GetVelocity() { return m_velocity; }

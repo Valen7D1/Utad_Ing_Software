@@ -31,4 +31,10 @@ void ProjectileMovementComponent::ReceiveMessage(Message* msg)
 	{
 		m_position = newPositionMessage->newPos;
 	}
+
+	NewVelocityMessage* lateralCollision = dynamic_cast<NewVelocityMessage*>(msg);
+	if (lateralCollision)
+	{
+		m_velocity *= lateralCollision->newVel;
+	}
 }

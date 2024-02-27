@@ -83,6 +83,13 @@ void ProjectileColisionComponent::Slot()
 	{
 		entityOwner->toBeDeleted = true;
 	}
+
+	if ((m_position.x > (SCR_WIDTH - m_radius)) || (m_position.x < m_radius))
+	{
+		NewVelocityMessage* lateralCollision = new NewVelocityMessage(vec2(-1, 1));
+		entityOwner->SendMsg(lateralCollision);
+		delete lateralCollision;
+	}
 }
 
 void ProjectileColisionComponent::ReceiveMessage(Message* msg) 

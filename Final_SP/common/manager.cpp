@@ -61,6 +61,13 @@ void Manager::ResetLevel()
 		delete platforms[platforms.size() - 1];
 		platforms.pop_back();
 	}
+
+	while (powerUps.size() > 0)
+	{
+		delete powerUps[powerUps.size() - 1];
+		powerUps.pop_back();
+	}
+
 	m_CurrentLevel->CreateLevel();
 }
 
@@ -135,32 +142,25 @@ void Manager::update()
 		it = tempEntities.erase(it);
 		delete entity;
 	}
+
+
 	////////////////////////////////////////////////////////////////////////////////////
 	// power ups update
 
-	for (auto it = entities.begin(); it != entities.end(); )
+
+	for (auto pup = powerUps.begin(); pup != powerUps.end(); )
 	{
-		Entity* entity = *it;
+		Entity* entity = *pup;
 
 		if (entity->toBeDeleted)
 		{
-			// if its scene type means its time for level change
-			if (entity->FindComponent<SceneLogicComponent>())
-			{
-				m_CurrentLevel = m_CurrentLevel->NextLevel();
-				ResetLevel();
-				break;
-			}
-			else // collided balls
-			{
-				it = entities.erase(it);
-				tempEntities.push_back(entity);
-			}
+			pup = powerUps.erase(pup);
+			tempEntities.push_back(entity);
 		}
 		else
 		{
 			entity->Slot();
-			++it;
+			++pup;
 		}
 	}
 
