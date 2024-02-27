@@ -79,9 +79,6 @@
     <Filter Include="Header Files\Game\Components\PowerUps">
       <UniqueIdentifier>{551f78f7-a1e0-4b66-b7f9-c2e79c71cd77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\PowerUps">
-      <UniqueIdentifier>{9a6f72a9-5ef0-47d8-b061-119b0e1e7a61}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\core.cpp">
