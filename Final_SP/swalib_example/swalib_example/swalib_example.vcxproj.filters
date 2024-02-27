@@ -271,5 +271,17 @@
     <None Include="..\Release\data\gameData.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\Release\data\scene.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\data\Level1.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\data\Level2.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Release\data\Level3.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

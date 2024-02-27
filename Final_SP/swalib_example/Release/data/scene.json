@@ -1,0 +1,16 @@
+{
+  "DeathMenu": {
+
+    "sprite": "data/deathMenu.png"
+  },
+
+  "MainMenu": {
+
+    "sprite": "data/mainMenu.png"
+  },
+
+  "WinScene": {
+
+    "sprite": "data/WinScene.png"
+  }
+}

@@ -62,6 +62,12 @@ void Manager::ResetLevel()
 		platforms.pop_back();
 	}
 
+	while (ladders.size() > 0)
+	{
+		delete ladders[ladders.size() - 1];
+		ladders.pop_back();
+	}
+
 	while (powerUps.size() > 0)
 	{
 		delete powerUps[powerUps.size() - 1];
@@ -89,7 +95,7 @@ void Manager::update()
 	{
 		if (player->toBeDeleted)
 		{
-			delete m_CurrentLevel;
+			//delete m_CurrentLevel;
 			m_CurrentLevel = new DeathMenu();
 			ResetLevel();
 		}

@@ -113,28 +113,25 @@ void BallEntity::Destroy()
 
 	if (CORE_FRand(0.f, 1.f) <= probability)
 	{
-		int whichOne = rand() % (2 + 1);
+		float whichOne = CORE_FRand(0.f, 1.f);
 		GLuint powerUpSprite;
 
 		Entity* powerUpEntity = new HealthBoostPowerUp();
 
-		switch (whichOne) {
-		case 0:
+		if (whichOne < 0.2)
+		{
 			powerUpEntity = new HealthBoostPowerUp();
 			powerUpSprite = CORE_LoadPNG("data/OneUp.png", true);
-			break;
-		case 1:
-			powerUpEntity = new MagazineBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/ammo.png", true);
-			break;
-		case 2:
+		}
+		else if  (whichOne < 0.4)
+		{
 			powerUpEntity = new TrippleThreatPowerUp();
 			powerUpSprite = CORE_LoadPNG("data/TrippleThreat.png", true);
-			break;
-		default:
-			powerUpEntity = new HealthBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/OneUp.png", true);
-			break;
+		}
+		else
+		{
+			powerUpEntity = new MagazineBoostPowerUp();
+			powerUpSprite = CORE_LoadPNG("data/ammo.png", true);
 		}
 
 

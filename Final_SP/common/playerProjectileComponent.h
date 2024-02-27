@@ -16,7 +16,7 @@ private:
 	vec2 m_velocity;
 
 	unsigned int m_maxBullets = 1;
-	unsigned int m_typeOfProjectile = 1;
+	unsigned int m_typeOfProjectile = 0;
 
 	vec2 m_playerPosition;
 

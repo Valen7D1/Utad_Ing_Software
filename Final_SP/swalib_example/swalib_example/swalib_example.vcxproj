@@ -186,6 +186,10 @@
   <ItemGroup>
     <None Include="..\Release\data\entities.json" />
     <None Include="..\Release\data\gameData.json" />
+    <None Include="..\Release\data\Level1.json" />
+    <None Include="..\Release\data\Level2.json" />
+    <None Include="..\Release\data\Level3.json" />
+    <None Include="..\Release\data\scene.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

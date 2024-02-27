@@ -74,66 +74,8 @@ void BaseLevel::CreatePlayer()
 }
 
 
-void Level1::CreateLevel()
-{
-	// first we create player
-	CreatePlayer();
 
-	Manager* manager = Manager::getInstance();
-
-	////////////////////////////////////////////////////////////////////////////
-	// get balls data
-	const rapidjson::Value& ballData = manager->doc["Ball"];
-
-	float minHeight = ballData["height"].GetArray()[0].GetFloat();
-	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
-
-	float minWidth = ballData["width"].GetArray()[0].GetFloat();
-	float maxWidth = ballData["width"].GetArray()[1].GetFloat();
-
-	float ballSpeed = ballData["speed"].GetFloat();
-	float radius = ballData["radius"].GetFloat();
-
-	// create balls with random positions to 
-	// not make it too repetitive if you respawn
-	for (int i = 0; i < 0; i++) {
-		Entity* ballEntity = new BallEntity();
-
-		// get random speed values and starting position
-		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
-		vec2 Position = vec2(CORE_FRand(maxWidth, minWidth), CORE_FRand(maxHeight, minHeight));
-		///////////////////////////////////////////////////////////////////////
-		// set ball movement component
-		BallMovementComponent* movementComponent = new BallMovementComponent();
-		movementComponent->SetPosition(Position);
-		movementComponent->SetVelocity(Velocity);
-		movementComponent->entityOwner = ballEntity;
-		///////////////////////////////////////////////////////////////////////
-		// set ball collision component
-		BallColisionComponent* colisionComponent = new BallColisionComponent();
-		colisionComponent->SetPosition(Position);
-		colisionComponent->SetVelocity(Velocity);
-		colisionComponent->SetRadius(radius);
-		colisionComponent->entityOwner = ballEntity;
-		///////////////////////////////////////////////////////////////////////
-		// set ball render component
-		BallRenderComponent* renderComponent = new BallRenderComponent();
-		renderComponent->SetGfx(CORE_LoadPNG(ballData["sprite"].GetString(), false));
-		renderComponent->SetPosition(Position);
-		renderComponent->SetRadius(radius);
-		renderComponent->entityOwner = ballEntity;
-		///////////////////////////////////////////////////////////////////////
-		// add to ball entity the components
-		ballEntity->AddComponent(movementComponent);
-		ballEntity->AddComponent(colisionComponent);
-		ballEntity->AddComponent(renderComponent);
-
-		manager->entities.push_back(ballEntity);
-	}
-}
-
-
-void Level2::CreateLevel()
+void LevelCreator::CreateLevel()
 {
 	// same idea than with last level
 	CreatePlayer();
@@ -141,7 +83,7 @@ void Level2::CreateLevel()
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
-	const rapidjson::Value& ballData = manager->doc["Ball"];
+	const rapidjson::Value& ballData = manager->m_CurrentLevel->doc["Ball"];
 
 	float minHeight = ballData["height"].GetArray()[0].GetFloat();
 	float maxHeight = ballData["height"].GetArray()[1].GetFloat();
@@ -151,8 +93,9 @@ void Level2::CreateLevel()
 
 	float ballSpeed = ballData["speed"].GetFloat();
 	float radius = ballData["radius"].GetFloat();
+	int numBalls = ballData["nBalls"].GetInt();
 
-	for (int i = 0; i < NUM_BALLS; i++) {
+	for (int i = 0; i < numBalls; i++) {
 		Entity* ballEntity = new BallEntity();
 
 		vec2 Velocity = vec2(CORE_FRand(-ballSpeed, ballSpeed), 0);
@@ -185,7 +128,7 @@ void Level2::CreateLevel()
 	////////////////////////////////////////////////////////////////////////////
 	// get platforms data
 
-	const rapidjson::Value& platformData = manager->doc["Platform"];
+	const rapidjson::Value& platformData = manager->m_CurrentLevel->doc["Platform"];
 
 	// get all platforms to be created
 	std::vector<vec2> platforms;
@@ -230,7 +173,7 @@ void Level2::CreateLevel()
 	////////////////////////////////////////////////////////////////////////////
 	// get ladders data (same idea than with platforms)
 
-	const rapidjson::Value& ladderData = manager->doc["Ladder"];
+	const rapidjson::Value& ladderData = manager->m_CurrentLevel->doc["Ladder"];
 
 	// all platforms to be created
 	std::vector<vec2> ladders;
@@ -339,6 +282,7 @@ void WinMenu::CreateLevel()
 // level control for next level automation
 BaseLevel* MainMenu::NextLevel() { return new Level1(); }
 BaseLevel* Level1::NextLevel() { return new Level2(); }
-BaseLevel* Level2::NextLevel() { return new WinMenu(); }
+BaseLevel* Level2::NextLevel() { return new Level3(); }
+BaseLevel* Level3::NextLevel() { return new WinMenu(); }
 BaseLevel* DeathMenu::NextLevel() { return new MainMenu(); }
 BaseLevel* WinMenu::NextLevel() { return new Level1(); }

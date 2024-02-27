@@ -28,7 +28,6 @@ public:
     std::vector<Entity*> powerUps;
     BaseLevel* m_CurrentLevel;
 
-    unsigned int currentLevel = 0;
     int reset = 0;
 
     //singleton

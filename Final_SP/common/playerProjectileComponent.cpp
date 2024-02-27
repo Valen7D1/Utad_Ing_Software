@@ -18,7 +18,10 @@ void PlayerProjectileComponent::Slot()
 	{
 		// if you want to test anything disable this If 
 		// and then you can fire infite bullets
-		if(m_projectiles.size() <= m_maxBullets && timeLimit <= 0)
+		unsigned int max = m_maxBullets;
+		if (m_typeOfProjectile != 0) { max = m_maxBullets * 3; }
+
+		if(m_projectiles.size() < max && timeLimit <= 0)
 		{
 			CreateProjectile();
 			timeLimit = 0.3;
