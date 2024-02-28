@@ -83,6 +83,16 @@ void LevelCreator::CreateLevel()
 	Manager* manager = Manager::getInstance();
 	RenderEngine* renderEngine = RenderEngine::getInstance();
 
+	// set level sprites
+
+	const char* background = manager->m_CurrentLevel->doc["Background"].GetString();
+	const char* floor = manager->m_CurrentLevel->doc["Floor"].GetString();
+
+	renderEngine->GetSprite()->setBackgroundSprite(CORE_LoadPNG(background, false));
+	renderEngine->GetSprite()->setTileSprite(CORE_LoadPNG(floor, false));
+
+	// balls data
+
 	const rapidjson::Value& ballData = manager->m_CurrentLevel->doc["Ball"];
 
 	float minHeight = ballData["height"].GetArray()[0].GetFloat();

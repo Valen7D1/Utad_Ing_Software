@@ -121,7 +121,7 @@ void BallEntity::Destroy()
 		if (whichOne < 0.2)
 		{
 			powerUpEntity = new HealthBoostPowerUp();
-			powerUpSprite = CORE_LoadPNG("data/OneUp.png", true);
+			powerUpSprite = CORE_LoadPNG("data/OneHP.png", true);
 		}
 		else if  (whichOne < 0.4)
 		{

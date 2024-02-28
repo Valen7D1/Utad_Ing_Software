@@ -1,0 +1,84 @@
+{
+  "Ball": {
+
+    "speed": 100,
+
+    "radius": 32,
+
+    "sprite": "data/enderpearl.png",
+
+    "height": [ 400, 450 ],
+
+    "width": [ 80, 400 ],
+
+    "nBalls": 5
+
+  },
+
+  "Player": {
+
+    "speed": 200,
+
+    "radius": 25,
+
+    "spriteI": "data/playerI.png",
+
+    "spriteD": "data/playerD.png",
+
+    "arrow": "data/arrow.png",
+
+    "trace": "data/trace.png",
+
+    "position": 320,
+
+    "hitPoints": 3,
+
+    "arrowSpeed": 300
+  },
+
+  "Platform": {
+
+    "position": [
+      [ 75, 350 ],
+      [ 565, 350 ],
+      [ 320, 200 ]
+    ],
+
+    "height": 50,
+
+    "width": 150,
+
+    "size": [ 50, 50 ],
+
+    "sprite": "data/purpur.png"
+
+  },
+
+  "Ladder": {
+
+    "position": [
+      [ 320, 200 ],
+      [ 320, 150 ],
+      [ 320, 100 ]
+    ],
+
+    "radius": 50,
+
+    "sprite": "data/ladder.png"
+
+  },
+
+  "PowerUps": {
+
+    "radius": 16,
+
+    "speed": -100,
+
+    "sprite": [ "data/trace.png", "data/heart.png", "data/ball128.png" ]
+
+  },
+
+  "Background": "data/enderback.png",
+
+  "Floor": "data/endstone.png"
+}

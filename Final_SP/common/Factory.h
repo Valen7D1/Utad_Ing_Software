@@ -55,6 +55,7 @@ public:
     virtual BaseLevel* NextLevel() override;
 };
 
+
 class DeathMenu : public BaseLevel {
 
 public:

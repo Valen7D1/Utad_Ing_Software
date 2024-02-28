@@ -283,5 +283,8 @@
     <None Include="..\Release\data\Level3.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\Release\data\Level4.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

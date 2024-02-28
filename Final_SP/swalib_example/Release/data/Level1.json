@@ -5,7 +5,7 @@
 
     "radius": 32,
 
-    "sprite": "data/ball.png",
+    "sprite": "data/slimeBall.png",
 
     "height": [ 400, 450 ],
 
@@ -68,5 +68,10 @@
 
     "sprite": [ "data/trace.png", "data/heart.png", "data/ball128.png" ]
 
-  }
+  },
+
+  "Background": "data/back.png",
+
+  "Floor": "data/tile.png"
+
 }

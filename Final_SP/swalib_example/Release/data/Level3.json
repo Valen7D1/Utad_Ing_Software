@@ -5,7 +5,7 @@
 
     "radius": 32,
 
-    "sprite": "data/ball.png",
+    "sprite": "data/magmaBall.png",
 
     "height": [ 400, 450 ],
 
@@ -50,7 +50,7 @@
 
     "size": [ 50, 50 ],
 
-    "sprite": "data/platform.png"
+    "sprite": "data/netherBrick.png"
 
   },
 
@@ -79,5 +79,9 @@
 
     "sprite": [ "data/trace.png", "data/heart.png", "data/ball128.png" ]
 
-  }
+  },
+
+  "Background": "data/nether.png",
+
+  "Floor": "data/netherack.png"
 }
