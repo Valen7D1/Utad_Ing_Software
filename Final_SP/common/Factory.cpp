@@ -293,6 +293,7 @@ void WinMenu::CreateLevel()
 BaseLevel* MainMenu::NextLevel() { return new Level1(); }
 BaseLevel* Level1::NextLevel() { return new Level2(); }
 BaseLevel* Level2::NextLevel() { return new Level3(); }
-BaseLevel* Level3::NextLevel() { return new WinMenu(); }
+BaseLevel* Level3::NextLevel() { return new Level4(); }
+BaseLevel* Level4::NextLevel() { return new WinMenu(); }
 BaseLevel* DeathMenu::NextLevel() { return new MainMenu(); }
 BaseLevel* WinMenu::NextLevel() { return new Level1(); }

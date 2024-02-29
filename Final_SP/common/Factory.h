@@ -56,6 +56,16 @@ public:
 };
 
 
+class Level4 : public LevelCreator {
+
+public:
+    Level4() : LevelCreator("data/Level4.json") {}
+    virtual BaseLevel* NextLevel() override;
+};
+
+
+
+
 class DeathMenu : public BaseLevel {
 
 public:
